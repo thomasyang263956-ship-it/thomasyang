@@ -256,20 +256,52 @@ function initProfile() {
   // Education list
   const eduContainer = document.getElementById('artistEducationList');
   if (eduContainer) {
-    eduContainer.innerHTML = artist.education.map(item => `
-      <div class="edu-tag">${item}</div>
-    `).join('');
+    eduContainer.innerHTML = '';
+    (artist.education || []).forEach(item => {
+      const tag = document.createElement('div');
+      tag.className = 'edu-tag';
+      tag.textContent = item;
+      eduContainer.appendChild(tag);
+    });
+    if (isAdminLoggedIn()) {
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.className = 'btn-secondary';
+      editButton.style.padding = '9px 14px';
+      editButton.style.fontSize = '13px';
+      editButton.textContent = '✏️ 학위 및 학문적 배경 수정';
+      editButton.onclick = openAdminEditEducationModal;
+      eduContainer.appendChild(editButton);
+    }
   }
 
   // Career timeline
   const careerContainer = document.getElementById('artistCareerTimeline');
   if (careerContainer) {
-    careerContainer.innerHTML = artist.career.map(item => `
-      <div class="timeline-item">
-        <div class="timeline-year">${item.year}</div>
-        <div class="timeline-text">${item.title}</div>
-      </div>
-    `).join('');
+    careerContainer.innerHTML = '';
+    (artist.career || []).forEach(item => {
+      const timelineItem = document.createElement('div');
+      timelineItem.className = 'timeline-item';
+      const year = document.createElement('div');
+      year.className = 'timeline-year';
+      year.textContent = item.year;
+      const title = document.createElement('div');
+      title.className = 'timeline-text';
+      title.textContent = item.title;
+      timelineItem.appendChild(year);
+      timelineItem.appendChild(title);
+      careerContainer.appendChild(timelineItem);
+    });
+    if (isAdminLoggedIn()) {
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.className = 'btn-secondary';
+      editButton.style.padding = '9px 14px';
+      editButton.style.fontSize = '13px';
+      editButton.textContent = '✏️ 전시 및 활동 약력 수정';
+      editButton.onclick = openAdminEditCareerModal;
+      careerContainer.appendChild(editButton);
+    }
   }
 
   // Awards list
@@ -1172,6 +1204,62 @@ window.handleAdminAddNewItem = function(e) {
 };
 
 // Edit Profile
+window.openAdminEditEducationModal = function() {
+  const modal = document.getElementById('adminEditEducationModalOverlay');
+  const input = document.getElementById('adminEducationListInput');
+  if (!modal || !input) return;
+  input.value = (SITE_DATA.artist.education || []).join('\n');
+  modal.classList.add('open');
+  input.focus();
+};
+
+window.handleAdminSaveEducation = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('adminEducationListInput');
+  if (!input) return;
+  SITE_DATA.artist.education = input.value
+    .split(/\r?\n/)
+    .map(item => item.trim())
+    .filter(Boolean);
+  saveSiteData(SITE_DATA);
+  initProfile();
+  closeAdminModal('adminEditEducationModalOverlay');
+  showAdminToast('◆ 학문적 배경 및 학위가 성공적으로 업데이트되었습니다.');
+};
+
+window.openAdminEditCareerModal = function() {
+  const modal = document.getElementById('adminEditCareerModalOverlay');
+  const input = document.getElementById('adminCareerListInput');
+  if (!modal || !input) return;
+  input.value = (SITE_DATA.artist.career || [])
+    .map(item => `${item.year || ''} | ${item.title || ''}`)
+    .join('\n');
+  modal.classList.add('open');
+  input.focus();
+};
+
+window.handleAdminSaveCareer = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('adminCareerListInput');
+  if (!input) return;
+  SITE_DATA.artist.career = input.value
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(Boolean)
+    .map(line => {
+      const parts = line.split('|');
+      return {
+        year: (parts.shift() || '').trim(),
+        title: parts.join('|').trim()
+      };
+    })
+    .filter(item => item.year && item.title);
+  saveSiteData(SITE_DATA);
+  initProfile();
+  closeAdminModal('adminEditCareerModalOverlay');
+  showAdminToast('◆ 주요 전시 및 활동 약력이 성공적으로 업데이트되었습니다.');
+};
+
 window.openAdminEditAwardsModal = function() {
   const modal = document.getElementById('adminEditAwardsModalOverlay');
   const input = document.getElementById('adminAwardsListInput');
