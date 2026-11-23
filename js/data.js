@@ -8,6 +8,8 @@ const DEFAULT_SITE_DATA = {
     nameKr: "토마스양 (양태백)",
     nameEn: "Thomas Yang (Taebaek Yang)",
     chineseName: "陽太白",
+    photo: "assets/images/artist_profile.svg",
+    heroImage: "assets/images/gallery_unmu_1.svg",
     titles: ["사진가", "디자이너", "융합예술가", "문화관광학 박사"],
     tagline: "빛과 수묵의 경계를 넘나들며, 전통의 호흡을 현대적 시각 언어로 빚어내는 예술의 여정",
     bio: `토마스양(양태백) 작가는 사진, 회화, 서예, 문인화, 운무산수화, 도자기, 텍스타일, 설치미술에 이르기까지 순수 예술과 응용 디자인의 영역을 자유롭게 횡단하는 독보적인 융합 예술가입니다.

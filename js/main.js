@@ -221,7 +221,21 @@ function initProfile() {
   }
   const heroName = document.querySelector('.hero-title');
   if (heroName && artist.nameKr) {
-    heroName.innerHTML = `${artist.nameKr} <img src="assets/images/thomas_yang_logo_eye_mark.png" alt="Thomas Yang Mark" style="height:38px; width:auto; display:inline-block; vertical-align:middle; margin-left:8px;" title="Thomas Yang Official Mark">`;
+    heroName.innerHTML = `${artist.nameKr} <span style="font-weight:400; font-size:30px; color:var(--color-text-secondary);">(양태백)</span>`;
+  }
+
+  // Profile Portrait Image & Admin Edit Button Sync
+  const portraitImg = document.getElementById('profilePortraitImg');
+  if (portraitImg) {
+    portraitImg.src = artist.photo || 'assets/images/artist_profile.svg';
+  }
+  const portraitEditBtn = document.getElementById('profilePortraitEditBtn');
+  if (portraitEditBtn) {
+    portraitEditBtn.style.display = isAdminLoggedIn() ? 'inline-flex' : 'none';
+  }
+  const heroEditBtn = document.getElementById('heroEditBtn');
+  if (heroEditBtn) {
+    heroEditBtn.style.display = isAdminLoggedIn() ? 'inline-flex' : 'none';
   }
 
   // Bio
@@ -230,9 +244,9 @@ function initProfile() {
     bioContainer.innerHTML = artist.bio.replace(/\n\n/g, '<br><br>');
     if (isAdminLoggedIn()) {
       bioContainer.innerHTML += `
-        <div style="margin-top:20px;">
-          <button class="btn-primary" style="padding:8px 16px; font-size:13px;" onclick="openAdminEditProfileModal()">
-            ✏️ 작가 프로필 & 소개글 수정하기
+        <div style="margin-top:20px; display:flex; gap:10px;">
+          <button class="btn-primary" style="padding:10px 18px; font-size:13.5px;" onclick="openAdminEditProfileModal()">
+            📷 프로필 사진 및 작가 소개 수정하기
           </button>
         </div>
       `;
@@ -347,10 +361,15 @@ function renderGalleryGrid(items) {
           <div>· 규격: ${item.size}</div>
         </div>
         <p class="artwork-desc-preview">${item.description}</p>
-        <div class="artwork-card-actions">
+        <div class="artwork-card-actions" style="flex-direction:column; gap:8px;">
           <button class="btn-card-detail" onclick="openArtworkModal('${item.id}')">
             작품 상세 및 소장 문의
           </button>
+          ${isAdminLoggedIn() ? `
+            <button class="btn-primary" style="padding:9px 14px; font-size:12.5px; width:100%; justify-content:center; background:var(--color-accent-celadon);" onclick="event.stopPropagation(); openAdminEditItemModal('gallery', '${item.id}')">
+              📷 작품 사진 · 정보 수정
+            </button>
+          ` : ''}
         </div>
       </div>
     </article>
@@ -426,10 +445,15 @@ function renderProductGrid(items) {
         <ul class="product-features-list">
           ${item.features.map(f => `<li>${f}</li>`).join('')}
         </ul>
-        <div class="product-card-footer">
+        <div class="product-card-footer" style="flex-direction:column; gap:8px;">
           <button class="btn-inquire-product" onclick="openProductModal('${item.id}')">
             상품 상세 및 구매·제휴 문의
           </button>
+          ${isAdminLoggedIn() ? `
+            <button class="btn-primary" style="padding:9px 14px; font-size:12.5px; width:100%; justify-content:center; background:var(--color-accent-gold);" onclick="event.stopPropagation(); openAdminEditItemModal('product', '${item.id}')">
+              📷 상품 사진 · 정보 수정
+            </button>
+          ` : ''}
         </div>
       </div>
     </article>
@@ -569,6 +593,11 @@ window.openArtworkModal = function(id) {
         <button class="btn-primary" style="width:100%; justify-content:center;" onclick="openContactModalWithSubject('작품 소장 문의: [${item.title}]')">
           이 작품 소장 및 전시 문의하기
         </button>
+        ${isAdminLoggedIn() ? `
+          <button class="btn-secondary" style="width:100%; justify-content:center; margin-top:8px; border-color:var(--color-accent-celadon); color:var(--color-accent-celadon); font-weight:bold;" onclick="document.getElementById('detailModalOverlay').classList.remove('open'); openAdminEditItemModal('gallery', '${item.id}')">
+            📷 관리자: 이 작품 사진 및 정보 수정하기
+          </button>
+        ` : ''}
       </div>
     </div>
   `;
@@ -615,6 +644,11 @@ window.openProductModal = function(id) {
         <button class="btn-inquire-product" style="width:100%; justify-content:center; padding:14px;" onclick="openContactModalWithSubject('아트상품 주문/제휴: [${item.name}]')">
           이 아트상품 구매 / 대량 주문 / 제휴 문의
         </button>
+        ${isAdminLoggedIn() ? `
+          <button class="btn-secondary" style="width:100%; justify-content:center; margin-top:8px; border-color:var(--color-accent-gold); color:var(--color-accent-gold); font-weight:bold; padding:10px;" onclick="document.getElementById('detailModalOverlay').classList.remove('open'); openAdminEditItemModal('product', '${item.id}')">
+            📷 관리자: 이 상품 사진 및 정보 수정하기
+          </button>
+        ` : ''}
       </div>
     </div>
   `;
@@ -1131,6 +1165,18 @@ window.openAdminEditProfileModal = function() {
   document.getElementById('profileTagline').value = artist.tagline || '';
   document.getElementById('profileBio').value = artist.bio || '';
 
+  const photo = artist.photo || 'assets/images/artist_profile.svg';
+  const previewImg = document.getElementById('editProfileImagePreview');
+  const urlInput = document.getElementById('editProfileImageUrlInput');
+
+  if (previewImg) previewImg.src = photo;
+  if (urlInput) {
+    urlInput.value = photo;
+    urlInput.oninput = function() {
+      if (urlInput.value && previewImg) previewImg.src = urlInput.value;
+    };
+  }
+
   modal.classList.add('open');
 };
 
@@ -1144,10 +1190,17 @@ window.handleAdminSaveProfile = function(e) {
   artist.tagline = document.getElementById('profileTagline').value.trim();
   artist.bio = document.getElementById('profileBio').value.trim();
 
+  const urlInput = document.getElementById('editProfileImageUrlInput');
+  const previewImg = document.getElementById('editProfileImagePreview');
+  const newPhoto = (urlInput && urlInput.value.trim()) || (previewImg && previewImg.src);
+  if (newPhoto) {
+    artist.photo = newPhoto;
+  }
+
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditProfileModalOverlay');
-  showAdminToast('작가 프로필이 성공적으로 업데이트되었습니다.');
+  showAdminToast('작가 프로필 사진 및 정보가 성공적으로 업데이트되었습니다.');
 };
 
 // Change Password

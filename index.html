@@ -99,10 +99,12 @@
             <span class="hero-badge-dot"></span>
             <span class="hero-badge-text">FINE ART & CULTURAL DESIGN</span>
           </div>
-          <h1 class="hero-title">
-            토마스양 <span style="font-weight:400; font-size:32px;">(양태백)</span>
-            <img src="assets/images/thomas_yang_logo_eye_mark.png" alt="Thomas Yang Eye Mark" style="height:38px; width:auto; display:inline-block; vertical-align:middle; margin-left:8px;" title="Thomas Yang Official Mark">
-          </h1>
+          <div class="hero-title-group" style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 18px;">
+            <h1 class="hero-title" style="margin-bottom: 0;">
+              토마스양 <span style="font-weight:400; font-size:32px;">(양태백)</span>
+            </h1>
+            <img src="assets/images/thomas_yang_logo_cropped.png" alt="Thomas Yang 공식 로고" class="hero-logo-img" style="height: 48px; width: auto; max-width: 240px; object-fit: contain; display: inline-block;" title="Thomas Yang Official Logo">
+          </div>
           <p class="hero-tagline">
             "자연과 영혼의 울림, 빛과 수묵의 경계를 넘나드는 융합의 예술"
           </p>
@@ -141,7 +143,8 @@
         </div>
 
         <div class="hero-visual-col">
-          <div class="hero-visual-card">
+          <div class="hero-visual-card" style="position:relative;">
+            <button class="card-admin-edit-btn" id="heroEditBtn" style="top:16px; right:16px; display:none;" onclick="openAdminEditItemModal('gallery', 'unmu-1')">✏️ 대표작 변경</button>
             <img src="assets/images/gallery_unmu_1.svg" alt="태백산 운무도 대표작" id="heroFeaturedImage">
             <div class="hero-card-badge">
               <div>
@@ -171,8 +174,9 @@
       <div class="profile-grid">
         <!-- Left: Portrait & Stamp Card -->
         <div class="profile-portrait-wrap">
-          <div class="profile-image-frame">
-            <img src="assets/images/artist_profile.svg" alt="토마스양 (양태백) 작가 초상">
+          <div class="profile-image-frame" style="position:relative;">
+            <button class="card-admin-edit-btn" id="profilePortraitEditBtn" style="top:16px; right:16px; display:none;" onclick="openAdminEditProfileModal()">📷 프로필 사진 교체</button>
+            <img src="assets/images/artist_profile.svg" alt="토마스양 (양태백) 작가 초상" id="profilePortraitImg">
             <div class="profile-seal-bar">
               <div>
                 <div class="profile-seal-name">양태백 (토마스양)</div>
@@ -750,6 +754,26 @@
       </div>
 
       <form id="adminEditProfileForm" onsubmit="handleAdminSaveProfile(event)">
+        <!-- Profile Photo Upload -->
+        <div class="form-group">
+          <label class="form-label">작가 프로필 사진 교체</label>
+          <div class="admin-image-edit-wrap">
+            <div class="admin-image-preview-box">
+              <img id="editProfileImagePreview" src="assets/images/artist_profile.svg" alt="프로필 미리보기">
+            </div>
+            <div class="admin-image-controls">
+              <label class="btn-secondary" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:13px; padding:10px 16px;">
+                📁 내 컴퓨터에서 새 프로필 사진 선택
+                <input type="file" id="editProfileFileInput" accept="image/*" style="display:none;" onchange="handleImageFileSelect(event, 'editProfileImagePreview', 'editProfileImageUrlInput')">
+              </label>
+              <div style="margin-top: 10px;">
+                <label style="font-size: 12px; color: var(--color-text-muted);">또는 이미지 경로/URL 입력:</label>
+                <input type="text" id="editProfileImageUrlInput" class="form-input" style="font-size: 13px; padding: 8px 12px; margin-top: 4px;" placeholder="assets/images/파일명.jpg 또는 URL">
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
           <div class="form-group">
             <label class="form-label" for="profileNameKr">작가 성명 (한글) *</label>
