@@ -308,13 +308,21 @@ function initProfile() {
   const awardsContainer = document.getElementById('artistAwardsList');
   if (awardsContainer) {
     awardsContainer.innerHTML = '';
-    artist.awards.forEach(award => {
-      const awardTag = document.createElement('div');
-      awardTag.className = 'edu-tag';
-      awardTag.style.background = '#fdfcf9';
-      awardTag.style.border = '1px solid rgba(179,142,74,0.3)';
-      awardTag.textContent = award;
-      awardsContainer.appendChild(awardTag);
+    (artist.awards || []).forEach(award => {
+      const timelineItem = document.createElement('div');
+      timelineItem.className = 'timeline-item';
+
+      const year = document.createElement('div');
+      year.className = 'timeline-year';
+      year.textContent = typeof award === 'string' ? '' : (award.year || '');
+
+      const title = document.createElement('div');
+      title.className = 'timeline-text';
+      title.textContent = typeof award === 'string' ? award : (award.title || '');
+
+      timelineItem.appendChild(year);
+      timelineItem.appendChild(title);
+      awardsContainer.appendChild(timelineItem);
     });
 
     if (isAdminLoggedIn()) {
@@ -1287,7 +1295,9 @@ window.openAdminEditAwardsModal = function() {
   const input = document.getElementById('adminAwardsListInput');
   if (!modal || !input) return;
 
-  input.value = (SITE_DATA.artist.awards || []).join('\n');
+  input.value = (SITE_DATA.artist.awards || [])
+    .map(item => typeof item === 'string' ? item : `${item.year || ''} | ${item.title || ''}`)
+    .join('\n');
   modal.classList.add('open');
   input.focus();
 };
@@ -1297,11 +1307,39 @@ window.handleAdminSaveAwards = function(e) {
   const input = document.getElementById('adminAwardsListInput');
   if (!input) return;
 
-  SITE_DATA.artist.awards = input.value
+  const parsedAwards = input.value
     .split(/\r?\n/)
-    .map(award => award.trim())
-    .filter(Boolean);
+    .map(line => line.trim())
+    .filter(Boolean)
+    .map(line => {
+      const separatorIndex = line.indexOf('|');
+      if (separatorIndex >= 0) {
+        return {
+          year: line.slice(0, separatorIndex).trim(),
+          title: line.slice(separatorIndex + 1).trim()
+        };
+      }
 
+      const yearMatch = line.match(/^(\d{4}(?:\s*[-–]\s*(?:\d{4}|현재))?)\s+(.+)$/);
+      return yearMatch
+        ? { year: yearMatch[1].trim(), title: yearMatch[2].trim() }
+        : { year: '', title: line };
+    })
+    .filter(item => item.title);
+
+  if (parsedAwards.length === 0) {
+    showAdminToast('저장할 사회경력 한 줄 이상을 입력해 주세요.');
+    input.focus();
+    return;
+  }
+
+  if (parsedAwards.some(item => !item.year)) {
+    showAdminToast('각 줄은 「연도 | 내용」 형식으로 입력해 주세요.');
+    input.focus();
+    return;
+  }
+
+  SITE_DATA.artist.awards = parsedAwards;
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditAwardsModalOverlay');
@@ -1317,7 +1355,9 @@ window.openAdminEditProfileModal = function() {
   document.getElementById('profileTitles').value = artist.titles ? artist.titles.join(', ') : '';
   document.getElementById('profileTagline').value = artist.tagline || '';
   document.getElementById('profileBio').value = artist.bio || '';
-  document.getElementById('profileAwards').value = artist.awards ? artist.awards.join('\n') : '';
+  document.getElementById('profileAwards').value = (artist.awards || [])
+    .map(item => typeof item === 'string' ? item : `${item.year || ''} | ${item.title || ''}`)
+    .join('\n');
 
   const photo = artist.photo || 'assets/images/artist_profile.svg';
   const previewImg = document.getElementById('editProfileImagePreview');
@@ -1345,7 +1385,24 @@ window.handleAdminSaveProfile = function(e) {
   artist.bio = document.getElementById('profileBio').value.trim();
   const awardsTextarea = document.getElementById('profileAwards');
   if (awardsTextarea) {
-    artist.awards = awardsTextarea.value.split('\n').map(s => s.trim()).filter(Boolean);
+    artist.awards = awardsTextarea.value
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(Boolean)
+      .map(line => {
+        const separatorIndex = line.indexOf('|');
+        if (separatorIndex >= 0) {
+          return {
+            year: line.slice(0, separatorIndex).trim(),
+            title: line.slice(separatorIndex + 1).trim()
+          };
+        }
+        const yearMatch = line.match(/^(\d{4}(?:\s*[-–]\s*(?:\d{4}|현재))?)\s+(.+)$/);
+        return yearMatch
+          ? { year: yearMatch[1].trim(), title: yearMatch[2].trim() }
+          : { year: '', title: line };
+      })
+      .filter(item => item.year && item.title);
   }
 
   const urlInput = document.getElementById('editProfileImageUrlInput');
