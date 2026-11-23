@@ -151,6 +151,26 @@ ul, ol {
   gap: 12px;
 }
 
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.03);
+}
+
+.brand-logo-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--border-medium);
+  margin: 0 2px;
+}
+
 .logo-stamp {
   width: 36px;
   height: 36px;

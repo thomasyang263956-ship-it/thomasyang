@@ -221,7 +221,7 @@ function initProfile() {
   }
   const heroName = document.querySelector('.hero-title');
   if (heroName && artist.nameKr) {
-    heroName.innerHTML = `${artist.nameKr} <span class="artist-seal-inline">陽太白印</span>`;
+    heroName.innerHTML = `${artist.nameKr} <img src="assets/images/thomas_yang_logo_eye_mark.png" alt="Thomas Yang Mark" style="height:38px; width:auto; display:inline-block; vertical-align:middle; margin-left:8px;" title="Thomas Yang Official Mark">`;
   }
 
   // Bio

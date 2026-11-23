@@ -50,11 +50,10 @@
     <path d="M 140 262 Q 150 285, 160 262 Z" fill="#5a5d66"/>
   </g>
 
-  <!-- Seal / Signature stamp in red -->
-  <g transform="translate(480, 580)">
-    <rect x="0" y="0" width="60" height="60" rx="6" fill="#b93b3b" stroke="#872222" stroke-width="2"/>
-    <text x="30" y="26" font-family="'Noto Serif KR', serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">陽太</text>
-    <text x="30" y="46" font-family="'Noto Serif KR', serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">白印</text>
+  <!-- Thomas Yang Official Logo Badge -->
+  <g transform="translate(420, 580)">
+    <rect x="0" y="0" width="145" height="42" rx="6" fill="#ffffff" opacity="0.95"/>
+    <image href="thomas_yang_logo_cropped.png" x="8" y="4" width="129" height="34"/>
   </g>
 
   <!-- Overlay Name typography -->
