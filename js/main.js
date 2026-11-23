@@ -1242,18 +1242,40 @@ window.handleAdminSaveCareer = function(e) {
   e.preventDefault();
   const input = document.getElementById('adminCareerListInput');
   if (!input) return;
-  SITE_DATA.artist.career = input.value
+
+  const parsedCareer = input.value
     .split(/\r?\n/)
     .map(line => line.trim())
     .filter(Boolean)
     .map(line => {
-      const parts = line.split('|');
-      return {
-        year: (parts.shift() || '').trim(),
-        title: parts.join('|').trim()
-      };
+      const separatorIndex = line.indexOf('|');
+      if (separatorIndex >= 0) {
+        return {
+          year: line.slice(0, separatorIndex).trim(),
+          title: line.slice(separatorIndex + 1).trim()
+        };
+      }
+
+      const yearMatch = line.match(/^(\d{4}(?:\s*[-–]\s*(?:\d{4}|현재))?)\s+(.+)$/);
+      return yearMatch
+        ? { year: yearMatch[1].trim(), title: yearMatch[2].trim() }
+        : { year: '', title: line };
     })
-    .filter(item => item.year && item.title);
+    .filter(item => item.title);
+
+  if (parsedCareer.length === 0) {
+    showAdminToast('저장할 전시 및 활동 약력 한 줄 이상을 입력해 주세요.');
+    input.focus();
+    return;
+  }
+
+  if (parsedCareer.some(item => !item.year)) {
+    showAdminToast('각 줄은 「연도 | 내용」 형식으로 입력해 주세요.');
+    input.focus();
+    return;
+  }
+
+  SITE_DATA.artist.career = parsedCareer;
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditCareerModalOverlay');
