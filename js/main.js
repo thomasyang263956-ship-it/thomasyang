@@ -533,11 +533,22 @@ function initPress() {
       <div class="press-media-name">${item.media}</div>
       <h3 class="press-headline">${item.title}</h3>
       <p class="press-summary">${item.summary}</p>
-      <button class="btn-read-press" onclick="openPressModal('${item.id}')">
-        전문 읽기 (Read full text) →
-      </button>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn-read-press" onclick="openPressModal('${item.id}')">
+          전문 읽기 (Read full text) →
+        </button>
+        ${isAdminLoggedIn() ? `<button type="button" class="btn-secondary" style="padding:10px 14px; font-size:13px;" onclick="openAdminEditPressModal('${item.id}')">✏️ 수정</button>` : ''}
+      </div>
     </article>
   `).join('');
+
+  if (isAdminLoggedIn()) {
+    container.insertAdjacentHTML('beforeend', `
+      <button type="button" class="btn-primary" style="justify-self:start; align-self:start; margin-top:8px;" onclick="openAdminEditPressModal()">
+        ➕ 언론 및 평론 항목 추가
+      </button>
+    `);
+  }
 }
 
 /* ==========================================================================
@@ -915,6 +926,7 @@ function activateAdminUI() {
 
   // Re-render components with edit buttons
   initProfile();
+  initPress();
   renderGalleryGrid(currentGalleryCategory === 'all' ? SITE_DATA.galleryItems : SITE_DATA.galleryItems.filter(x => x.category === currentGalleryCategory));
   renderProductGrid(currentProductCategory === 'all' ? SITE_DATA.productItems : SITE_DATA.productItems.filter(x => x.category === currentProductCategory));
 }
@@ -931,6 +943,7 @@ window.logoutAdmin = function() {
   }
 
   initProfile();
+  initPress();
   renderGalleryGrid(currentGalleryCategory === 'all' ? SITE_DATA.galleryItems : SITE_DATA.galleryItems.filter(x => x.category === currentGalleryCategory));
   renderProductGrid(currentProductCategory === 'all' ? SITE_DATA.productItems : SITE_DATA.productItems.filter(x => x.category === currentProductCategory));
   showAdminToast('관리자 모드에서 로그아웃되었습니다.');
@@ -1344,6 +1357,64 @@ window.handleAdminSaveAwards = function(e) {
   initProfile();
   closeAdminModal('adminEditAwardsModalOverlay');
   showAdminToast('◆ 사회경력 저장 완료! 모바일 적용은 「data.js 다운로드」를 이용하세요.');
+};
+
+window.openAdminEditPressModal = function(id) {
+  const modal = document.getElementById('adminEditPressModalOverlay');
+  if (!modal) return;
+
+  const item = id ? SITE_DATA.press.find(x => x.id === id) : null;
+  document.getElementById('editPressId').value = item ? item.id : '';
+  document.getElementById('editPressBadge').value = item ? (item.badge || '') : '';
+  document.getElementById('editPressDate').value = item ? (item.date || '') : '';
+  document.getElementById('editPressMedia').value = item ? (item.media || '') : '';
+  document.getElementById('editPressTitle').value = item ? (item.title || '') : '';
+  document.getElementById('editPressSummary').value = item ? (item.summary || '') : '';
+  document.getElementById('editPressContent').value = item ? (item.content || '') : '';
+
+  const deleteButton = document.getElementById('deletePressBtn');
+  if (deleteButton) deleteButton.style.display = item ? 'inline-flex' : 'none';
+  modal.classList.add('open');
+};
+
+window.handleAdminSavePress = function(e) {
+  e.preventDefault();
+  const id = document.getElementById('editPressId').value.trim();
+  const pressItem = {
+    badge: document.getElementById('editPressBadge').value.trim(),
+    date: document.getElementById('editPressDate').value.trim(),
+    media: document.getElementById('editPressMedia').value.trim(),
+    title: document.getElementById('editPressTitle').value.trim(),
+    summary: document.getElementById('editPressSummary').value.trim(),
+    content: document.getElementById('editPressContent').value.trim()
+  };
+
+  if (id) {
+    const index = SITE_DATA.press.findIndex(item => item.id === id);
+    if (index >= 0) {
+      SITE_DATA.press[index] = { ...SITE_DATA.press[index], ...pressItem };
+    }
+  } else {
+    const newId = `press-${Date.now()}`;
+    SITE_DATA.press.unshift({ id: newId, ...pressItem });
+  }
+
+  saveSiteData(SITE_DATA);
+  initPress();
+  closeAdminModal('adminEditPressModalOverlay');
+  showAdminToast('언론 및 평론 항목이 성공적으로 저장되었습니다.');
+};
+
+window.handleAdminDeletePress = function() {
+  const id = document.getElementById('editPressId').value.trim();
+  if (!id) return;
+  if (!confirm('이 언론 및 평론 항목을 삭제하시겠습니까?')) return;
+
+  SITE_DATA.press = SITE_DATA.press.filter(item => item.id !== id);
+  saveSiteData(SITE_DATA);
+  initPress();
+  closeAdminModal('adminEditPressModalOverlay');
+  showAdminToast('언론 및 평론 항목이 삭제되었습니다.');
 };
 
 window.openAdminEditProfileModal = function() {
