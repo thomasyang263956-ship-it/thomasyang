@@ -275,9 +275,26 @@ function initProfile() {
   // Awards list
   const awardsContainer = document.getElementById('artistAwardsList');
   if (awardsContainer) {
-    awardsContainer.innerHTML = artist.awards.map(award => `
-      <div class="edu-tag" style="background:#fdfcf9; border:1px solid rgba(179,142,74,0.3);">${award}</div>
-    `).join('');
+    awardsContainer.innerHTML = '';
+    artist.awards.forEach(award => {
+      const awardTag = document.createElement('div');
+      awardTag.className = 'edu-tag';
+      awardTag.style.background = '#fdfcf9';
+      awardTag.style.border = '1px solid rgba(179,142,74,0.3)';
+      awardTag.textContent = award;
+      awardsContainer.appendChild(awardTag);
+    });
+
+    if (isAdminLoggedIn()) {
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.className = 'btn-secondary';
+      editButton.style.padding = '9px 14px';
+      editButton.style.fontSize = '13px';
+      editButton.textContent = '✏️ 수상 및 공로 수정';
+      editButton.onclick = openAdminEditAwardsModal;
+      awardsContainer.appendChild(editButton);
+    }
   }
 }
 
@@ -1155,6 +1172,32 @@ window.handleAdminAddNewItem = function(e) {
 };
 
 // Edit Profile
+window.openAdminEditAwardsModal = function() {
+  const modal = document.getElementById('adminEditAwardsModalOverlay');
+  const input = document.getElementById('adminAwardsListInput');
+  if (!modal || !input) return;
+
+  input.value = (SITE_DATA.artist.awards || []).join('\n');
+  modal.classList.add('open');
+  input.focus();
+};
+
+window.handleAdminSaveAwards = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('adminAwardsListInput');
+  if (!input) return;
+
+  SITE_DATA.artist.awards = input.value
+    .split(/\r?\n/)
+    .map(award => award.trim())
+    .filter(Boolean);
+
+  saveSiteData(SITE_DATA);
+  initProfile();
+  closeAdminModal('adminEditAwardsModalOverlay');
+  showAdminToast('◆ 주요 수상 및 공로가 성공적으로 업데이트되었습니다.');
+};
+
 window.openAdminEditProfileModal = function() {
   const modal = document.getElementById('adminEditProfileModalOverlay');
   const artist = SITE_DATA.artist;

@@ -534,6 +534,7 @@
         <button class="btn-admin-act" onclick="openAdminAddItemModal('artwork')">➕ 새 작품 등록</button>
         <button class="btn-admin-act" onclick="openAdminAddItemModal('product')">➕ 새 아트상품 등록</button>
         <button class="btn-admin-act" onclick="openAdminEditProfileModal()">✏️ 프로필 수정</button>
+        <button class="btn-admin-act" onclick="openAdminEditAwardsModal()">◆ 수상 및 공로 수정</button>
         <button class="btn-admin-act btn-accent" onclick="exportSiteDataAsFile()" title="수정된 전체 데이터를 data.js 파일로 다운로드합니다">💾 data.js 다운로드</button>
         <button class="btn-admin-act" onclick="openChangePasswordModal()">🔑 암호 변경</button>
         <button class="btn-admin-act btn-danger" onclick="confirmResetData()">↺ 원본 복원</button>
@@ -808,6 +809,28 @@
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light);">
           <button type="button" class="btn-secondary" onclick="closeAdminModal('adminEditProfileModalOverlay')">취소</button>
           <button type="submit" class="btn-primary">프로필 저장하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Edit Awards Modal -->
+  <div class="modal-overlay" id="adminEditAwardsModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 680px; padding: 36px;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminEditAwardsModalOverlay')" aria-label="닫기">✕</button>
+      <div style="margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <span class="artwork-category-badge" style="position:static;">수상 및 공로 편집</span>
+        <h3 style="font-family: var(--font-serif); font-size: 22px; margin-top: 8px;">◆ 주요 수상 및 공로 수정</h3>
+      </div>
+
+      <form id="adminEditAwardsForm" onsubmit="handleAdminSaveAwards(event)">
+        <div class="form-group">
+          <label class="form-label" for="adminAwardsListInput">수상 및 공로 목록 <span style="font-weight:400; font-size:12px; color:#888;">(한 줄에 하나씩 입력)</span></label>
+          <textarea id="adminAwardsListInput" class="form-textarea" rows="10" placeholder="예: 2023 대한민국 미술대전 대상&#10;2022 국제현대미술전 금상&#10;지역 문화유산 브랜드화 공로패 수상"></textarea>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-light);">
+          <button type="button" class="btn-secondary" onclick="closeAdminModal('adminEditAwardsModalOverlay')">취소</button>
+          <button type="submit" class="btn-primary">수상 및 공로 저장</button>
         </div>
       </form>
     </div>
