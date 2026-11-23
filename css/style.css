@@ -1663,6 +1663,18 @@ ul, ol {
   .main-nav {
     display: none;
   }
+  .profile-card {
+    padding: 24px 20px;
+  }
+  .profile-content {
+    gap: 24px;
+  }
+  .edu-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline-list {
+    gap: 16px;
+  }
   .btn-contact-nav {
     display: none;
   }

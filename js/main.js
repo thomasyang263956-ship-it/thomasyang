@@ -1287,7 +1287,7 @@ window.handleAdminSaveCareer = function(e) {
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditCareerModalOverlay');
-  showAdminToast('◆ 주요 전시 및 활동 약력이 성공적으로 업데이트되었습니다.');
+  showAdminToast('◆ 전시 및 활동 약력 저장 완료! 모바일 적용은 「data.js 다운로드」를 이용하세요.');
 };
 
 window.openAdminEditAwardsModal = function() {
@@ -1343,7 +1343,7 @@ window.handleAdminSaveAwards = function(e) {
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditAwardsModalOverlay');
-  showAdminToast('◆ 사회경력이 성공적으로 업데이트되었습니다.');
+  showAdminToast('◆ 사회경력 저장 완료! 모바일 적용은 「data.js 다운로드」를 이용하세요.');
 };
 
 window.openAdminEditProfileModal = function() {
