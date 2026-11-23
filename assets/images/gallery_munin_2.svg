@@ -23,7 +23,7 @@
   </g>
   <!-- Inscription -->
   <text x="640" y="100" font-family="'Noto Serif KR', serif" font-size="16" fill="#222" writing-mode="vertical-rl" letter-spacing="6">歲寒然後知松柏之後彫也</text>
-  <text x="675" y="140" font-family="'Noto Serif KR', serif" font-size="13" fill="#555" writing-mode="vertical-rl" letter-spacing="4">군자묵죽(君子墨竹) 陽太白</text>
+  <text x="675" y="140" font-family="'Noto Serif KR', serif" font-size="13" fill="#555" writing-mode="vertical-rl" letter-spacing="4">군자묵죽(君子墨竹) 梁太白</text>
   <g transform="translate(630, 320)">
     <rect width="28" height="28" fill="#b93b3b"/>
     <text x="14" y="13" font-family="'Noto Serif KR', serif" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">太白</text>

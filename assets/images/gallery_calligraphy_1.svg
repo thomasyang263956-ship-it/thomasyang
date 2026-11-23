@@ -25,7 +25,7 @@
   <text x="400" y="380" font-family="'Cinzel', serif" font-size="14" fill="#887755" text-anchor="middle" letter-spacing="3">Pure Mind Reflecting the Moon · 2021 Solo Exhibition</text>
 
   <!-- Left Calligrapher Colophon -->
-  <text x="680" y="160" font-family="'Noto Serif KR', serif" font-size="14" fill="#333" writing-mode="vertical-rl" letter-spacing="4">辛丑孟冬 陽太白 書</text>
+  <text x="680" y="160" font-family="'Noto Serif KR', serif" font-size="14" fill="#333" writing-mode="vertical-rl" letter-spacing="4">辛丑孟冬 梁太白 書</text>
   <g transform="translate(668, 290)">
     <rect width="28" height="28" fill="#b93b3b"/>
     <text x="14" y="12" font-family="'Noto Serif KR', serif" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">陽太</text>

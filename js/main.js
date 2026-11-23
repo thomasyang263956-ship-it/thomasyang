@@ -582,7 +582,7 @@ window.openArtworkModal = function(id) {
       <div style="background:var(--color-bg-secondary); padding:16px; border-radius:var(--radius-sm); margin-bottom:20px; font-size:13.5px; line-height:1.7;">
         <div><strong>· 재료 / 기법:</strong> ${item.medium}</div>
         <div><strong>· 작품 규격:</strong> ${item.size}</div>
-        <div><strong>· 작가:</strong> 양태백 (토마스양, 陽太白)</div>
+        <div><strong>· 작가:</strong> 양태백 (토마스양, 梁太白)</div>
       </div>
 
       <p style="font-size:14.5px; line-height:1.8; color:var(--color-text-secondary); margin-bottom:28px;">
@@ -1164,6 +1164,7 @@ window.openAdminEditProfileModal = function() {
   document.getElementById('profileTitles').value = artist.titles ? artist.titles.join(', ') : '';
   document.getElementById('profileTagline').value = artist.tagline || '';
   document.getElementById('profileBio').value = artist.bio || '';
+  document.getElementById('profileAwards').value = artist.awards ? artist.awards.join('\n') : '';
 
   const photo = artist.photo || 'assets/images/artist_profile.svg';
   const previewImg = document.getElementById('editProfileImagePreview');
@@ -1189,6 +1190,10 @@ window.handleAdminSaveProfile = function(e) {
   artist.titles = document.getElementById('profileTitles').value.split(',').map(s => s.trim()).filter(Boolean);
   artist.tagline = document.getElementById('profileTagline').value.trim();
   artist.bio = document.getElementById('profileBio').value.trim();
+  const awardsTextarea = document.getElementById('profileAwards');
+  if (awardsTextarea) {
+    artist.awards = awardsTextarea.value.split('\n').map(s => s.trim()).filter(Boolean);
+  }
 
   const urlInput = document.getElementById('editProfileImageUrlInput');
   const previewImg = document.getElementById('editProfileImagePreview');
@@ -1200,7 +1205,7 @@ window.handleAdminSaveProfile = function(e) {
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditProfileModalOverlay');
-  showAdminToast('작가 프로필 사진 및 정보가 성공적으로 업데이트되었습니다.');
+  showAdminToast('작가 프로필 사진, 정보 및 수상 내역이 성공적으로 업데이트되었습니다.');
 };
 
 // Change Password

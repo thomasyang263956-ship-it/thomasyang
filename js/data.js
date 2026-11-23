@@ -7,7 +7,7 @@ const DEFAULT_SITE_DATA = {
   artist: {
     nameKr: "토마스양 (양태백)",
     nameEn: "Thomas Yang (Taebaek Yang)",
-    chineseName: "陽太白",
+    chineseName: "梁太白",
     photo: "assets/images/artist_profile.svg",
     heroImage: "assets/images/gallery_unmu_1.svg",
     titles: ["사진가", "디자이너", "융합예술가", "문화관광학 박사"],
