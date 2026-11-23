@@ -323,7 +323,7 @@ function initProfile() {
       editButton.className = 'btn-secondary';
       editButton.style.padding = '9px 14px';
       editButton.style.fontSize = '13px';
-      editButton.textContent = '✏️ 수상 및 공로 수정';
+      editButton.textContent = '✏️ 사회경력 수정';
       editButton.onclick = openAdminEditAwardsModal;
       awardsContainer.appendChild(editButton);
     }
@@ -1305,7 +1305,7 @@ window.handleAdminSaveAwards = function(e) {
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditAwardsModalOverlay');
-  showAdminToast('◆ 주요 수상 및 공로가 성공적으로 업데이트되었습니다.');
+  showAdminToast('◆ 사회경력이 성공적으로 업데이트되었습니다.');
 };
 
 window.openAdminEditProfileModal = function() {
@@ -1358,7 +1358,7 @@ window.handleAdminSaveProfile = function(e) {
   saveSiteData(SITE_DATA);
   initProfile();
   closeAdminModal('adminEditProfileModalOverlay');
-  showAdminToast('작가 프로필 사진, 정보 및 수상 내역이 성공적으로 업데이트되었습니다.');
+  showAdminToast('작가 프로필 사진, 정보 및 사회경력이 성공적으로 업데이트되었습니다.');
 };
 
 // Change Password
