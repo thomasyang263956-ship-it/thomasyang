@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initModals();
   initScrollEffects();
+  initAdminCMS();
 });
 
 /* ==========================================================================
@@ -213,10 +214,29 @@ window.filterProductsFromMobile = function(catId) {
 function initProfile() {
   const artist = SITE_DATA.artist;
 
+  // Sync Hero Section with updated artist data
+  const heroTagline = document.querySelector('.hero-tagline');
+  if (heroTagline && artist.tagline) {
+    heroTagline.textContent = `"${artist.tagline}"`;
+  }
+  const heroName = document.querySelector('.hero-title');
+  if (heroName && artist.nameKr) {
+    heroName.innerHTML = `${artist.nameKr} <span class="artist-seal-inline">陽太白印</span>`;
+  }
+
   // Bio
   const bioContainer = document.getElementById('artistBioParagraphs');
   if (bioContainer) {
-    bioContainer.textContent = artist.bio;
+    bioContainer.innerHTML = artist.bio.replace(/\n\n/g, '<br><br>');
+    if (isAdminLoggedIn()) {
+      bioContainer.innerHTML += `
+        <div style="margin-top:20px;">
+          <button class="btn-primary" style="padding:8px 16px; font-size:13px;" onclick="openAdminEditProfileModal()">
+            ✏️ 작가 프로필 & 소개글 수정하기
+          </button>
+        </div>
+      `;
+    }
   }
 
   // Education list
@@ -298,6 +318,7 @@ function renderGalleryGrid(items) {
     container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--color-text-muted);">
         <p style="font-size: 16px;">선택하신 카테고리의 작품을 준비 중입니다.</p>
+        ${isAdminLoggedIn() ? `<div style="margin-top:16px;"><button class="btn-primary" onclick="openAdminAddItemModal('artwork')">➕ 이 카테고리에 새 작품 등록하기</button></div>` : ''}
       </div>
     `;
     return;
@@ -308,6 +329,7 @@ function renderGalleryGrid(items) {
       <div class="artwork-thumb-wrap" onclick="openArtworkModal('${item.id}')">
         <img src="${item.image}" alt="${item.title}" loading="lazy">
         <div class="artwork-category-badge">${item.categoryName}</div>
+        ${isAdminLoggedIn() ? `<button class="card-admin-edit-btn" onclick="event.stopPropagation(); openAdminEditItemModal('gallery', '${item.id}')">✏️ 수정</button>` : ''}
         <div class="artwork-zoom-hint">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
           작품 크게 보기
@@ -380,11 +402,22 @@ function renderProductGrid(items) {
   const container = document.getElementById('productGridContainer');
   if (!container) return;
 
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--color-text-muted);">
+        <p style="font-size: 16px;">선택하신 카테고리의 아트상품을 준비 중입니다.</p>
+        ${isAdminLoggedIn() ? `<div style="margin-top:16px;"><button class="btn-primary" onclick="openAdminAddItemModal('product')">➕ 이 카테고리에 새 아트상품 등록하기</button></div>` : ''}
+      </div>
+    `;
+    return;
+  }
+
   container.innerHTML = items.map(item => `
     <article class="product-card" data-id="${item.id}">
       <div class="product-thumb-wrap" onclick="openProductModal('${item.id}')">
         <img src="${item.image}" alt="${item.name}" loading="lazy">
         <div class="product-category-tag">${item.categoryName}</div>
+        ${isAdminLoggedIn() ? `<button class="card-admin-edit-btn" onclick="event.stopPropagation(); openAdminEditItemModal('product', '${item.id}')">✏️ 수정</button>` : ''}
       </div>
       <div class="product-info">
         <h3 class="product-title">${item.name}</h3>
@@ -716,3 +749,449 @@ function initScrollEffects() {
     yearEl.textContent = new Date().getFullYear();
   }
 }
+
+/* ==========================================================================
+   9. ADMIN CMS & DIRECT INLINE CONTENT MANAGEMENT SYSTEM
+   ========================================================================== */
+const ADMIN_SESSION_KEY = 'thomasyang_admin_session';
+
+function isAdminLoggedIn() {
+  return sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
+}
+
+function setAdminSession(status) {
+  if (status) {
+    sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+  } else {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+  }
+}
+
+function initAdminCMS() {
+  if (isAdminLoggedIn()) {
+    activateAdminUI();
+  }
+}
+
+window.toggleAdminLoginModal = function() {
+  if (isAdminLoggedIn()) {
+    if (confirm('현재 관리자 모드로 접속 중입니다.\n로그아웃 하시겠습니까?')) {
+      logoutAdmin();
+    }
+  } else {
+    const modal = document.getElementById('adminLoginModalOverlay');
+    const err = document.getElementById('adminLoginError');
+    const input = document.getElementById('adminPasswordInput');
+    if (err) err.style.display = 'none';
+    if (input) input.value = '';
+    if (modal) modal.classList.add('open');
+  }
+};
+
+window.closeAdminModal = function(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.classList.remove('open');
+};
+
+window.handleAdminLogin = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('adminPasswordInput');
+  const err = document.getElementById('adminLoginError');
+  const password = input.value.trim();
+
+  if (password === getAdminPassword()) {
+    setAdminSession(true);
+    closeAdminModal('adminLoginModalOverlay');
+    activateAdminUI();
+    showAdminToast('👑 관리자 모드로 로그인되었습니다. 각 항목의 [수정] 버튼으로 직접 편집하세요.');
+  } else {
+    if (err) {
+      err.textContent = '비밀번호가 일치하지 않습니다. 다시 확인해 주세요.';
+      err.style.display = 'block';
+    }
+  }
+};
+
+function activateAdminUI() {
+  const floatingBar = document.getElementById('adminFloatingBar');
+  const headerBtn = document.getElementById('adminHeaderBtn');
+
+  if (floatingBar) floatingBar.style.display = 'block';
+  if (headerBtn) {
+    headerBtn.classList.add('logged-in');
+    headerBtn.innerHTML = '👑 관리자 ON';
+  }
+
+  // Re-render components with edit buttons
+  initProfile();
+  renderGalleryGrid(currentGalleryCategory === 'all' ? SITE_DATA.galleryItems : SITE_DATA.galleryItems.filter(x => x.category === currentGalleryCategory));
+  renderProductGrid(currentProductCategory === 'all' ? SITE_DATA.productItems : SITE_DATA.productItems.filter(x => x.category === currentProductCategory));
+}
+
+window.logoutAdmin = function() {
+  setAdminSession(false);
+  const floatingBar = document.getElementById('adminFloatingBar');
+  const headerBtn = document.getElementById('adminHeaderBtn');
+
+  if (floatingBar) floatingBar.style.display = 'none';
+  if (headerBtn) {
+    headerBtn.classList.remove('logged-in');
+    headerBtn.innerHTML = '🔒 관리자';
+  }
+
+  initProfile();
+  renderGalleryGrid(currentGalleryCategory === 'all' ? SITE_DATA.galleryItems : SITE_DATA.galleryItems.filter(x => x.category === currentGalleryCategory));
+  renderProductGrid(currentProductCategory === 'all' ? SITE_DATA.productItems : SITE_DATA.productItems.filter(x => x.category === currentProductCategory));
+  showAdminToast('관리자 모드에서 로그아웃되었습니다.');
+};
+
+// Image file selection & auto compression (Canvas)
+window.handleImageFileSelect = function(event, previewId, inputId) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const rawData = e.target.result;
+
+    const img = new Image();
+    img.onload = function() {
+      const maxDim = 1600;
+      let width = img.width;
+      let height = img.height;
+
+      if (width > maxDim || height > maxDim) {
+        if (width > height) {
+          height = Math.round((height * maxDim) / width);
+          width = maxDim;
+        } else {
+          width = Math.round((width * maxDim) / height);
+          height = maxDim;
+        }
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+      const previewEl = document.getElementById(previewId);
+      const inputEl = document.getElementById(inputId);
+
+      if (previewEl) previewEl.src = compressedDataUrl;
+      if (inputEl) inputEl.value = compressedDataUrl;
+      showAdminToast('사진이 로드되었습니다.');
+    };
+    img.src = rawData;
+  };
+  reader.readAsDataURL(file);
+};
+
+// Open Edit Modal for an Artwork or Product
+window.openAdminEditItemModal = function(type, id) {
+  const modal = document.getElementById('adminEditItemModalOverlay');
+  const typeInput = document.getElementById('editItemType');
+  const idInput = document.getElementById('editItemId');
+  const typeBadge = document.getElementById('editModalTypeBadge');
+  const modalTitle = document.getElementById('editModalTitle');
+  const categorySelect = document.getElementById('editCategorySelect');
+  const previewImg = document.getElementById('editImagePreview');
+  const urlInput = document.getElementById('editImageUrlInput');
+
+  typeInput.value = type;
+  idInput.value = id;
+
+  let item = null;
+  if (type === 'gallery') {
+    item = SITE_DATA.galleryItems.find(x => x.id === id);
+    typeBadge.textContent = '갤러리 작품 수정';
+    modalTitle.textContent = `작품 편집: [${item ? item.title : ''}]`;
+
+    categorySelect.innerHTML = SITE_DATA.galleryCategories
+      .filter(c => c.id !== 'all')
+      .map(c => `<option value="${c.id}" ${item && item.category === c.id ? 'selected' : ''}>${c.name}</option>`)
+      .join('');
+  } else {
+    item = SITE_DATA.productItems.find(x => x.id === id);
+    typeBadge.textContent = '아트상품 수정';
+    modalTitle.textContent = `아트상품 편집: [${item ? item.name : ''}]`;
+
+    categorySelect.innerHTML = SITE_DATA.productCategories
+      .filter(c => c.id !== 'all')
+      .map(c => `<option value="${c.id}" ${item && item.category === c.id ? 'selected' : ''}>${c.name}</option>`)
+      .join('');
+  }
+
+  if (!item) return;
+
+  previewImg.src = item.image;
+  urlInput.value = item.image;
+  document.getElementById('editItemTitle').value = item.title || item.name || '';
+  document.getElementById('editItemTitleEn').value = item.titleEn || item.nameEn || '';
+  document.getElementById('editItemYear').value = item.year || item.dimensions || '';
+  document.getElementById('editItemMedium').value = item.medium || item.material || '';
+  document.getElementById('editItemSize').value = item.size || item.dimensions || '';
+  document.getElementById('editItemDesc').value = item.description || (item.features ? item.features.join('\n') : '');
+
+  urlInput.oninput = function() {
+    if (urlInput.value) previewImg.src = urlInput.value;
+  };
+
+  modal.classList.add('open');
+};
+
+window.handleAdminSaveItem = function(e) {
+  e.preventDefault();
+  const type = document.getElementById('editItemType').value;
+  const id = document.getElementById('editItemId').value;
+  const category = document.getElementById('editCategorySelect').value;
+  const title = document.getElementById('editItemTitle').value.trim();
+  const titleEn = document.getElementById('editItemTitleEn').value.trim();
+  const year = document.getElementById('editItemYear').value.trim();
+  const medium = document.getElementById('editItemMedium').value.trim();
+  const size = document.getElementById('editItemSize').value.trim();
+  const desc = document.getElementById('editItemDesc').value.trim();
+  const image = document.getElementById('editImageUrlInput').value.trim() || document.getElementById('editImagePreview').src;
+
+  if (type === 'gallery') {
+    const item = SITE_DATA.galleryItems.find(x => x.id === id);
+    if (item) {
+      item.category = category;
+      const catObj = SITE_DATA.galleryCategories.find(c => c.id === category);
+      item.categoryName = catObj ? catObj.name : category;
+      item.title = title;
+      item.titleEn = titleEn;
+      item.year = year;
+      item.medium = medium;
+      item.size = size;
+      item.description = desc;
+      if (image) item.image = image;
+    }
+    saveSiteData(SITE_DATA);
+    filterGallery(currentGalleryCategory);
+  } else {
+    const item = SITE_DATA.productItems.find(x => x.id === id);
+    if (item) {
+      item.category = category;
+      const catObj = SITE_DATA.productCategories.find(c => c.id === category);
+      item.categoryName = catObj ? catObj.name : category;
+      item.name = title;
+      item.nameEn = titleEn;
+      item.material = medium;
+      item.dimensions = size;
+      item.description = desc;
+      if (image) item.image = image;
+    }
+    saveSiteData(SITE_DATA);
+    filterProducts(currentProductCategory);
+  }
+
+  closeAdminModal('adminEditItemModalOverlay');
+  showAdminToast('수정 내용이 성공적으로 저장되었습니다!');
+};
+
+window.handleAdminDeleteItem = function() {
+  const type = document.getElementById('editItemType').value;
+  const id = document.getElementById('editItemId').value;
+  const title = document.getElementById('editItemTitle').value;
+
+  if (!confirm(`정말 [${title}] 항목을 삭제하시겠습니까?`)) {
+    return;
+  }
+
+  if (type === 'gallery') {
+    SITE_DATA.galleryItems = SITE_DATA.galleryItems.filter(x => x.id !== id);
+    saveSiteData(SITE_DATA);
+    filterGallery(currentGalleryCategory);
+  } else {
+    SITE_DATA.productItems = SITE_DATA.productItems.filter(x => x.id !== id);
+    saveSiteData(SITE_DATA);
+    filterProducts(currentProductCategory);
+  }
+
+  closeAdminModal('adminEditItemModalOverlay');
+  showAdminToast('항목이 정상적으로 삭제되었습니다.');
+};
+
+// Add New Item
+window.openAdminAddItemModal = function(defaultType = 'artwork') {
+  const modal = document.getElementById('adminAddItemModalOverlay');
+  const radios = document.getElementsByName('addItemTypeRadio');
+  for (let r of radios) {
+    r.checked = (r.value === defaultType);
+  }
+
+  updateAddCategoryOptions();
+  document.getElementById('adminAddItemForm').reset();
+  document.getElementById('addImagePreview').src = 'assets/images/gallery_unmu_1.svg';
+  document.getElementById('addImageUrlInput').value = '';
+
+  const urlInput = document.getElementById('addImageUrlInput');
+  const previewImg = document.getElementById('addImagePreview');
+  urlInput.oninput = function() {
+    if (urlInput.value) previewImg.src = urlInput.value;
+  };
+
+  modal.classList.add('open');
+};
+
+window.updateAddCategoryOptions = function() {
+  const radios = document.getElementsByName('addItemTypeRadio');
+  let selectedType = 'artwork';
+  for (let r of radios) {
+    if (r.checked) selectedType = r.value;
+  }
+
+  const categorySelect = document.getElementById('addCategorySelect');
+  if (selectedType === 'artwork') {
+    categorySelect.innerHTML = SITE_DATA.galleryCategories
+      .filter(c => c.id !== 'all')
+      .map(c => `<option value="${c.id}">${c.name}</option>`)
+      .join('');
+  } else {
+    categorySelect.innerHTML = SITE_DATA.productCategories
+      .filter(c => c.id !== 'all')
+      .map(c => `<option value="${c.id}">${c.name}</option>`)
+      .join('');
+  }
+};
+
+window.handleAdminAddNewItem = function(e) {
+  e.preventDefault();
+  const radios = document.getElementsByName('addItemTypeRadio');
+  let selectedType = 'artwork';
+  for (let r of radios) {
+    if (r.checked) selectedType = r.value;
+  }
+
+  const category = document.getElementById('addCategorySelect').value;
+  const title = document.getElementById('addItemTitle').value.trim();
+  const titleEn = document.getElementById('addItemTitleEn').value.trim();
+  const year = document.getElementById('addItemYear').value.trim();
+  const medium = document.getElementById('addItemMedium').value.trim();
+  const size = document.getElementById('addItemSize').value.trim();
+  const desc = document.getElementById('addItemDesc').value.trim();
+  const image = document.getElementById('addImageUrlInput').value.trim() || document.getElementById('addImagePreview').src;
+
+  const newId = (selectedType === 'artwork' ? 'art-' : 'prod-') + Date.now();
+
+  if (selectedType === 'artwork') {
+    const catObj = SITE_DATA.galleryCategories.find(c => c.id === category);
+    const newItem = {
+      id: newId,
+      category: category,
+      categoryName: catObj ? catObj.name : category,
+      title: title,
+      titleEn: titleEn,
+      year: year,
+      medium: medium,
+      size: size,
+      image: image,
+      description: desc
+    };
+    SITE_DATA.galleryItems.unshift(newItem);
+    saveSiteData(SITE_DATA);
+    filterGallery(category);
+    scrollToSection('gallery');
+  } else {
+    const catObj = SITE_DATA.productCategories.find(c => c.id === category);
+    const newItem = {
+      id: newId,
+      category: category,
+      categoryName: catObj ? catObj.name : category,
+      name: title,
+      nameEn: titleEn,
+      material: medium,
+      dimensions: size,
+      image: image,
+      features: desc ? desc.split('\n').filter(Boolean) : ['토마스양 작가 오리지널 디자인'],
+      description: desc
+    };
+    SITE_DATA.productItems.unshift(newItem);
+    saveSiteData(SITE_DATA);
+    filterProducts(category);
+    scrollToSection('products');
+  }
+
+  closeAdminModal('adminAddItemModalOverlay');
+  showAdminToast(`새로운 ${selectedType === 'artwork' ? '작품이' : '아트상품이'} 등록되었습니다!`);
+};
+
+// Edit Profile
+window.openAdminEditProfileModal = function() {
+  const modal = document.getElementById('adminEditProfileModalOverlay');
+  const artist = SITE_DATA.artist;
+
+  document.getElementById('profileNameKr').value = artist.nameKr || '';
+  document.getElementById('profileNameEn').value = artist.nameEn || '';
+  document.getElementById('profileTitles').value = artist.titles ? artist.titles.join(', ') : '';
+  document.getElementById('profileTagline').value = artist.tagline || '';
+  document.getElementById('profileBio').value = artist.bio || '';
+
+  modal.classList.add('open');
+};
+
+window.handleAdminSaveProfile = function(e) {
+  e.preventDefault();
+  const artist = SITE_DATA.artist;
+
+  artist.nameKr = document.getElementById('profileNameKr').value.trim();
+  artist.nameEn = document.getElementById('profileNameEn').value.trim();
+  artist.titles = document.getElementById('profileTitles').value.split(',').map(s => s.trim()).filter(Boolean);
+  artist.tagline = document.getElementById('profileTagline').value.trim();
+  artist.bio = document.getElementById('profileBio').value.trim();
+
+  saveSiteData(SITE_DATA);
+  initProfile();
+  closeAdminModal('adminEditProfileModalOverlay');
+  showAdminToast('작가 프로필이 성공적으로 업데이트되었습니다.');
+};
+
+// Change Password
+window.openChangePasswordModal = function() {
+  const modal = document.getElementById('adminChangePasswordModalOverlay');
+  modal.classList.add('open');
+};
+
+window.handleAdminChangePassword = function(e) {
+  e.preventDefault();
+  const currentPw = document.getElementById('currentAdminPw').value;
+  const newPw = document.getElementById('newAdminPw').value;
+  const confirmPw = document.getElementById('confirmAdminPw').value;
+
+  if (currentPw !== getAdminPassword()) {
+    alert('현재 비밀번호가 올바르지 않습니다.');
+    return;
+  }
+  if (newPw !== confirmPw) {
+    alert('새 비밀번호와 확인 비밀번호가 일치하지 않습니다.');
+    return;
+  }
+
+  setAdminPassword(newPw);
+  closeAdminModal('adminChangePasswordModalOverlay');
+  showAdminToast('비밀번호가 성공적으로 변경되었습니다.');
+};
+
+// Reset Data to Default
+window.confirmResetData = function() {
+  if (confirm('주의: 정말 초기 원본 데이터로 복원하시겠습니까?\n직접 수정하거나 추가하신 모든 내용이 초기화됩니다.')) {
+    resetSiteData();
+    location.reload();
+  }
+};
+
+// Toast notification
+function showAdminToast(msg) {
+  const toast = document.getElementById('adminToast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3500);
+}
+

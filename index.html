@@ -59,6 +59,7 @@
 
         <!-- Right Action Button -->
         <div class="header-actions">
+          <button class="btn-admin-nav" id="adminHeaderBtn" onclick="toggleAdminLoginModal()" title="관리자 모드">🔒 관리자</button>
           <button class="btn-contact-nav" id="openInquiryBtn">작품 · 제휴 문의</button>
           <button class="btn-menu-mobile" id="mobileMenuToggle" aria-label="모바일 메뉴 열기">
             <span></span>
@@ -373,7 +374,7 @@
 
       <div class="footer-bottom-bar">
         <p>© <span id="currentYear">2026</span> 토마스양 (양태백) 작가. All Rights Reserved.</p>
-        <p>본 사이트에 게재된 모든 예술작품 및 디자인 상품의 저작권은 작가에게 있습니다.</p>
+        <p>본 사이트에 게재된 모든 예술작품 및 디자인 상품의 저작권은 작가에게 있습니다. | <a href="javascript:void(0)" onclick="toggleAdminLoginModal()" style="color:var(--color-text-muted); text-decoration:underline;">🔒 관리자 모드</a></p>
       </div>
     </div>
   </footer>
@@ -511,6 +512,302 @@
       </button>
     </div>
   </div>
+
+  <!-- =========================================================================
+       ADMIN CMS INTERFACE & FLOATING CONTROLS
+       ========================================================================= -->
+  <!-- Floating Admin Control Bar (Appears when logged in) -->
+  <div class="admin-floating-bar" id="adminFloatingBar" style="display:none;">
+    <div class="admin-bar-inner">
+      <div class="admin-bar-status">
+        <span class="admin-pulse-dot"></span>
+        <span class="admin-badge">👑 관리자 모드 ON</span>
+      </div>
+      <div class="admin-actions-group">
+        <button class="btn-admin-act" onclick="openAdminAddItemModal('artwork')">➕ 새 작품 등록</button>
+        <button class="btn-admin-act" onclick="openAdminAddItemModal('product')">➕ 새 아트상품 등록</button>
+        <button class="btn-admin-act" onclick="openAdminEditProfileModal()">✏️ 프로필 수정</button>
+        <button class="btn-admin-act btn-accent" onclick="exportSiteDataAsFile()" title="수정된 전체 데이터를 data.js 파일로 다운로드합니다">💾 data.js 다운로드</button>
+        <button class="btn-admin-act" onclick="openChangePasswordModal()">🔑 암호 변경</button>
+        <button class="btn-admin-act btn-danger" onclick="confirmResetData()">↺ 원본 복원</button>
+        <button class="btn-admin-act" onclick="logoutAdmin()">🚪 로그아웃</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="adminLoginModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 440px; padding: 36px;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminLoginModalOverlay')" aria-label="닫기">✕</button>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="font-size: 36px; margin-bottom: 8px;">🔒</div>
+        <h3 style="font-family: var(--font-serif); font-size: 22px; font-weight: 700;">작가 관리자 로그인</h3>
+        <p style="font-size: 13.5px; color: var(--color-text-secondary); margin-top: 6px;">
+          웹사이트의 작품 사진 및 텍스트를 직접 수정할 수 있는 관리자 모드입니다.
+        </p>
+      </div>
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="adminPasswordInput">관리자 비밀번호</label>
+          <input type="password" id="adminPasswordInput" class="form-input" placeholder="초기 비밀번호: 1234" required autofocus>
+          <span style="font-size: 11.5px; color: var(--color-text-muted); display: block; margin-top: 4px;">* 초기 기본 비밀번호는 <strong>1234</strong> 입니다.</span>
+        </div>
+        <div id="adminLoginError" style="color: var(--color-accent-red); font-size: 13px; margin-bottom: 14px; display: none;"></div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          관리자 모드 접속
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Edit Item Modal (갤러리 작품 또는 아트상품 수정) -->
+  <div class="modal-overlay" id="adminEditItemModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 720px; padding: 36px; max-height: 90vh;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminEditItemModalOverlay')" aria-label="닫기">✕</button>
+      <div style="margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <span class="artwork-category-badge" id="editModalTypeBadge" style="position:static;">작품 수정</span>
+        <h3 style="font-family: var(--font-serif); font-size: 22px; margin-top: 8px;" id="editModalTitle">항목 편집</h3>
+      </div>
+
+      <form id="adminEditItemForm" onsubmit="handleAdminSaveItem(event)">
+        <input type="hidden" id="editItemId">
+        <input type="hidden" id="editItemType"> <!-- 'gallery' | 'product' -->
+
+        <!-- Image Upload & Preview Section -->
+        <div class="form-group">
+          <label class="form-label">작품 / 상품 이미지 교체</label>
+          <div class="admin-image-edit-wrap">
+            <div class="admin-image-preview-box">
+              <img id="editImagePreview" src="" alt="이미지 미리보기">
+            </div>
+            <div class="admin-image-controls">
+              <label class="btn-secondary" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:13px; padding:10px 16px;">
+                📁 내 컴퓨터에서 새 사진 선택
+                <input type="file" id="editImageFileInput" accept="image/*" style="display:none;" onchange="handleImageFileSelect(event, 'editImagePreview', 'editImageUrlInput')">
+              </label>
+              <div style="margin-top: 10px;">
+                <label style="font-size: 12px; color: var(--color-text-muted);">또는 이미지 경로/URL 직접 입력:</label>
+                <input type="text" id="editImageUrlInput" class="form-input" style="font-size: 13px; padding: 8px 12px; margin-top: 4px;" placeholder="assets/images/파일명.jpg 또는 URL">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="editCategorySelect">카테고리 (장르) *</label>
+            <select id="editCategorySelect" class="form-select" required>
+              <!-- Populated dynamically via JS -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="editItemYear">제작 연도 / 출시일</label>
+            <input type="text" id="editItemYear" class="form-input" placeholder="2022">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="editItemTitle">제목 / 상품명 *</label>
+          <input type="text" id="editItemTitle" class="form-input" required placeholder="작품명 입력">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="editItemTitleEn">영문명 (Title in English)</label>
+          <input type="text" id="editItemTitleEn" class="form-input" placeholder="English Title">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="editItemMedium">재료 / 기법 / 소재</label>
+            <input type="text" id="editItemMedium" class="form-input" placeholder="화선지에 수묵 또는 100% 실크 등">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="editItemSize">규격 / 사이즈</label>
+            <input type="text" id="editItemSize" class="form-input" placeholder="180 x 97 cm 등">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="editItemDesc">작품 해설 / 상품 상세 설명</label>
+          <textarea id="editItemDesc" class="form-textarea" rows="4" placeholder="작품 또는 상품에 대한 상세 설명을 작성하세요."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border-light);">
+          <button type="button" class="btn-secondary" style="color: var(--color-accent-red); border-color: rgba(185,59,59,0.3);" onclick="handleAdminDeleteItem()">
+            🗑️ 이 항목 삭제하기
+          </button>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn-secondary" onclick="closeAdminModal('adminEditItemModalOverlay')">취소</button>
+            <button type="submit" class="btn-primary">수정사항 저장</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Add Item Modal (새 작품/상품 등록) -->
+  <div class="modal-overlay" id="adminAddItemModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 720px; padding: 36px; max-height: 90vh;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminAddItemModalOverlay')" aria-label="닫기">✕</button>
+      <div style="margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <span class="artwork-category-badge" id="addModalTypeBadge" style="position:static;">신규 등록</span>
+        <h3 style="font-family: var(--font-serif); font-size: 22px; margin-top: 8px;" id="addModalTitle">새 작품 / 아트상품 등록</h3>
+      </div>
+
+      <form id="adminAddItemForm" onsubmit="handleAdminAddNewItem(event)">
+        <!-- Type Selection -->
+        <div class="form-group">
+          <label class="form-label">등록 구분 *</label>
+          <div style="display: flex; gap: 24px; padding: 8px 0;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600;">
+              <input type="radio" name="addItemTypeRadio" value="artwork" checked onchange="updateAddCategoryOptions()">
+              갤러리 작품 (9개 장르)
+            </label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600;">
+              <input type="radio" name="addItemTypeRadio" value="product" onchange="updateAddCategoryOptions()">
+              아트상품 (5개 라인)
+            </label>
+          </div>
+        </div>
+
+        <!-- Image Upload & Preview Section -->
+        <div class="form-group">
+          <label class="form-label">작품 / 상품 이미지 등록 *</label>
+          <div class="admin-image-edit-wrap">
+            <div class="admin-image-preview-box">
+              <img id="addImagePreview" src="assets/images/gallery_unmu_1.svg" alt="미리보기">
+            </div>
+            <div class="admin-image-controls">
+              <label class="btn-secondary" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:13px; padding:10px 16px;">
+                📁 내 컴퓨터에서 사진 파일 선택
+                <input type="file" id="addImageFileInput" accept="image/*" style="display:none;" onchange="handleImageFileSelect(event, 'addImagePreview', 'addImageUrlInput')">
+              </label>
+              <div style="margin-top: 10px;">
+                <label style="font-size: 12px; color: var(--color-text-muted);">또는 이미지 경로/URL 입력:</label>
+                <input type="text" id="addImageUrlInput" class="form-input" style="font-size: 13px; padding: 8px 12px; margin-top: 4px;" placeholder="assets/images/파일명.jpg 또는 URL">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="addCategorySelect">세부 카테고리 *</label>
+            <select id="addCategorySelect" class="form-select" required>
+              <!-- Populated dynamically via JS -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addItemYear">제작 연도 / 출시일</label>
+            <input type="text" id="addItemYear" class="form-input" placeholder="2024">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addItemTitle">제목 / 상품명 *</label>
+          <input type="text" id="addItemTitle" class="form-input" required placeholder="예: 금강산 운무도">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addItemTitleEn">영문명</label>
+          <input type="text" id="addItemTitleEn" class="form-input" placeholder="Geumgangsan Cloud Landscape">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="addItemMedium">재료 / 기법 / 소재</label>
+            <input type="text" id="addItemMedium" class="form-input" placeholder="한지에 수묵 또는 천연 실크 등">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="addItemSize">규격 / 사이즈</label>
+            <input type="text" id="addItemSize" class="form-input" placeholder="130 x 90 cm">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addItemDesc">작품 해설 / 상세 소개</label>
+          <textarea id="addItemDesc" class="form-textarea" rows="4" placeholder="작품 해설 또는 상품 특징을 작성하세요."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light);">
+          <button type="button" class="btn-secondary" onclick="closeAdminModal('adminAddItemModalOverlay')">취소</button>
+          <button type="submit" class="btn-primary">신규 등록 완료</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Edit Profile Modal -->
+  <div class="modal-overlay" id="adminEditProfileModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 680px; padding: 36px; max-height: 90vh;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminEditProfileModalOverlay')" aria-label="닫기">✕</button>
+      <div style="margin-bottom: 20px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+        <span class="artwork-category-badge" style="position:static;">프로필 편집</span>
+        <h3 style="font-family: var(--font-serif); font-size: 22px; margin-top: 8px;">작가 프로필 및 소개글 수정</h3>
+      </div>
+
+      <form id="adminEditProfileForm" onsubmit="handleAdminSaveProfile(event)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="profileNameKr">작가 성명 (한글) *</label>
+            <input type="text" id="profileNameKr" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="profileNameEn">영문 활동명 *</label>
+            <input type="text" id="profileNameEn" class="form-input" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="profileTitles">대표 직함 (쉼표 구분)</label>
+          <input type="text" id="profileTitles" class="form-input" placeholder="사진가, 디자이너, 융합예술가, 문화관광학 박사">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="profileTagline">대표 슬로건 / 예술관 인용구</label>
+          <input type="text" id="profileTagline" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="profileBio">작가 소개 및 예술 철학 (Bio)</label>
+          <textarea id="profileBio" class="form-textarea" rows="6"></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-light);">
+          <button type="button" class="btn-secondary" onclick="closeAdminModal('adminEditProfileModalOverlay')">취소</button>
+          <button type="submit" class="btn-primary">프로필 저장하기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Change Password Modal -->
+  <div class="modal-overlay" id="adminChangePasswordModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 420px; padding: 36px;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminChangePasswordModalOverlay')" aria-label="닫기">✕</button>
+      <h3 style="font-family: var(--font-serif); font-size: 20px; margin-bottom: 16px;">관리자 비밀번호 변경</h3>
+      <form onsubmit="handleAdminChangePassword(event)">
+        <div class="form-group">
+          <label class="form-label" for="currentAdminPw">현재 비밀번호 *</label>
+          <input type="password" id="currentAdminPw" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="newAdminPw">새 비밀번호 *</label>
+          <input type="password" id="newAdminPw" class="form-input" required minlength="4" placeholder="4자리 이상 입력">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="confirmAdminPw">새 비밀번호 확인 *</label>
+          <input type="password" id="confirmAdminPw" class="form-input" required minlength="4">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 12px;">
+          비밀번호 변경 완료
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Toast Notification -->
+  <div class="admin-toast" id="adminToast"></div>
 
   <!-- Back to Top Button -->
   <button class="btn-back-top" id="btnBackTop" aria-label="맨 위로 가기">
