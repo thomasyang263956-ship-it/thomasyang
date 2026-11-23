@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#fdfbf7"/>
+  <g transform="translate(300, 220)">
+    <path d="M -190 70 Q 0 -80, 190 70 Z" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="4"/>
+    <path d="M -100 40 Q -40 -10, 20 30" stroke="#059669" stroke-width="4" fill="none"/>
+    <circle cx="30" cy="10" r="16" fill="#f43f5e" opacity="0.8"/>
+    <line x1="0" y1="70" x2="0" y2="240" stroke="#78350f" stroke-width="6"/>
+  </g>
+  <text x="300" y="535" font-family="'Noto Serif KR', serif" font-size="18" font-weight="bold" fill="#064e3b" text-anchor="middle">청초 연화 문인화 2단 수동 명품 양산</text>
+  <text x="300" y="565" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">자외선 차단 99.9% 린넨 믹스 방수 코팅</text>
+</svg>

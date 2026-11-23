@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#fcfaf7"/>
+  <rect x="180" y="50" width="240" height="460" rx="10" fill="#f1ece1" stroke="#d5c7b2" stroke-width="3"/>
+  <path d="M 220 200 Q 300 120, 380 200 Q 300 280, 220 200" fill="#fda4af" opacity="0.85"/>
+  <path d="M 300 240 L 300 440" stroke="#064e3b" stroke-width="5"/>
+  <circle cx="300" cy="340" r="65" fill="#047857" opacity="0.2"/>
+  <text x="300" y="545" font-family="'Noto Serif KR', serif" font-size="18" font-weight="bold" fill="#2d3748" text-anchor="middle">연꽃 문인화 실크 쉬폰 롱 스카프</text>
+  <text x="300" y="570" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#718096" text-anchor="middle">100% Silk Chiffon Long Scarf (45 x 180 cm)</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dawnGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dfdcd6"/>
+      <stop offset="40%" stop-color="#c9cbcf"/>
+      <stop offset="100%" stop-color="#8a949f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#dawnGrad)"/>
+  <!-- Vast Sea of Clouds -->
+  <circle cx="200" cy="140" r="40" fill="#fdfcf8" opacity="0.9"/>
+  <!-- Layered mountain peaks rising through cloud ocean -->
+  <path d="M-20 450 Q 220 200, 420 360 T 820 280 L 820 600 L -20 600 Z" fill="#36404d" opacity="0.6"/>
+  <path d="M120 420 Q 340 230, 560 380 T 850 330 L 850 600 L 120 600 Z" fill="#242b34" opacity="0.85"/>
+  <path d="M380 500 Q 520 280, 680 420 T 860 390 L 860 600 L 380 600 Z" fill="#12161b"/>
+  <!-- Billowing cloud strokes -->
+  <path d="M-50 380 Q 250 490, 550 390 T 850 440" stroke="#f2f4f7" stroke-width="45" fill="none" opacity="0.85"/>
+  <path d="M-20 460 Q 300 560, 650 460 T 880 520" stroke="#ffffff" stroke-width="55" fill="none" opacity="0.7"/>
+  <g transform="translate(60, 70)">
+    <rect width="32" height="32" rx="4" fill="#b93b3b"/>
+    <text x="16" y="14" font-family="'Noto Serif KR', serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">陽太</text>
+    <text x="16" y="25" font-family="'Noto Serif KR', serif" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">白印</text>
+  </g>
+  <text x="75" y="125" font-family="'Noto Serif KR', serif" font-size="13" fill="#222" writing-mode="vertical-rl" letter-spacing="4">夢遊雲山 陽太白</text>
+</svg>

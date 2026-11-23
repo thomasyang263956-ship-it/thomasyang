@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <rect width="600" height="450" fill="#15171a"/>
+  <!-- Gallery Wall & visitors -->
+  <rect x="50" y="40" width="500" height="260" fill="#242830"/>
+  <!-- Exhibited Artworks on museum wall -->
+  <rect x="80" y="70" width="90" height="130" fill="#f4f2ea" stroke="#b99347" stroke-width="3"/>
+  <rect x="200" y="70" width="140" height="100" fill="#e9ecf0" stroke="#b99347" stroke-width="3"/>
+  <rect x="370" y="70" width="130" height="130" fill="#f8f6f0" stroke="#b99347" stroke-width="3"/>
+  <!-- Red sold-out stickers! -->
+  <circle cx="160" cy="190" r="7" fill="#b93b3b"/>
+  <circle cx="330" cy="160" r="7" fill="#b93b3b"/>
+  <circle cx="490" cy="190" r="7" fill="#b93b3b"/>
+
+  <!-- Museum Lighting -->
+  <polygon points="125,40 70,200 180,200" fill="#ffffff" opacity="0.1"/>
+  <polygon points="270,40 190,200 350,200" fill="#ffffff" opacity="0.12"/>
+  <polygon points="435,40 360,200 510,200" fill="#ffffff" opacity="0.1"/>
+
+  <!-- People silhouettes attending opening ceremony -->
+  <ellipse cx="200" cy="330" rx="14" ry="18" fill="#39424e"/>
+  <path d="M 180 348 C 180 348, 200 345, 220 348 L 225 410 L 175 410 Z" fill="#2b323b"/>
+  
+  <ellipse cx="280" cy="320" rx="16" ry="20" fill="#c5a059"/>
+  <path d="M 255 340 C 255 340, 280 335, 305 340 L 310 410 L 250 410 Z" fill="#3a404a"/>
+
+  <ellipse cx="360" cy="335" rx="13" ry="17" fill="#4a525d"/>
+  <path d="M 342 352 C 342 352, 360 350, 378 352 L 382 410 L 338 410 Z" fill="#292f37"/>
+
+  <text x="40" y="420" font-family="'Noto Serif KR', serif" font-size="15" font-weight="bold" fill="#fff">2021 중국 이우 칠묵미술관 〈빙호영월〉 초청 개인전 개막식</text>
+  <text x="40" y="440" font-family="'Noto Sans KR', sans-serif" font-size="11" fill="#88929e">한중문화교류 100점 출품 전량 완판 기념 리셉션</text>
+</svg>

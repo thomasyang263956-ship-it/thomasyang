@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <rect width="600" height="450" fill="#16181b"/>
+  <rect x="40" y="60" width="520" height="280" fill="#20242a"/>
+  
+  <!-- Banner behind signing table -->
+  <rect x="80" y="80" width="440" height="60" fill="#b93b3b"/>
+  <text x="300" y="115" font-family="'Noto Serif KR', serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">한중 문화교류 협약 및 미술관 건립 추진 조인식</text>
+
+  <!-- Signing Table -->
+  <rect x="120" y="220" width="360" height="90" fill="#503d2e"/>
+  <rect x="160" y="200" width="90" height="60" fill="#f8f7f4" stroke="#8c7041" stroke-width="2"/>
+  <rect x="350" y="200" width="90" height="60" fill="#f8f7f4" stroke="#8c7041" stroke-width="2"/>
+
+  <text x="40" y="420" font-family="'Noto Serif KR', serif" font-size="15" font-weight="bold" fill="#fff">글로벌 문화교류 및 토마스양 미술관 건립 협약</text>
+  <text x="40" y="440" font-family="'Noto Sans KR', sans-serif" font-size="11" fill="#88929e">해외 주요 문화기관과의 국제 아트 프로젝트 협약식</text>
+</svg>

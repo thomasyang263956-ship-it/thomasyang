@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#f8f7f4"/>
+  <defs>
+    <radialGradient id="scarfCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fdfcf9"/>
+      <stop offset="70%" stop-color="#eae6dd"/>
+      <stop offset="100%" stop-color="#c5a059"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Square Scarf (90x90cm) Layout -->
+  <rect x="75" y="75" width="450" height="450" fill="url(#scarfCenter)" stroke="#9e7d3b" stroke-width="8"/>
+  <rect x="95" y="95" width="410" height="410" fill="none" stroke="#252b33" stroke-width="2"/>
+  
+  <!-- Artwork print: 빙호영월 문인화 모티브 -->
+  <circle cx="300" cy="300" r="140" fill="#252b33" opacity="0.08"/>
+  <path d="M 160 380 Q 280 200, 440 260" stroke="#20242a" stroke-width="6" fill="none"/>
+  <circle cx="350" cy="220" r="24" fill="#c5a059" opacity="0.9"/>
+  <!-- Crane silhouette on scarf corner -->
+  <path d="M 400 420 Q 420 400, 440 420 L 420 435 Z" fill="#20242a"/>
+  
+  <!-- Artist signature in gold -->
+  <text x="300" y="475" font-family="'Cinzel', serif" font-size="13" font-weight="bold" fill="#9e7d3b" text-anchor="middle" letter-spacing="4">THOMAS YANG ART SCARF</text>
+
+  <text x="300" y="555" font-family="'Noto Serif KR', serif" font-size="18" font-weight="bold" fill="#20242a" text-anchor="middle">빙호영월 프리미엄 실크 트윌 스카프</text>
+  <text x="300" y="580" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#6c7480" text-anchor="middle">100% Mulberry Silk Twill (90 x 90 cm) · Hand-rolled edge</text>
+</svg>

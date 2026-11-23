@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>토마스양 (양태백) 작가 공식 홈페이지 | Thomas Yang Artist</title>
+  <meta name="description" content="사진가, 디자이너, 융합예술가 토마스양(양태백) 작가의 공식 웹사이트. 사진, 영상, 회화, 운무산수, 문인화, 서예, 텍스타일, 도자기, 설치미술 및 명품 아트상품(넥타이, 스카프, 청자, 양산, 관광상품) 컬렉션">
+  <meta name="keywords" content="토마스양, 양태백, Thomas Yang, 운무산수, 문인화, 서예, 칠묵미술관, 빙호영월, 한국화, 청자, 실크스카프, 넥타이, 문화관광상품">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="토마스양 (양태백) 작가 공식 홈페이지">
+  <meta property="og:description" content="전통과 현대, 빛과 수묵의 경계를 넘나드는 융합예술가 토마스양(양태백)의 작품 세계">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/gallery_unmu_1.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       SITE HEADER & DYNAMIC TWO-TIER NAVIGATION
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <!-- Main Bar -->
+      <div class="header-main-bar">
+        <!-- Logo -->
+        <a href="#hero" class="brand-logo" id="logoLink">
+          <div class="logo-stamp">陽白</div>
+          <div class="logo-text-group">
+            <span class="logo-name">토마스양 <span style="font-size:15px; font-weight:500; color:var(--color-text-secondary);">(양태백)</span></span>
+            <span class="logo-sub">Thomas Yang · Fine Art & Design</span>
+          </div>
+        </a>
+
+        <!-- Main Desktop Navigation -->
+        <nav class="main-nav" aria-label="메인 메뉴">
+          <a href="#profile" class="nav-link" data-section="profile">프로필</a>
+          
+          <!-- 갤러리 (클릭 시 아래에 9개 서브메뉴 표시) -->
+          <a href="#gallery" class="nav-link has-sub" id="navGalleryBtn" data-section="gallery" aria-expanded="false">
+            갤러리
+          </a>
+
+          <!-- 아트상품 (클릭 시 아래에 5개 서브메뉴 표시) -->
+          <a href="#products" class="nav-link has-sub" id="navProductsBtn" data-section="products" aria-expanded="false">
+            아트상품
+          </a>
+
+          <a href="#press" class="nav-link" data-section="press">언론 및 평론</a>
+          <a href="#album" class="nav-link" data-section="album">앨범</a>
+        </nav>
+
+        <!-- Right Action Button -->
+        <div class="header-actions">
+          <button class="btn-contact-nav" id="openInquiryBtn">작품 · 제휴 문의</button>
+          <button class="btn-menu-mobile" id="mobileMenuToggle" aria-label="모바일 메뉴 열기">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         DYNAMIC SUBMENU STRIP (메뉴 클릭 시 바로 아래에 나타나는 서브메뉴 바)
+         ======================================================================= -->
+    <div class="sub-navbar" id="dynamicSubNav" aria-label="상세 카테고리 서브메뉴">
+      <div class="container">
+        <div class="sub-navbar-content">
+          <div class="sub-nav-header-label" id="subNavHeaderLabel">
+            <span class="dot"></span>
+            <span id="subNavTitleText">갤러리 컬렉션</span>
+          </div>
+          <div class="sub-nav-list" id="subnavListItems">
+            <!-- JavaScript dynamically populates subcategory items here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO SECTION (대표 소개 & 하이라이트)
+       ========================================================================= -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-accent"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text-col">
+          <div class="hero-badge-wrap">
+            <span class="hero-badge-dot"></span>
+            <span class="hero-badge-text">FINE ART & CULTURAL DESIGN</span>
+          </div>
+          <h1 class="hero-title">
+            토마스양 <span style="font-weight:400; font-size:32px;">(양태백)</span>
+            <span class="artist-seal-inline">陽太白印</span>
+          </h1>
+          <p class="hero-tagline">
+            "자연과 영혼의 울림, 빛과 수묵의 경계를 넘나드는 융합의 예술"
+          </p>
+          <p class="hero-desc">
+            사진, 영상, 회화, 운무산수화, 문인화, 서예, 텍스타일, 도자기, 설치미술에 이르는 폭넓은 시각 예술과 이를 일상 속에 꽃피우는 프리미엄 아트상품 컬렉션. 전통의 숨결을 현대적 조형 언어로 재창조하는 양태백 작가의 예술 세계로 초대합니다.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="showGallerySubmenuAndScroll('all')">
+              작품 갤러리 감상하기
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <button class="btn-secondary" onclick="showProductsSubmenuAndScroll('all')">
+              아트상품 컬렉션
+            </button>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <span class="stat-num">40+</span>
+              <span class="stat-lbl">국내외 초대전 및 개인전</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">100%</span>
+              <span class="stat-lbl">2021 中 초대전 완판</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">9 장르</span>
+              <span class="stat-lbl">갤러리 예술 영역</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">5 라인</span>
+              <span class="stat-lbl">라이프 아트상품</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-col">
+          <div class="hero-visual-card">
+            <img src="assets/images/gallery_unmu_1.svg" alt="태백산 운무도 대표작" id="heroFeaturedImage">
+            <div class="hero-card-badge">
+              <div>
+                <div class="hero-card-title">태백산 운무도 (太白山雲霧圖)</div>
+                <div class="hero-card-sub">양태백 작가 대표작 · 화선지에 수묵</div>
+              </div>
+              <span style="font-size:12px; color:#fff; border:1px solid rgba(255,255,255,0.4); padding:4px 8px; border-radius:4px;">180 x 97 cm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       1. PROFILE SECTION (프로필)
+       ========================================================================= -->
+  <section class="section-block bg-surface" id="profile">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">ARTIST PROFILE</span>
+        <h2 class="section-heading">작가 프로필</h2>
+        <p class="section-lead">사진가이자 디자이너, 문화관광학 박사로서 순수예술과 문화산업을 융합하는 양태백(토마스양) 작가의 발자취</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Left: Portrait & Stamp Card -->
+        <div class="profile-portrait-wrap">
+          <div class="profile-image-frame">
+            <img src="assets/images/artist_profile.svg" alt="토마스양 (양태백) 작가 초상">
+            <div class="profile-seal-bar">
+              <div>
+                <div class="profile-seal-name">양태백 (토마스양)</div>
+                <div class="profile-seal-titles">사진가 · 디자이너 · 융합예술가 · 문화관광학 박사</div>
+              </div>
+              <div class="logo-stamp" style="width:42px; height:42px; font-size:15px;">陽太<br>白印</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Bio, Career, Academic Background -->
+        <div class="profile-content">
+          <!-- Artist Statement & Bio -->
+          <div class="profile-card">
+            <h3 class="profile-card-title">
+              <span class="icon">◆</span> 작가 소개 및 예술관
+            </h3>
+            <p class="profile-bio-text" id="artistBioParagraphs">
+              <!-- Rendered via JS -->
+            </p>
+          </div>
+
+          <!-- Academic Background -->
+          <div class="profile-card">
+            <h3 class="profile-card-title">
+              <span class="icon">◆</span> 학문적 배경 및 학위
+            </h3>
+            <div class="edu-grid" id="artistEducationList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Major Career & Exhibitions -->
+          <div class="profile-card">
+            <h3 class="profile-card-title">
+              <span class="icon">◆</span> 주요 전시 및 활동 약력
+            </h3>
+            <div class="timeline-list" id="artistCareerTimeline">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Honors & Awards -->
+          <div class="profile-card">
+            <h3 class="profile-card-title">
+              <span class="icon">◆</span> 주요 수상 및 공로
+            </h3>
+            <div class="edu-grid" id="artistAwardsList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       2. GALLERY SECTION (갤러리)
+       서브메뉴: 사진, 영상, 회화, 운무산수, 문인화, 서예, 텍스타일, 도자기, 설치미술
+       ========================================================================= -->
+  <section class="section-block bg-secondary" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">ARTWORK GALLERY</span>
+        <h2 class="section-heading">작품 갤러리</h2>
+        <p class="section-lead">
+          수묵과 빛, 먹의 찰나와 현대 조형의 깊이를 담아낸 9가지 예술 장르 컬렉션
+        </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- In-Page Subcategory Filter Tabs (클릭 시 필터링) -->
+      <div class="filter-sticky-bar">
+        <div class="filter-pills-wrap" id="galleryFilterTabs">
+          <!-- Populated by JavaScript with:
+               [전체보기] [사진] [영상] [회화] [운무산수] [문인화] [서예] [텍스타일] [도자기] [설치미술] -->
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGridContainer">
+        <!-- Rendered via JS with artwork cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       3. ART PRODUCTS SECTION (아트상품)
+       서브메뉴: 넥타이, 스카프, 청자도자기, 양산 및 우산, 관광상품개발
+       ========================================================================= -->
+  <section class="section-block bg-surface" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">LIFESTYLE ART MERCHANDISE</span>
+        <h2 class="section-heading">아트상품 컬렉션</h2>
+        <p class="section-lead">
+          양태백 작가의 예술 작품을 일상의 품격과 문화관광 가치로 승화시킨 시그니처 라이프웨어 & 오브제
+        </p>
+        <div class="section-divider" style="background:var(--color-accent-gold);"></div>
+      </div>
+
+      <!-- In-Page Subcategory Filter Tabs (클릭 시 필터링) -->
+      <div class="filter-sticky-bar">
+        <div class="filter-pills-wrap" id="productFilterTabs">
+          <!-- Populated by JavaScript with:
+               [전체보기] [넥타이] [스카프] [청자도자기] [양산 및 우산] [관광상품개발] -->
+        </div>
+      </div>
+
+      <!-- Art Products Grid -->
+      <div class="product-grid" id="productGridContainer">
+        <!-- Rendered via JS with product cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. PRESS & CRITIQUES SECTION (언론 및 평론)
+       ========================================================================= -->
+  <section class="section-block bg-secondary" id="press">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">CRITIC & MEDIA</span>
+        <h2 class="section-heading">언론 및 평론</h2>
+        <p class="section-lead">국내외 주요 언론 보도, 미술평론가의 비평 및 양태백 작가 인터뷰 아카이브</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="press-grid" id="pressGridContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. ALBUM SECTION (앨범)
+       ========================================================================= -->
+  <section class="section-block bg-surface" id="album">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">PHOTO ARCHIVE</span>
+        <h2 class="section-heading">작가 활동 앨범</h2>
+        <p class="section-lead">전시회 개막식, 아틀리에 창작 현장, 해외 문화교류 및 미술관 건립 프로젝트의 순간들</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="album-grid" id="albumGridContainer">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER & CONTACT
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Artist Intro -->
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom:12px;">
+            <div class="logo-stamp">陽白</div>
+            <div class="logo-text-group">
+              <span class="logo-name">토마스양 (양태백)</span>
+              <span class="logo-sub" style="color:var(--color-accent-gold);">Thomas Yang Fine Art</span>
+            </div>
+          </div>
+          <p class="footer-artist-desc">
+            사진, 영상, 회화, 운무산수화, 문인화, 서예, 텍스타일, 도자기, 설치미술 및 문화관광 아트상품을 아우르는 융합예술가 토마스양의 공식 아카이브입니다.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Map -->
+        <div>
+          <h4 class="footer-nav-col-title">메뉴 바로가기</h4>
+          <ul class="footer-links-list">
+            <li><a href="#profile">· 프로필 (Profile)</a></li>
+            <li><a href="#gallery" onclick="showGallerySubmenuAndScroll('all')">· 갤러리 (Gallery - 9개 장르)</a></li>
+            <li><a href="#products" onclick="showProductsSubmenuAndScroll('all')">· 아트상품 (Art Merchandise - 5개 라인)</a></li>
+            <li><a href="#press">· 언론 및 평론 (Press & Critiques)</a></li>
+            <li><a href="#album">· 앨범 (Photo Archive)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact & Atelier -->
+        <div>
+          <h4 class="footer-nav-col-title">작품 소장 및 제휴 문의</h4>
+          <div class="footer-contact-info">
+            <p><strong>아틀리에:</strong> 서울 종로구 인사동길 아트 스튜디오 / 경기 작업실</p>
+            <p><strong>이메일:</strong> <a href="mailto:thomasyang.art@gmail.com" style="color:var(--color-accent-gold);">thomasyang.art@gmail.com</a></p>
+            <p><strong>주요 협력:</strong> 개인 컬렉션, 기업 및 공공기관 미술품 납품, K-헤리티지 문화관광상품 맞춤형 개발</p>
+            <div style="margin-top:12px;">
+              <button class="btn-primary" style="padding:8px 16px; font-size:13px;" onclick="openContactModal()">
+                온라인 문의 접수하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>© <span id="currentYear">2026</span> 토마스양 (양태백) 작가. All Rights Reserved.</p>
+        <p>본 사이트에 게재된 모든 예술작품 및 디자인 상품의 저작권은 작가에게 있습니다.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL DIALOGS
+       ========================================================================= -->
+  <!-- 1. Artwork / Product Detail Lightbox Modal -->
+  <div class="modal-overlay" id="detailModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container">
+      <button class="modal-btn-close" id="closeDetailModal" aria-label="닫기">✕</button>
+      <div class="modal-artwork-layout" id="modalDetailContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Press / Critique Reader Modal -->
+  <div class="modal-overlay" id="pressModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 760px; padding: 48px;">
+      <button class="modal-btn-close" id="closePressModal" aria-label="닫기">✕</button>
+      <div id="pressModalContent">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Contact & Collaboration Inquiry Modal -->
+  <div class="modal-overlay" id="inquiryModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width: 600px; padding: 40px;">
+      <button class="modal-btn-close" id="closeInquiryModal" aria-label="닫기">✕</button>
+      <h3 style="font-family:var(--font-serif); font-size:24px; margin-bottom:8px;">작품 소장 및 아트상품 문의</h3>
+      <p style="font-size:14px; color:var(--color-text-secondary); margin-bottom:24px;">
+        작품 소장, 갤러리 기획 초대전, 기업 VIP 선물 및 문화관광상품 개발 협업을 환영합니다.
+      </p>
+
+      <form id="inquiryForm" onsubmit="handleInquirySubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="inqName">성함 / 담당자명 *</label>
+          <input type="text" id="inqName" class="form-input" required placeholder="홍길동">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inqOrg">소속 / 기관명</label>
+          <input type="text" id="inqOrg" class="form-input" placeholder="개인 컬렉터, 지자체, 기업명 등">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inqContact">연락처 / 이메일 *</label>
+          <input type="text" id="inqContact" class="form-input" required placeholder="010-0000-0000 또는 email@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inqType">문의 유형 *</label>
+          <select id="inqType" class="form-select" required>
+            <option value="작품 소장 문의 (갤러리 원작)">작품 소장 문의 (갤러리 원작)</option>
+            <option value="전시 및 초대전 기획">전시 및 초대전 기획</option>
+            <option value="아트상품 대량 구매 / VIP 선물">아트상품 대량 구매 / VIP 선물 (넥타이, 스카프, 청자 등)</option>
+            <option value="지역 문화관광 상품개발 제휴">지역 문화관광 상품개발 제휴</option>
+            <option value="기타 문의">기타 문의</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inqMessage">문의 내용 *</label>
+          <textarea id="inqMessage" class="form-textarea" rows="4" required placeholder="관심 있으신 작품명이나 상품, 일정 및 구체적인 요청사항을 남겨주세요."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+          문의 내용 전송하기
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================================= -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-stamp">陽白</div>
+        <span class="logo-name" style="font-size:16px;">토마스양 (양태백)</span>
+      </div>
+      <button class="modal-btn-close" id="closeMobileDrawer" style="position:static;">✕</button>
+    </div>
+
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="#profile" class="mobile-nav-link" onclick="closeDrawer()">프로필 (About)</a>
+      </li>
+
+      <!-- 갤러리 Accordion -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link" id="mobileGalleryAccordionBtn" style="cursor:pointer;">
+          <span>갤러리 (Gallery)</span>
+          <span style="font-size:12px; color:var(--color-accent-celadon);">▾ 9개 장르</span>
+        </div>
+        <div class="mobile-sub-list" id="mobileGallerySubList">
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('all')">전체보기 (All)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('photo')">· 사진 (Photography)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('video')">· 영상 (Video Art)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('painting')">· 회화 (Painting)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('unmu')">· 운무산수 (Cloud Landscape)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('munin')">· 문인화 (Literati Painting)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('calligraphy')">· 서예 (Calligraphy)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('textile')">· 텍스타일 (Textile Art)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('ceramics')">· 도자기 (Ceramics)</a>
+          <a href="#gallery" class="mobile-sub-link" onclick="filterGalleryFromMobile('installation')">· 설치미술 (Installation)</a>
+        </div>
+      </li>
+
+      <!-- 아트상품 Accordion -->
+      <li class="mobile-nav-item">
+        <div class="mobile-nav-link" id="mobileProductsAccordionBtn" style="cursor:pointer;">
+          <span>아트상품 (Art Merchandise)</span>
+          <span style="font-size:12px; color:var(--color-accent-gold);">▾ 5개 라인</span>
+        </div>
+        <div class="mobile-sub-list" id="mobileProductsSubList">
+          <a href="#products" class="mobile-sub-link" onclick="filterProductsFromMobile('all')">전체보기 (All)</a>
+          <a href="#products" class="mobile-sub-link" onclick="filterProductsFromMobile('tie')">· 넥타이 (Silk Ties)</a>
+          <a href="#products" class="mobile-sub-link" onclick="filterProductsFromMobile('scarf')">· 스카프 (Art Scarves)</a>
+          <a href="#products" class="mobile-sub-link" onclick="filterProductsFromMobile('celadon')">· 청자도자기 (Celadon)</a>
+          <a href="#products" class="mobile-sub-link" onclick="filterProductsFromMobile('umbrella')">· 양산 및 우산 (Parasols)</a>
+          <a href="#products" class="mobile-sub-link" onclick="filterProductsFromMobile('tourism')">· 관광상품개발 (Tourism Souvenirs)</a>
+        </div>
+      </li>
+
+      <li class="mobile-nav-item">
+        <a href="#press" class="mobile-nav-link" onclick="closeDrawer()">언론 및 평론 (Press)</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#album" class="mobile-nav-link" onclick="closeDrawer()">앨범 (Album)</a>
+      </li>
+    </ul>
+
+    <div style="margin-top:auto; padding-top:24px;">
+      <button class="btn-primary" style="width:100%; justify-content:center;" onclick="openContactModal(); closeDrawer();">
+        작품 · 제휴 문의하기
+      </button>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="btn-back-top" id="btnBackTop" aria-label="맨 위로 가기">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e9eaec"/>
+      <stop offset="60%" stop-color="#d6dadf"/>
+      <stop offset="100%" stop-color="#b8bec7"/>
+    </linearGradient>
+    <radialGradient id="mistLight" cx="65%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="inkBlur">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#skyGrad)"/>
+  
+  <!-- Pale Sun / Moon in mist -->
+  <circle cx="580" cy="180" r="45" fill="#fcfaf2" opacity="0.85"/>
+  <circle cx="580" cy="180" r="90" fill="url(#mistLight)"/>
+
+  <!-- Distant mountain peaks (soft ink wash) -->
+  <path d="M-50 320 Q 150 160, 320 280 T 680 200 T 850 310 L 850 600 L -50 600 Z" fill="#757e8a" opacity="0.35"/>
+  <path d="M80 340 Q 280 180, 480 310 T 880 230 L 880 600 L 80 600 Z" fill="#58616d" opacity="0.45"/>
+
+  <!-- Swirling Clouds & Mists (운무) -->
+  <path d="M-20 290 C 180 240, 310 380, 560 290 C 690 240, 780 320, 850 300 L 850 420 C 700 390, 510 460, 320 380 C 140 310, 40 410, -20 390 Z" fill="#f0f3f6" opacity="0.75" filter="url(#inkBlur)"/>
+  <path d="M-10 360 C 200 320, 390 440, 620 350 C 740 310, 810 370, 850 360 L 850 480 C 680 470, 450 510, 260 450 C 90 410, 40 480, -10 450 Z" fill="#ffffff" opacity="0.8" filter="url(#inkBlur)"/>
+
+  <!-- Middleground Ridge (Deep Sumi Ink strokes) -->
+  <path d="M0 430 Q 120 310, 260 380 T 540 330 T 820 400 L 820 600 L 0 600 Z" fill="#2c333a" opacity="0.8"/>
+
+  <!-- Foreground Mountain Crag and Pine Silhouettes -->
+  <path d="M -20 600 L 90 410 Q 180 360, 250 440 L 320 420 Q 380 470, 420 600 Z" fill="#15171a"/>
+  
+  <!-- Pine trees on the cliff -->
+  <g stroke="#15171a" stroke-width="4" stroke-linecap="round">
+    <path d="M110 420 Q 95 380, 80 360 Q 60 350, 40 365"/>
+    <path d="M85 375 Q 115 365, 130 380"/>
+    <path d="M180 380 Q 210 330, 230 315 Q 260 305, 275 325"/>
+    <path d="M215 345 Q 185 335, 170 350"/>
+  </g>
+  <!-- Pine foliage (ink dots) -->
+  <ellipse cx="60" cy="360" rx="28" ry="12" fill="#15171a"/>
+  <ellipse cx="120" cy="370" rx="22" ry="10" fill="#15171a"/>
+  <ellipse cx="250" cy="315" rx="32" ry="14" fill="#15171a"/>
+  <ellipse cx="180" cy="340" rx="24" ry="11" fill="#15171a"/>
+
+  <!-- Flowing Water & Mist in lower valley -->
+  <path d="M 280 600 C 350 520, 520 540, 600 480 C 670 430, 750 490, 820 460" stroke="#f4f6f8" stroke-width="25" fill="none" opacity="0.6" filter="url(#inkBlur)"/>
+
+  <!-- Artist Seal (Red Stamp) & Title Inscription -->
+  <g transform="translate(710, 80)">
+    <rect width="36" height="36" rx="4" fill="#b93b3b"/>
+    <text x="18" y="16" font-family="'Noto Serif KR', serif" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">太白</text>
+    <text x="18" y="28" font-family="'Noto Serif KR', serif" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">寫之</text>
+  </g>
+  <text x="690" y="80" font-family="'Noto Serif KR', serif" font-size="14" fill="#2c3038" writing-mode="vertical-rl" letter-spacing="4">太白山雲霧圖 陽太白</text>
+</svg>

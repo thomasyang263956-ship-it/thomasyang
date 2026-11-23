@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <pattern id="weave" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 0 10 L 20 10 M 10 0 L 10 20" stroke="#d5c8b5" stroke-width="1.2"/>
+    </pattern>
+    <linearGradient id="silkFlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2ebe0"/>
+      <stop offset="35%" stop-color="#dfcfb8"/>
+      <stop offset="70%" stop-color="#c2a784"/>
+      <stop offset="100%" stop-color="#8a7356"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#silkFlow)"/>
+  <rect width="800" height="600" fill="url(#weave)" opacity="0.35"/>
+
+  <!-- Flowing organic textile wave with ink dye pattern -->
+  <path d="M 0 250 Q 250 120, 480 320 T 800 240 L 800 500 Q 550 420, 320 540 T 0 450 Z" fill="#2d333b" opacity="0.75"/>
+  <path d="M 50 300 Q 300 200, 520 360 T 850 300" stroke="#c5a059" stroke-width="3" fill="none" opacity="0.8"/>
+  <path d="M 20 340 Q 280 230, 500 400 T 820 330" stroke="#f6f3eb" stroke-width="2" fill="none" opacity="0.7"/>
+
+  <text x="50" y="530" font-family="'Noto Serif KR', serif" font-size="20" font-weight="bold" fill="#fff">한지와 생사(生絲)의 유영</text>
+  <text x="50" y="560" font-family="'Noto Sans KR', sans-serif" font-size="13" fill="#e0d6c5">Natural Dyed Silk & Mulberry Fiber Tapestry</text>
+</svg>

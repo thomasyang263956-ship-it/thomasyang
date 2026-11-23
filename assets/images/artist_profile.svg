@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181a1d"/>
+      <stop offset="50%" stop-color="#2a2e35"/>
+      <stop offset="100%" stop-color="#111316"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#c5a059" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#181a1d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.07 0"/>
+      <feComposite in2="SourceGraphic" in="glitch" operator="in"/>
+    </filter>
+  </defs>
+  <rect width="600" height="750" fill="url(#bgGrad)"/>
+  <circle cx="300" cy="270" r="240" fill="url(#halo)"/>
+  
+  <!-- Artistic brush strokes background -->
+  <path d="M50 650 Q 200 450, 550 580 T 580 720" stroke="#c5a059" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M30 680 Q 250 500, 570 660" stroke="#7e9f95" stroke-width="2" fill="none" opacity="0.3"/>
+  
+  <!-- Silhouette & Portrait representation -->
+  <g transform="translate(150, 110)">
+    <!-- Shoulders & Coat -->
+    <path d="M -50 490 C -30 380, 40 330, 100 320 C 120 317, 180 317, 200 320 C 260 330, 330 380, 350 490 Z" fill="#1c2027"/>
+    <path d="M 40 325 L 150 470 L 260 325 Z" fill="#2d333f" opacity="0.7"/>
+    <!-- Scarf with artist pattern -->
+    <path d="M 120 310 C 130 360, 140 430, 150 480 C 160 430, 170 360, 180 310 Z" fill="#c5a059" opacity="0.85"/>
+    <path d="M 135 340 L 165 470" stroke="#1c2027" stroke-width="2" opacity="0.6"/>
+
+    <!-- Neck -->
+    <path d="M 120 230 L 120 315 L 180 315 L 180 230 Z" fill="#d1b89d"/>
+    <!-- Head silhouette -->
+    <ellipse cx="150" cy="210" rx="65" ry="85" fill="#dfcbb7"/>
+    <!-- Artistic glasses -->
+    <circle cx="128" cy="205" r="19" fill="none" stroke="#222" stroke-width="4.5"/>
+    <circle cx="172" cy="205" r="19" fill="none" stroke="#222" stroke-width="4.5"/>
+    <line x1="147" y1="205" x2="153" y2="205" stroke="#222" stroke-width="4.5"/>
+    <line x1="109" y1="205" x2="95" y2="200" stroke="#222" stroke-width="3"/>
+    <line x1="191" y1="205" x2="205" y2="200" stroke="#222" stroke-width="3"/>
+
+    <!-- Hair & Beard of an accomplished master -->
+    <path d="M 80 185 C 80 110, 220 110, 220 185 C 220 130, 80 130, 80 185 Z" fill="#3b3b40"/>
+    <path d="M 82 170 C 85 110, 145 95, 215 140 C 225 170, 220 220, 215 220 C 215 150, 180 115, 115 125 C 90 130, 85 160, 82 170 Z" fill="#222428"/>
+    <!-- Beard / Mustache -->
+    <path d="M 135 240 Q 150 248, 165 240 Q 150 252, 135 240 Z" fill="#44464c"/>
+    <path d="M 140 262 Q 150 285, 160 262 Z" fill="#5a5d66"/>
+  </g>
+
+  <!-- Seal / Signature stamp in red -->
+  <g transform="translate(480, 580)">
+    <rect x="0" y="0" width="60" height="60" rx="6" fill="#b93b3b" stroke="#872222" stroke-width="2"/>
+    <text x="30" y="26" font-family="'Noto Serif KR', serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">陽太</text>
+    <text x="30" y="46" font-family="'Noto Serif KR', serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">白印</text>
+  </g>
+
+  <!-- Overlay Name typography -->
+  <text x="50" y="660" font-family="'Noto Serif KR', serif" font-size="28" font-weight="700" fill="#f8f7f4" letter-spacing="3">토마스양 (양태백)</text>
+  <text x="50" y="692" font-family="'Cinzel', serif" font-size="16" font-weight="400" fill="#c5a059" letter-spacing="4">THOMAS YANG · TAEBAEK YANG</text>
+  <text x="50" y="718" font-family="'Noto Sans KR', sans-serif" font-size="13" font-weight="300" fill="#a4abb6" letter-spacing="1">사진가 · 디자이너 · 융합예술가 · 문화관광학 박사</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#f7f5f0"/>
+
+  <!-- Cultural Heritage Tourist Packaging Box -->
+  <g transform="translate(300, 250)">
+    <!-- Gift Box Base -->
+    <polygon points="-160,50 0,110 160,50 0,-10" fill="#2d333c"/>
+    <polygon points="-160,50 0,110 0,190 -160,130" fill="#1b2027"/>
+    <polygon points="160,50 0,110 0,190 160,130" fill="#242a33"/>
+    
+    <!-- Gold Ribbon & Band -->
+    <polygon points="-30,60 0,72 30,60 0,48" fill="#c5a059"/>
+    <polygon points="-30,60 0,72 0,190 -30,178" fill="#a4823e"/>
+    <polygon points="30,60 0,72 0,190 30,178" fill="#b99347"/>
+
+    <!-- Emblem Badge -->
+    <circle cx="0" cy="20" r="32" fill="#b93b3b"/>
+    <text x="0" y="25" font-family="'Noto Serif KR', serif" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">K-헤리티지</text>
+  </g>
+
+  <text x="300" y="495" font-family="'Noto Serif KR', serif" font-size="18" font-weight="bold" fill="#1d2229" text-anchor="middle">지역 문화관광 특화 아트상품 패키지 개발</text>
+  <text x="300" y="525" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#697380" text-anchor="middle">문화관광학 박사 양태백 작가의 지자체·국립박물관 브랜드 브랜딩</text>
+</svg>

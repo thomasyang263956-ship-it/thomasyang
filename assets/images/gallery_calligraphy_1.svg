@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <rect width="800" height="600" fill="#f8f6f0"/>
+  <defs>
+    <pattern id="hanjiPatt" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M0 20 Q 50 15, 100 20" stroke="#ebe6db" stroke-width="0.8" fill="none"/>
+      <path d="M0 60 Q 50 65, 100 60" stroke="#ebe6db" stroke-width="0.8" fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="url(#hanjiPatt)"/>
+
+  <!-- Master Calligraphy: 氷壺迎月 (Bingho-Yeongwol - 2021 초대전 대표작) -->
+  <g transform="translate(140, 240)">
+    <!-- 氷 -->
+    <text x="0" y="0" font-family="'Noto Serif KR', serif" font-size="120" font-weight="900" fill="#15171a" letter-spacing="10">氷</text>
+    <!-- 壺 -->
+    <text x="140" y="0" font-family="'Noto Serif KR', serif" font-size="120" font-weight="900" fill="#1a1c20" letter-spacing="10">壺</text>
+    <!-- 迎 -->
+    <text x="280" y="0" font-family="'Noto Serif KR', serif" font-size="120" font-weight="900" fill="#131416" letter-spacing="10">迎</text>
+    <!-- 月 -->
+    <text x="420" y="0" font-family="'Noto Serif KR', serif" font-size="120" font-weight="900" fill="#181a1d" letter-spacing="10">月</text>
+  </g>
+
+  <!-- Explanation text & sub script -->
+  <text x="400" y="340" font-family="'Noto Serif KR', serif" font-size="20" fill="#52555a" text-anchor="middle" letter-spacing="6">맑은 얼음 항아리에 밝은 달빛이 스며들다</text>
+  <text x="400" y="380" font-family="'Cinzel', serif" font-size="14" fill="#887755" text-anchor="middle" letter-spacing="3">Pure Mind Reflecting the Moon · 2021 Solo Exhibition</text>
+
+  <!-- Left Calligrapher Colophon -->
+  <text x="680" y="160" font-family="'Noto Serif KR', serif" font-size="14" fill="#333" writing-mode="vertical-rl" letter-spacing="4">辛丑孟冬 陽太白 書</text>
+  <g transform="translate(668, 290)">
+    <rect width="28" height="28" fill="#b93b3b"/>
+    <text x="14" y="12" font-family="'Noto Serif KR', serif" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">陽太</text>
+    <text x="14" y="22" font-family="'Noto Serif KR', serif" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">白書</text>
+  </g>
+</svg>

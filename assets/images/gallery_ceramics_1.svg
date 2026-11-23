@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="celadonGlow" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#b4d8ce"/>
+      <stop offset="40%" stop-color="#6fa394"/>
+      <stop offset="85%" stop-color="#416b5e"/>
+      <stop offset="100%" stop-color="#2a453d"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="#1b1e22"/>
+
+  <!-- Pedestal -->
+  <ellipse cx="400" cy="510" rx="190" ry="25" fill="#111315"/>
+
+  <!-- Traditional / Contemporary Celadon Plum Vase (청자 매병) -->
+  <g transform="translate(400, 110)">
+    <!-- Vase Body -->
+    <path d="M -45 380 C -60 380, -75 370, -85 340 C -110 270, -145 160, -115 70 C -95 15, -45 5, -25 5 L -20 0 L 20 0 L 25 5 C 45 5, 95 15, 115 70 C 145 160, 110 270, 85 340 C 75 370, 60 380, 45 380 Z" fill="url(#celadonGlow)"/>
+
+    <!-- Inlaid Cloud & Crane Pattern (운학문 음각) -->
+    <!-- Clouds -->
+    <path d="M -50 150 Q -30 140, -15 155 Q 0 145, 15 155" stroke="#edf8f4" stroke-width="3" fill="none" opacity="0.85"/>
+    <path d="M 20 220 Q 40 210, 55 225 Q 70 215, 85 225" stroke="#edf8f4" stroke-width="3" fill="none" opacity="0.85"/>
+    <!-- Soaring Crane -->
+    <path d="M -35 240 Q -15 230, 0 245 Q 15 230, 35 240 L 0 255 Z" fill="#ffffff" opacity="0.9"/>
+    <path d="M -5 245 L -20 265 M 5 245 L 20 265" stroke="#1d2d27" stroke-width="2"/>
+    <circle cx="0" cy="235" r="3" fill="#b93b3b"/>
+  </g>
+
+  <text x="400" y="555" font-family="'Noto Serif KR', serif" font-size="20" font-weight="bold" fill="#edf5f2" text-anchor="middle">비색 청자 운학문 현대 매병</text>
+  <text x="400" y="580" font-family="'Noto Sans KR', sans-serif" font-size="13" fill="#89aca0" text-anchor="middle">Celadon Inlaid Cloud and Crane Vase · H 42cm</text>
+</svg>

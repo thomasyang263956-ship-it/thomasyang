@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#f8f6f2"/>
+  <defs>
+    <radialGradient id="canopyGrad" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#3b434e"/>
+      <stop offset="60%" stop-color="#222830"/>
+      <stop offset="100%" stop-color="#12161b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Open Art Umbrella / Parasol Canopy Perspective -->
+  <g transform="translate(300, 230)">
+    <!-- Umbrella Canopy dome -->
+    <path d="M -200 80 Q 0 -90, 200 80 Q 150 70, 100 80 Q 50 70, 0 80 Q -50 70, -100 80 Q -150 70, -200 80 Z" fill="url(#canopyGrad)"/>
+    <!-- Artistic painting print on canopy: 운무산수화 & 매화 -->
+    <path d="M -150 50 Q -50 -20, 80 40 T 170 30" stroke="#f6f3eb" stroke-width="3" fill="none" opacity="0.8"/>
+    <circle cx="20" cy="15" r="14" fill="#b93b3b" opacity="0.9"/>
+    <!-- Shaft & Handle -->
+    <line x1="0" y1="80" x2="0" y2="240" stroke="#9e7d3b" stroke-width="6"/>
+    <!-- J-handle in polished wood -->
+    <path d="M 0 240 C 0 270, -35 270, -35 245" stroke="#684a28" stroke-width="8" fill="none"/>
+    <!-- Finial tip -->
+    <line x1="0" y1="-50" x2="0" y2="-65" stroke="#9e7d3b" stroke-width="4"/>
+  </g>
+
+  <text x="300" y="535" font-family="'Noto Serif KR', serif" font-size="18" font-weight="bold" fill="#1e242b" text-anchor="middle">운무산수 UV 암막 아트 양우산</text>
+  <text x="300" y="565" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#68727e" text-anchor="middle">99.9% UV 차단 초경량 방풍 우양산 · 명품 원단 디지털 프린트</text>
+</svg>

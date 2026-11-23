@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <rect width="800" height="600" fill="#242220"/>
+  <ellipse cx="400" cy="510" rx="180" ry="22" fill="#171514"/>
+  <!-- Buncheong jar -->
+  <g transform="translate(400, 160)">
+    <path d="M -90 310 C -120 270, -170 180, -140 90 C -120 20, -50 0, 0 0 C 50 0, 120 20, 140 90 C 170 180, 120 270, 90 310 Z" fill="#8c7864"/>
+    <!-- White slip brush marks (귀얄 기법) -->
+    <path d="M -80 120 Q 0 80, 80 120 Q 0 150, -80 120" fill="#dfd7cb" opacity="0.85"/>
+    <path d="M -110 180 Q 0 140, 110 190 Q 0 220, -110 180" fill="#ebe5dc" opacity="0.9"/>
+    <!-- Iron brush drawing of fish/flower -->
+    <path d="M -40 180 Q 0 150, 40 180 T 80 170" stroke="#3b2d20" stroke-width="6" fill="none"/>
+  </g>
+  <text x="400" y="555" font-family="'Noto Serif KR', serif" font-size="20" font-weight="bold" fill="#ede8e1" text-anchor="middle">분청사기 귀얄 철화문 대호</text>
+  <text x="400" y="580" font-family="'Noto Sans KR', sans-serif" font-size="13" fill="#a89a8c" text-anchor="middle">Traditional Korean Buncheong Ceramic Jar</text>
+</svg>

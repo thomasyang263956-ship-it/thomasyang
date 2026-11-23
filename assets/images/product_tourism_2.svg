@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <rect width="600" height="600" fill="#f5f3ef"/>
+  <rect x="140" y="160" width="320" height="240" rx="12" fill="#3f2e22" stroke="#d4af37" stroke-width="3"/>
+  <rect x="160" y="180" width="280" height="200" rx="8" fill="#fcfbf7"/>
+  <circle cx="230" cy="280" r="45" fill="#528274"/>
+  <circle cx="370" cy="280" r="45" fill="#c29b38"/>
+  <text x="300" y="450" font-family="'Noto Serif KR', serif" font-size="18" font-weight="bold" fill="#2d2319" text-anchor="middle">지자체 문화관광 시그니처 기프트 에디션</text>
+  <text x="300" y="475" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#6b5b4e" text-anchor="middle">전통 한옥 & K-컬처를 담은 VIP 의전용 문화상품</text>
+</svg>
