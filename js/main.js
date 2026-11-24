@@ -1010,6 +1010,75 @@ window.handleImageFileSelect = function(event, previewId, inputId) {
   reader.readAsDataURL(file);
 };
 
+window.openAdminCollectionManager = function(type) {
+  const collections = {
+    gallery: {
+      title: '작품 갤러리 관리',
+      items: SITE_DATA.galleryItems,
+      getLabel: item => `${item.title} · ${item.categoryName} · ${item.year}`,
+      edit: id => openAdminEditItemModal('gallery', id),
+      add: () => openAdminAddItemModal('artwork')
+    },
+    product: {
+      title: '아트상품 컬렉션 관리',
+      items: SITE_DATA.productItems,
+      getLabel: item => `${item.name} · ${item.categoryName}`,
+      edit: id => openAdminEditItemModal('product', id),
+      add: () => openAdminAddItemModal('product')
+    },
+    album: {
+      title: '작가 활동 앨범 관리',
+      items: SITE_DATA.album,
+      getLabel: item => `${item.title} · ${item.category} · ${item.year}`,
+      edit: id => openAdminEditAlbumModal(id),
+      add: () => openAdminEditAlbumModal()
+    }
+  };
+  const collection = collections[type];
+  if (!collection) {
+    showAdminToast('관리할 항목을 확인할 수 없습니다.');
+    return;
+  }
+
+  const modal = document.getElementById('adminCollectionManagerModalOverlay');
+  const list = document.getElementById('adminCollectionManagerList');
+  document.getElementById('adminCollectionManagerTitle').textContent = collection.title;
+  list.replaceChildren();
+
+  if (collection.items.length === 0) {
+    const emptyMessage = document.createElement('p');
+    emptyMessage.textContent = '등록된 항목이 없습니다.';
+    list.appendChild(emptyMessage);
+  } else {
+    collection.items.forEach(item => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; border:1px solid var(--border-light); border-radius:var(--radius-sm);';
+
+      const label = document.createElement('span');
+      label.textContent = collection.getLabel(item);
+
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.className = 'btn-secondary';
+      editButton.textContent = '수정';
+      editButton.addEventListener('click', () => {
+        closeAdminModal('adminCollectionManagerModalOverlay');
+        collection.edit(item.id);
+      });
+
+      row.append(label, editButton);
+      list.appendChild(row);
+    });
+  }
+
+  const addButton = document.getElementById('adminCollectionAddButton');
+  addButton.onclick = () => {
+    closeAdminModal('adminCollectionManagerModalOverlay');
+    collection.add();
+  };
+  modal.classList.add('open');
+};
+
 // Open Edit Modal for an Artwork or Product
 window.openAdminEditItemModal = function(type, id) {
   const modal = document.getElementById('adminEditItemModalOverlay');

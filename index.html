@@ -533,6 +533,9 @@
       <div class="admin-actions-group">
         <button class="btn-admin-act" onclick="openAdminAddItemModal('artwork')">➕ 새 작품 등록</button>
         <button class="btn-admin-act" onclick="openAdminAddItemModal('product')">➕ 새 아트상품 등록</button>
+        <button class="btn-admin-act" onclick="openAdminCollectionManager('gallery')">🖼 작품 갤러리 관리</button>
+        <button class="btn-admin-act" onclick="openAdminCollectionManager('product')">🛍 아트상품 컬렉션 관리</button>
+        <button class="btn-admin-act" onclick="openAdminCollectionManager('album')">📷 작가 활동 앨범 관리</button>
         <button class="btn-admin-act" onclick="openAdminEditProfileModal()">✏️ 프로필 수정</button>
         <button class="btn-admin-act" onclick="openAdminEditCareerModal()">◆ 전시 및 활동 약력 수정</button>
         <button class="btn-admin-act" onclick="openAdminEditAwardsModal()">◆ 사회경력 수정</button>
@@ -962,6 +965,22 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Admin Collection Manager -->
+  <div class="modal-overlay" id="adminCollectionManagerModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width:680px; padding:36px; max-height:90vh;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminCollectionManagerModalOverlay')" aria-label="닫기">✕</button>
+      <div style="margin-bottom:20px; border-bottom:1px solid var(--border-light); padding-bottom:12px;">
+        <span class="artwork-category-badge" style="position:static;">콘텐츠 관리</span>
+        <h3 id="adminCollectionManagerTitle" style="font-family:var(--font-serif); font-size:22px; margin-top:8px;">항목 선택</h3>
+      </div>
+      <div id="adminCollectionManagerList" style="display:grid; gap:10px; max-height:55vh; overflow-y:auto;"></div>
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-light);">
+        <button type="button" class="btn-secondary" onclick="closeAdminModal('adminCollectionManagerModalOverlay')">닫기</button>
+        <button type="button" id="adminCollectionAddButton" class="btn-primary">새 항목 등록</button>
+      </div>
     </div>
   </div>
 
