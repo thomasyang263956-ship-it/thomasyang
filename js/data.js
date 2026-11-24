@@ -621,12 +621,12 @@ const DEFAULT_SITE_DATA = {
   ],
 
   productCategories: [
-    { id: "all", name: "전체보기", count: 10 },
-    { id: "tie", name: "넥타이", count: 2 },
-    { id: "scarf", name: "스카프", count: 2 },
-    { id: "celadon", name: "청자도자기", count: 2 },
-    { id: "umbrella", name: "양산 및 우산", count: 2 },
-    { id: "tourism", name: "관광상품개발", count: 2 }
+    { id: "all", name: "전체보기", count: 25 },
+    { id: "tie", name: "넥타이", count: 5 },
+    { id: "scarf", name: "스카프", count: 5 },
+    { id: "celadon", name: "청자도자기", count: 5 },
+    { id: "umbrella", name: "양산 및 우산", count: 5 },
+    { id: "tourism", name: "관광상품개발", count: 5 }
   ],
 
   productItems: [
