@@ -1221,13 +1221,15 @@ window.handleAdminDeleteItem = function() {
 // Add New Item
 window.openAdminAddItemModal = function(defaultType = 'artwork') {
   const modal = document.getElementById('adminAddItemModalOverlay');
+  const form = document.getElementById('adminAddItemForm');
   const radios = document.getElementsByName('addItemTypeRadio');
-  for (let r of radios) {
-    r.checked = (r.value === defaultType);
-  }
+  const selectedType = defaultType === 'product' ? 'product' : 'artwork';
 
+  form.reset();
+  for (let r of radios) {
+    r.checked = (r.value === selectedType);
+  }
   updateAddCategoryOptions();
-  document.getElementById('adminAddItemForm').reset();
   document.getElementById('addImagePreview').src = 'assets/images/gallery_unmu_1.svg';
   document.getElementById('addImageUrlInput').value = '';
 
