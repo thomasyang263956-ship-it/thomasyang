@@ -47,16 +47,16 @@ const DEFAULT_SITE_DATA = {
   },
 
   galleryCategories: [
-    { id: "all", name: "전체보기", count: 18 },
-    { id: "photo", name: "사진", count: 2 },
-    { id: "video", name: "영상", count: 2 },
-    { id: "painting", name: "회화", count: 2 },
-    { id: "unmu", name: "운무산수", count: 2 },
-    { id: "munin", name: "문인화", count: 2 },
-    { id: "calligraphy", name: "서예", count: 2 },
-    { id: "textile", name: "텍스타일", count: 2 },
-    { id: "ceramics", name: "도자기", count: 2 },
-    { id: "installation", name: "설치미술", count: 2 }
+    { id: "all", name: "전체보기", count: 45 },
+    { id: "photo", name: "사진", count: 5 },
+    { id: "video", name: "영상", count: 5 },
+    { id: "painting", name: "회화", count: 5 },
+    { id: "unmu", name: "운무산수", count: 5 },
+    { id: "munin", name: "문인화", count: 5 },
+    { id: "calligraphy", name: "서예", count: 5 },
+    { id: "textile", name: "텍스타일", count: 5 },
+    { id: "ceramics", name: "도자기", count: 5 },
+    { id: "installation", name: "설치미술", count: 5 }
   ],
 
   galleryItems: [
@@ -275,6 +275,348 @@ const DEFAULT_SITE_DATA = {
       size: "직경 3.6 m",
       image: "assets/images/gallery_installation_2.svg",
       description: "빛의 링을 통해 과거와 미래, 자연과 인간의 영원한 연결 고리를 표현한 인터랙티브 키네틱 라이트 설치작품입니다."
+    },
+
+    // ── 운무산수 추가 ──────────────────────────────────────
+    {
+      id: "unmu-3",
+      category: "unmu",
+      categoryName: "운무산수",
+      title: "설악 천화대 운해 (雪嶽天花臺雲海)",
+      titleEn: "Sea of Clouds at Cheonhwadae, Seorak",
+      year: "2022",
+      medium: "화선지에 수묵담채",
+      size: "150 x 90 cm",
+      image: "assets/images/gallery_unmu_3.svg",
+      description: "설악산 천화대 위로 펼쳐지는 광활한 운해를 담채의 엷은 색조와 대담한 묵선으로 표현한 대형 산수화. 현실과 선계(仙界)의 경계가 사라지는 순간을 포착하였습니다."
+    },
+    {
+      id: "unmu-4",
+      category: "unmu",
+      categoryName: "운무산수",
+      title: "한라산 백록담 운무 (漢拏白鹿潭雲霧)",
+      titleEn: "Morning Mist over Baengnoktam, Hallasan",
+      year: "2022",
+      medium: "화선지에 수묵",
+      size: "120 x 60 cm",
+      image: "assets/images/gallery_unmu_4.svg",
+      description: "새벽 안개가 백록담 화구를 가득 채우는 고요한 순간, 단순화된 먹의 농담으로 한라산의 영험한 기운을 담아낸 산수화입니다."
+    },
+    {
+      id: "unmu-5",
+      category: "unmu",
+      categoryName: "운무산수",
+      title: "지리산 천왕봉 일출운 (智異山天王峯日出雲)",
+      titleEn: "Dawn Clouds at Cheonwangbong, Jirisan",
+      year: "2023",
+      medium: "화선지에 수묵담채, 금분",
+      size: "180 x 70 cm",
+      image: "assets/images/gallery_unmu_5.svg",
+      description: "지리산 천왕봉 정상에서 바라본 일출과 구름의 장관. 황금빛 금분과 먹의 대비로 태고적 자연의 웅장함을 표현한 작가의 근작입니다."
+    },
+
+    // ── 사진 추가 ──────────────────────────────────────────
+    {
+      id: "photo-3",
+      category: "photo",
+      categoryName: "사진",
+      title: "빛의 계절 · 가을 DMZ (光의 季節)",
+      titleEn: "Season of Light · Autumn DMZ",
+      year: "2022",
+      medium: "디지털 파인아트 사진, 아카이벌 피그먼트 프린트",
+      size: "120 x 80 cm",
+      image: "assets/images/gallery_photo_3.svg",
+      description: "DMZ 접경 지역 금강초롱 군락지에 쏟아지는 가을 황금빛을 포착한 작품. 자연이 스스로 빚어낸 빛과 색채의 순간을 카메라에 담았습니다."
+    },
+    {
+      id: "photo-4",
+      category: "photo",
+      categoryName: "사진",
+      title: "군산 내항 빈 배 (群山內港)",
+      titleEn: "Empty Boats at Gunsan Port",
+      year: "2021",
+      medium: "흑백 필름 대형 판형 사진",
+      size: "100 x 70 cm",
+      image: "assets/images/gallery_photo_4.svg",
+      description: "군산 내항의 적막한 새벽, 텅 빈 나무 어선들이 수면 위에 그림자처럼 떠 있는 장면. 흑백의 깊이로 역사의 무게와 시간의 정적을 담았습니다."
+    },
+    {
+      id: "photo-5",
+      category: "photo",
+      categoryName: "사진",
+      title: "경복궁 근정전 설경 (景福宮勤政殿雪景)",
+      titleEn: "Snow Scene at Geunjeongjeon, Gyeongbokgung",
+      year: "2023",
+      medium: "디지털 파인아트 사진",
+      size: "150 x 100 cm",
+      image: "assets/images/gallery_photo_5.svg",
+      description: "첫눈이 내린 새벽, 아무도 밟지 않은 근정전 앞 설원과 단청의 색채가 선명한 대비를 이루는 순간을 포착한 궁궐 사진 작품입니다."
+    },
+
+    // ── 영상 추가 ──────────────────────────────────────────
+    {
+      id: "video-3",
+      category: "video",
+      categoryName: "영상",
+      title: "서예의 호흡 · 라이브 퍼포먼스",
+      titleEn: "Breath of Calligraphy · Live Performance",
+      year: "2022",
+      medium: "4K 싱글채널 영상, 사운드",
+      size: "10분 42초",
+      image: "assets/images/gallery_video_3.svg",
+      description: "대형 화선지 위에서 작가가 직접 서예 퍼포먼스를 펼치는 과정을 4K로 기록한 아트 다큐멘터리 영상. 붓의 호흡과 먹의 번짐, 공간 전체를 채우는 필력을 담았습니다."
+    },
+    {
+      id: "video-4",
+      category: "video",
+      categoryName: "영상",
+      title: "도자의 탄생 · 가마 속 불꽃",
+      titleEn: "Birth of Ceramics · Flames in the Kiln",
+      year: "2021",
+      medium: "싱글채널 비디오 아트",
+      size: "7분 20초",
+      image: "assets/images/gallery_video_4.svg",
+      description: "전통 장작가마에 불이 오르고 도자가 완성되는 72시간의 과정을 타임랩스로 압축한 영상 예술. 흙이 불을 만나 예술품으로 탄생하는 경이로운 순간을 담았습니다."
+    },
+    {
+      id: "video-5",
+      category: "video",
+      categoryName: "영상",
+      title: "운무 속 선율 · 사운드스케이프",
+      titleEn: "Melody in the Mist · Soundscape",
+      year: "2023",
+      medium: "인터랙티브 멀티채널 영상·음향 설치",
+      size: "무한루프 / 5채널",
+      image: "assets/images/gallery_video_5.svg",
+      description: "산수화 이미지와 전통 가야금 선율을 결합한 인터랙티브 사운드스케이프 영상. 관람객의 움직임에 따라 화면 속 운무와 음악이 반응하며 변화합니다."
+    },
+
+    // ── 회화 추가 ──────────────────────────────────────────
+    {
+      id: "painting-3",
+      category: "painting",
+      categoryName: "회화",
+      title: "백두 천지의 반영 (白頭天池映像)",
+      titleEn: "Reflection of Heaven Lake, Baekdu",
+      year: "2022",
+      medium: "캔버스에 아크릴, 수묵, 금분",
+      size: "200 x 120 cm",
+      image: "assets/images/gallery_painting_3.svg",
+      description: "백두산 천지의 고요한 수면에 하늘과 화산암이 반사되는 장면을 현대 혼합매체로 재해석. 한국의 영산(靈山)이 품은 원초적 에너지를 색면과 먹의 대비로 표현하였습니다."
+    },
+    {
+      id: "painting-4",
+      category: "painting",
+      categoryName: "회화",
+      title: "빛과 먹의 대화 (光與墨對話)",
+      titleEn: "Dialogue between Light and Ink",
+      year: "2021",
+      medium: "한지에 먹, 아크릴, 형광 안료",
+      size: "160 x 160 cm",
+      image: "assets/images/gallery_painting_4.svg",
+      description: "자외선 조명 아래에서 숨겨진 색채가 드러나는 이중 구조 회화. 낮과 밤, 현실과 환상의 경계를 형광 안료와 먹의 레이어링으로 구현한 실험적 작품입니다."
+    },
+    {
+      id: "painting-5",
+      category: "painting",
+      categoryName: "회화",
+      title: "전통의 흔적 · 단청 추상 (丹靑抽象)",
+      titleEn: "Traces of Tradition · Dancheong Abstract",
+      year: "2023",
+      medium: "캔버스에 천연 단청 안료, 먹",
+      size: "140 x 140 cm",
+      image: "assets/images/gallery_painting_5.svg",
+      description: "궁궐 단청의 오방색(청·백·적·흑·황)을 현대 추상회화의 언어로 재구성. 전통의 색채 체계가 지닌 우주론적 의미를 평면 위에 담아낸 작품입니다."
+    },
+
+    // ── 문인화 추가 ──────────────────────────────────────
+    {
+      id: "munin-3",
+      category: "munin",
+      categoryName: "문인화",
+      title: "한겨울 홍매 (寒梅圖)",
+      titleEn: "Red Plum in Midwinter",
+      year: "2022",
+      medium: "화선지에 수묵담채",
+      size: "90 x 60 cm",
+      image: "assets/images/gallery_munin_3.svg",
+      description: "눈 속에서 붉게 피어난 매화의 강인한 생명력을 절제된 담채와 힘찬 필묵으로 표현한 문인화. '세한고절(歲寒孤節)'의 선비 정신을 담았습니다."
+    },
+    {
+      id: "munin-4",
+      category: "munin",
+      categoryName: "문인화",
+      title: "묵란 삼청 (墨蘭三淸)",
+      titleEn: "Three Pure Orchids in Ink",
+      year: "2021",
+      medium: "화선지에 수묵",
+      size: "60 x 120 cm",
+      image: "assets/images/gallery_munin_4.svg",
+      description: "난(蘭), 국(菊), 죽(竹) 세 군자를 한 화면에 담아 선비의 세 가지 덕목-향기, 절조, 꿋꿋함-을 먹 한 가지로 표현한 문인화입니다."
+    },
+    {
+      id: "munin-5",
+      category: "munin",
+      categoryName: "문인화",
+      title: "파초우 (芭蕉雨)",
+      titleEn: "Rain on Banana Leaves",
+      year: "2023",
+      medium: "화선지에 수묵담채",
+      size: "80 x 50 cm",
+      image: "assets/images/gallery_munin_5.svg",
+      description: "여름 소낙비를 맞는 파초 잎의 청량함과 빗소리를 오감으로 느낄 수 있도록 대담한 붓질과 엷은 녹청 담채로 표현한 문인화 소품입니다."
+    },
+
+    // ── 서예 추가 ──────────────────────────────────────────
+    {
+      id: "calligraphy-3",
+      category: "calligraphy",
+      categoryName: "서예",
+      title: "지족상락 (知足常樂)",
+      titleEn: "Knowing Enough is Constant Joy",
+      year: "2022",
+      medium: "화선지에 먹",
+      size: "135 x 35 cm",
+      image: "assets/images/gallery_calligraphy_3.svg",
+      description: "노자의 '족함을 알면 항상 즐겁다'는 가르침을 대자 행서체로 힘있게 써내려간 서예 작품. 군더더기 없는 여백과 웅혼한 필력이 조화를 이룹니다."
+    },
+    {
+      id: "calligraphy-4",
+      category: "calligraphy",
+      categoryName: "서예",
+      title: "일출동방 (日出東方)",
+      titleEn: "The Sun Rises in the East",
+      year: "2021",
+      medium: "화선지에 먹, 금분",
+      size: "200 x 70 cm",
+      image: "assets/images/gallery_calligraphy_4.svg",
+      description: "해가 동방에서 솟아오른다는 뜻의 대자 해서를 금분 배경 위에 써넣어 웅장함과 경이로움을 동시에 표현한 대형 서예 작품입니다."
+    },
+    {
+      id: "calligraphy-5",
+      category: "calligraphy",
+      categoryName: "서예",
+      title: "화이부동 (和而不同)",
+      titleEn: "Harmony without Uniformity",
+      year: "2023",
+      medium: "화선지에 먹",
+      size: "90 x 180 cm",
+      image: "assets/images/gallery_calligraphy_5.svg",
+      description: "공자의 '군자는 화합하되 같아지지 않는다'는 가르침을 초서의 흐르는 필체로 표현. 먹의 농담과 획의 굵기 변화로 군자의 대범함을 담았습니다."
+    },
+
+    // ── 텍스타일 추가 ──────────────────────────────────────
+    {
+      id: "textile-3",
+      category: "textile",
+      categoryName: "텍스타일",
+      title: "오방색 비단 보자기 (五方色 寶紬)",
+      titleEn: "Five-Direction Color Silk Wrapping Cloth",
+      year: "2022",
+      medium: "정련 비단, 천연 오방색 염색",
+      size: "150 x 150 cm",
+      image: "assets/images/gallery_textile_3.svg",
+      description: "한국 전통의 오방색(청·백·적·흑·황)을 천연 염료로 발현하여 현대적 기하학 패턴으로 재구성한 실크 텍스타일 작품입니다."
+    },
+    {
+      id: "textile-4",
+      category: "textile",
+      categoryName: "텍스타일",
+      title: "민화 연화도 태피스트리 (民畵蓮花圖)",
+      titleEn: "Folk Painting Lotus Tapestry",
+      year: "2021",
+      medium: "양모 경사, 비단 위사 수직 타피스트리",
+      size: "180 x 90 cm",
+      image: "assets/images/gallery_textile_4.svg",
+      description: "조선 민화의 대표적 소재인 연꽃을 양모와 비단의 이중 직조로 표현. 민화 특유의 천진한 색채감과 율동적 선묘를 직물로 번안한 섬유 예술입니다."
+    },
+    {
+      id: "textile-5",
+      category: "textile",
+      categoryName: "텍스타일",
+      title: "황토 그라데이션 누노 펠트 (黃土漸層)",
+      titleEn: "Ocher Gradient Nuno Felt",
+      year: "2023",
+      medium: "황토 염색 메리노 울, 비단 혼방 습식 펠트",
+      size: "200 x 80 cm",
+      image: "assets/images/gallery_textile_5.svg",
+      description: "한반도의 황토 흙빛에서 영감을 받은 그라데이션 누노 펠트. 양모 섬유가 비단 사이로 스며드는 습식 기법으로 대지의 질감과 온기를 담아냈습니다."
+    },
+
+    // ── 도자기 추가 ──────────────────────────────────────
+    {
+      id: "ceramics-3",
+      category: "ceramics",
+      categoryName: "도자기",
+      title: "백자 달항아리 현대 재해석 (白磁月壺)",
+      titleEn: "White Porcelain Moon Jar · Modern Reinterpretation",
+      year: "2022",
+      medium: "고령토 백자, 맑은 투명유, 전통 가마",
+      size: "높이 38 cm, 지름 36 cm",
+      image: "assets/images/gallery_ceramics_3.svg",
+      description: "조선 백자 달항아리의 완벽한 비대칭 원형을 현대적 조형 감각으로 재해석. 순백의 유약 면 위에 극도로 절제된 음각 선 하나로 여백의 미를 극대화한 작품입니다."
+    },
+    {
+      id: "ceramics-4",
+      category: "ceramics",
+      categoryName: "도자기",
+      title: "청자 상감 모란문 화병 (象嵌牡丹文)",
+      titleEn: "Celadon Inlaid Peony Vase",
+      year: "2021",
+      medium: "청자 상감기법, 전통 장작가마 번조",
+      size: "높이 32 cm, 지름 18 cm",
+      image: "assets/images/gallery_ceramics_4.svg",
+      description: "고려 청자 최고의 기법인 상감으로 모란문을 새겨넣고 비색 유약으로 완성한 화병. 전통 도예의 정수를 계승하면서 현대적 실루엣으로 재탄생시킨 작품입니다."
+    },
+    {
+      id: "ceramics-5",
+      category: "ceramics",
+      categoryName: "도자기",
+      title: "흑유 철화 추상문 대호 (黑釉鐵畵抽象)",
+      titleEn: "Black Glazed Iron-Painting Abstract Jar",
+      year: "2023",
+      medium: "흑유, 산화철 철화, 환원 번조",
+      size: "높이 40 cm, 지름 30 cm",
+      image: "assets/images/gallery_ceramics_5.svg",
+      description: "환원 번조로 완성된 깊은 흑유 위에 산화철로 추상적 붓 터치를 거친 듯 자유롭게 그어낸 대호. 묵화의 즉흥성과 도예의 견고함이 한 그릇에 공존합니다."
+    },
+
+    // ── 설치미술 추가 ──────────────────────────────────────
+    {
+      id: "installation-3",
+      category: "installation",
+      categoryName: "설치미술",
+      title: "천 개의 붓 · 필묵의 숲 (千筆之林)",
+      titleEn: "A Thousand Brushes · Forest of Ink",
+      year: "2022",
+      medium: "붓 1,000자루, 먹, 모노필라멘트 와이어, 조명",
+      size: "6 x 6 x 3.5 m",
+      image: "assets/images/gallery_installation_3.svg",
+      description: "천 자루의 붓을 허공에 매달아 숲을 이룬 공간 설치. 조명 각도에 따라 붓이 만드는 그림자가 벽면에 거대한 수묵화를 그리는 미적 체험 공간입니다."
+    },
+    {
+      id: "installation-4",
+      category: "installation",
+      categoryName: "설치미술",
+      title: "흙과 불의 기억 · 도예 아카이브",
+      titleEn: "Memory of Earth and Fire · Ceramic Archive",
+      year: "2021",
+      medium: "도자 파편, 황토벽, 아카이벌 사진, 오디오",
+      size: "8 x 5 m",
+      image: "assets/images/gallery_installation_4.svg",
+      description: "30년간의 도예 작업 과정에서 생겨난 도자 파편들을 황토벽에 임베드하고 작업 과정 아카이브 사진과 가마 소리를 함께 설치한 복합 예술 공간입니다."
+    },
+    {
+      id: "installation-5",
+      category: "installation",
+      categoryName: "설치미술",
+      title: "무한 경계 · 거울과 먹물 (無限境界)",
+      titleEn: "Infinite Boundary · Mirror and Ink",
+      year: "2023",
+      medium: "거울 패널, 먹물 풀, LED, 센서",
+      size: "5 x 5 x 2.5 m",
+      image: "assets/images/gallery_installation_5.svg",
+      description: "바닥에 먹물을 채운 거울 풀과 천장의 거울 패널이 무한 반사를 만들어내는 몰입형 설치. 관람객이 먹과 빛 사이의 무한한 경계 속에 자신을 발견하는 체험 공간입니다."
     }
   ],
 

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="snowSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8090a0"/>
+      <stop offset="60%" stop-color="#b0bec8"/>
+      <stop offset="100%" stop-color="#d8e4ec"/>
+    </linearGradient>
+    <linearGradient id="snowGround" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8f0f8"/>
+      <stop offset="100%" stop-color="#c8d8e8"/>
+    </linearGradient>
+  </defs>
+  <!-- Background sky -->
+  <rect width="720" height="480" fill="url(#snowSky)"/>
+  <!-- Snow ground -->
+  <rect x="0" y="360" width="720" height="120" fill="url(#snowGround)"/>
+  <!-- Snow mounds -->
+  <ellipse cx="360" cy="360" rx="400" ry="20" fill="#e8f0f8"/>
+  <ellipse cx="100" cy="370" rx="120" ry="15" fill="#dce8f4"/>
+  <ellipse cx="620" cy="365" rx="110" ry="12" fill="#dce8f4"/>
+  <!-- Main palace building - Geunjeongjeon -->
+  <!-- Main hall body -->
+  <rect x="220" y="200" width="280" height="150" fill="#2a4a3a" opacity="0.9"/>
+  <!-- Roof layers (tiered) -->
+  <polygon points="180,200 360,120 540,200" fill="#1a3a2a"/>
+  <polygon points="200,160 360,100 520,160" fill="#2a4a3a" opacity="0.8"/>
+  <!-- Red columns -->
+  <rect x="240" y="200" width="12" height="150" fill="#8b1a1a"/>
+  <rect x="290" y="200" width="12" height="150" fill="#8b1a1a"/>
+  <rect x="340" y="200" width="12" height="150" fill="#8b1a1a"/>
+  <rect x="390" y="200" width="12" height="150" fill="#8b1a1a"/>
+  <rect x="440" y="200" width="12" height="150" fill="#8b1a1a"/>
+  <rect x="468" y="200" width="12" height="150" fill="#8b1a1a"/>
+  <!-- Red accent eaves -->
+  <rect x="180" y="196" width="360" height="10" fill="#a02020"/>
+  <rect x="200" y="156" width="320" height="10" fill="#a02020"/>
+  <!-- Roof ridge decoration -->
+  <rect x="175" y="118" width="370" height="8" fill="#1a2a1a"/>
+  <!-- Snow on roof -->
+  <ellipse cx="360" cy="120" rx="185" ry="8" fill="#e8f4ff" opacity="0.9"/>
+  <ellipse cx="360" cy="158" rx="165" ry="6" fill="#e8f4ff" opacity="0.8"/>
+  <!-- Stone platform (gyedan) -->
+  <rect x="160" y="348" width="400" height="20" fill="#8090a0"/>
+  <rect x="140" y="360" width="440" height="12" fill="#6a7a8a"/>
+  <!-- Snow on platform -->
+  <ellipse cx="360" cy="348" rx="205" ry="5" fill="#e8f4ff" opacity="0.9"/>
+  <!-- Background trees with snow -->
+  <g opacity="0.7">
+    <rect x="80" y="260" width="8" height="90" fill="#3a4a3a"/>
+    <polygon points="84,200 60,270 108,270" fill="#2a3a2a"/>
+    <polygon points="84,230 65,280 103,280" fill="#2a3a2a"/>
+    <ellipse cx="84" cy="202" rx="20" ry="8" fill="#e0eaf8" opacity="0.8"/>
+    <rect x="610" y="255" width="8" height="95" fill="#3a4a3a"/>
+    <polygon points="614,195 590,265 638,265" fill="#2a3a2a"/>
+    <polygon points="614,225 592,275 636,275" fill="#2a3a2a"/>
+    <ellipse cx="614" cy="197" rx="20" ry="8" fill="#e0eaf8" opacity="0.8"/>
+  </g>
+  <!-- Snowflakes -->
+  <g fill="#ffffff" opacity="0.6" font-size="8">
+    <circle cx="150" cy="150" r="2"/>
+    <circle cx="280" cy="80" r="2"/>
+    <circle cx="450" cy="110" r="2"/>
+    <circle cx="580" cy="90" r="2"/>
+    <circle cx="90" cy="220" r="2"/>
+    <circle cx="650" cy="180" r="2"/>
+    <circle cx="320" cy="50" r="2"/>
+    <circle cx="510" cy="60" r="2"/>
+    <circle cx="200" cy="130" r="1.5"/>
+    <circle cx="680" cy="140" r="1.5"/>
+    <circle cx="40" cy="170" r="1.5"/>
+    <circle cx="700" cy="300" r="1.5"/>
+  </g>
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#6a8090" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#708090" opacity="0.8">경복궁 근정전 설경</text>
+</svg>

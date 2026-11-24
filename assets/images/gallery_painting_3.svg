@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="darkRockBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="40%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="lakeBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#40c8d8"/>
+      <stop offset="50%" stop-color="#208090"/>
+      <stop offset="100%" stop-color="#104050"/>
+    </linearGradient>
+    <radialGradient id="lakeGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#60e0f0" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#208090" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shimmer">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- Dark volcanic background -->
+  <rect width="720" height="480" fill="url(#darkRockBg)"/>
+  <!-- Rock texture strokes -->
+  <g stroke="#303030" stroke-width="1" fill="none" opacity="0.5">
+    <path d="M0,100 Q100,90 200,110 Q300,130 400,100 Q500,80 600,105 Q660,115 720,100"/>
+    <path d="M0,150 Q120,135 240,160 Q360,185 480,150 Q600,125 720,155"/>
+    <path d="M0,200 Q90,185 200,210 Q320,235 440,200 Q560,170 720,205"/>
+  </g>
+  <!-- Volcanic rock silhouettes at bottom -->
+  <polygon points="0,480 0,380 60,340 120,370 160,330 220,360 280,320 340,350 400,310 460,345 520,300 580,330 640,350 680,320 720,340 720,480" fill="#1a1a1a"/>
+  <!-- Crater rim -->
+  <ellipse cx="360" cy="280" rx="280" ry="60" fill="#252525" stroke="#303030" stroke-width="2"/>
+  <!-- Turquoise lake -->
+  <ellipse cx="360" cy="285" rx="250" ry="52" fill="url(#lakeBlue)"/>
+  <ellipse cx="360" cy="282" rx="250" ry="52" fill="url(#lakeGlow)"/>
+  <!-- Gold shimmer lines on lake -->
+  <g stroke="#c8a020" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M140,278 Q200,272 260,278 Q320,284 380,278"/>
+    <path d="M200,288 Q260,282 320,288 Q380,294 440,288 Q480,284 520,290"/>
+    <path d="M160,295 Q220,289 280,295 Q340,301 400,295 Q450,290 500,296"/>
+    <path d="M250,268 Q300,262 350,268 Q400,274 440,268"/>
+  </g>
+  <!-- Light reflection on lake -->
+  <ellipse cx="340" cy="275" rx="60" ry="12" fill="#a0d8e8" opacity="0.4" filter="url(#shimmer)"/>
+  <ellipse cx="400" cy="285" rx="40" ry="8" fill="#a0d8e8" opacity="0.3" filter="url(#shimmer)"/>
+  <!-- Rock details -->
+  <g fill="#202020" opacity="0.8">
+    <ellipse cx="80" cy="380" rx="70" ry="30"/>
+    <ellipse cx="200" cy="390" rx="50" ry="20"/>
+    <ellipse cx="560" cy="375" rx="65" ry="28"/>
+    <ellipse cx="660" cy="385" rx="55" ry="22"/>
+  </g>
+  <!-- Artist text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#60c0d0" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#409090" opacity="0.8">백두 천지의 반영</text>
+</svg>

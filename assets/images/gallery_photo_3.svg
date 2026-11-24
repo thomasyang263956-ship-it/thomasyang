@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="autumnBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b6020"/>
+      <stop offset="50%" stop-color="#c8880a"/>
+      <stop offset="100%" stop-color="#5a3a08"/>
+    </linearGradient>
+    <radialGradient id="bokeh1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4c030" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f4c030" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bokeh2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe080" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffe080" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="photoBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="720" height="480" fill="url(#autumnBg)"/>
+  <!-- Bokeh circles -->
+  <circle cx="80" cy="80" r="40" fill="url(#bokeh1)" opacity="0.7"/>
+  <circle cx="200" cy="50" r="25" fill="url(#bokeh2)" opacity="0.5"/>
+  <circle cx="600" cy="100" r="35" fill="url(#bokeh1)" opacity="0.6"/>
+  <circle cx="650" cy="40" r="20" fill="url(#bokeh2)" opacity="0.5"/>
+  <circle cx="400" cy="70" r="30" fill="url(#bokeh1)" opacity="0.4"/>
+  <circle cx="130" cy="200" r="22" fill="url(#bokeh2)" opacity="0.4"/>
+  <circle cx="550" cy="180" r="28" fill="url(#bokeh1)" opacity="0.5"/>
+  <circle cx="680" cy="250" r="18" fill="url(#bokeh2)" opacity="0.4"/>
+  <circle cx="50" cy="320" r="32" fill="url(#bokeh1)" opacity="0.4"/>
+  <circle cx="700" cy="380" r="24" fill="url(#bokeh2)" opacity="0.4"/>
+  <!-- Wildflower silhouettes -->
+  <g fill="#3a2010" opacity="0.8">
+    <!-- Stems and flower heads -->
+    <rect x="100" y="300" width="2" height="140"/>
+    <circle cx="101" cy="295" r="8"/>
+    <rect x="160" y="280" width="2" height="160"/>
+    <circle cx="161" cy="275" r="10"/>
+    <rect x="220" y="310" width="2" height="130"/>
+    <circle cx="221" cy="305" r="7"/>
+    <rect x="300" y="260" width="2" height="180"/>
+    <circle cx="301" cy="255" r="11"/>
+    <rect x="380" y="290" width="2" height="150"/>
+    <circle cx="381" cy="285" r="9"/>
+    <rect x="450" y="270" width="2" height="170"/>
+    <circle cx="451" cy="265" r="10"/>
+    <rect x="520" y="300" width="2" height="140"/>
+    <circle cx="521" cy="295" r="8"/>
+    <rect x="600" y="280" width="2" height="160"/>
+    <circle cx="601" cy="275" r="9"/>
+    <rect x="660" y="310" width="2" height="130"/>
+    <circle cx="661" cy="305" r="7"/>
+    <!-- Secondary stems -->
+    <rect x="130" y="320" width="2" height="120"/>
+    <circle cx="131" cy="315" r="6"/>
+    <rect x="260" y="300" width="2" height="140"/>
+    <circle cx="261" cy="295" r="7"/>
+    <rect x="420" y="310" width="2" height="130"/>
+    <circle cx="421" cy="305" r="6"/>
+    <rect x="560" y="290" width="2" height="150"/>
+    <circle cx="561" cy="285" r="8"/>
+  </g>
+  <!-- Golden flower tops -->
+  <g fill="#f4c030" opacity="0.9">
+    <circle cx="101" cy="295" r="6"/>
+    <circle cx="161" cy="275" r="8"/>
+    <circle cx="221" cy="305" r="5"/>
+    <circle cx="301" cy="255" r="9"/>
+    <circle cx="381" cy="285" r="7"/>
+    <circle cx="451" cy="265" r="8"/>
+    <circle cx="521" cy="295" r="6"/>
+    <circle cx="601" cy="275" r="7"/>
+    <circle cx="661" cy="305" r="5"/>
+  </g>
+  <!-- Ground -->
+  <rect x="0" y="420" width="720" height="60" fill="#3a2008" opacity="0.8"/>
+  <!-- Text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#f4c030" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#e8a040" opacity="0.8">빛의 계절 · 가을 DMZ</text>
+</svg>

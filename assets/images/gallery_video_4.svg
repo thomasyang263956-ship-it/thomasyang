@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <radialGradient id="flameG" cx="50%" cy="60%" r="45%">
+      <stop offset="0%" stop-color="#ff8c00"/>
+      <stop offset="30%" stop-color="#e04000"/>
+      <stop offset="70%" stop-color="#800000"/>
+      <stop offset="100%" stop-color="#200000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="emberG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffcc00" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff4400" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="flameBlur">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <!-- Dark background -->
+  <rect width="720" height="480" fill="#0d0d0d"/>
+  <!-- Flame glow behind kiln -->
+  <ellipse cx="360" cy="280" rx="200" ry="150" fill="url(#flameG)" opacity="0.9" filter="url(#flameBlur)"/>
+  <ellipse cx="360" cy="300" rx="140" ry="100" fill="#ff4400" opacity="0.4" filter="url(#flameBlur)"/>
+  <!-- Hot ember glow spots -->
+  <ellipse cx="320" cy="320" rx="40" ry="25" fill="url(#emberG)" opacity="0.7"/>
+  <ellipse cx="400" cy="310" rx="35" ry="20" fill="url(#emberG)" opacity="0.6"/>
+  <ellipse cx="360" cy="340" rx="50" ry="20" fill="#ffcc00" opacity="0.3" filter="url(#flameBlur)"/>
+  <!-- Flame tongues -->
+  <path d="M340,260 Q350,200 360,180 Q370,200 380,260" fill="#ff6600" opacity="0.7" filter="url(#flameBlur)"/>
+  <path d="M320,270 Q330,220 345,200 Q355,225 340,275" fill="#ff4400" opacity="0.5" filter="url(#flameBlur)"/>
+  <path d="M380,265 Q395,215 405,205 Q410,230 390,272" fill="#ff5500" opacity="0.5" filter="url(#flameBlur)"/>
+  <!-- Kiln arch silhouette -->
+  <path d="M160,460 L160,300 Q160,200 360,200 Q560,200 560,300 L560,460 Z" fill="#1a0800" stroke="#2a1000" stroke-width="2"/>
+  <!-- Kiln opening arch -->
+  <path d="M230,460 L230,320 Q230,250 360,250 Q490,250 490,320 L490,460 Z" fill="#0d0500"/>
+  <!-- Flame visible through opening -->
+  <path d="M230,460 L230,340 Q280,280 360,270 Q440,280 490,340 L490,460 Z" fill="#8b2000" opacity="0.8"/>
+  <!-- Bright center of flame through opening -->
+  <ellipse cx="360" cy="360" rx="80" ry="50" fill="#ff6600" opacity="0.5"/>
+  <ellipse cx="360" cy="370" rx="50" ry="30" fill="#ffcc00" opacity="0.4"/>
+  <!-- Play button -->
+  <circle cx="360" cy="240" r="45" fill="none" stroke="#ff8c00" stroke-width="2" opacity="0.8"/>
+  <polygon points="347,220 347,260 383,240" fill="#ff8c00" opacity="0.8"/>
+  <!-- Artist text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#ff8c00" opacity="0.8" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#cc5500" opacity="0.8">도자의 탄생 · 가마 속 불꽃</text>
+</svg>

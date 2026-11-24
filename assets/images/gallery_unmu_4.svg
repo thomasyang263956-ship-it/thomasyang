@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8aa8c0"/>
+      <stop offset="50%" stop-color="#b8cede"/>
+      <stop offset="100%" stop-color="#d8e8f2"/>
+    </linearGradient>
+    <radialGradient id="lakeG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a8c8e0"/>
+      <stop offset="60%" stop-color="#7aa0b8"/>
+      <stop offset="100%" stop-color="#4a7090"/>
+    </radialGradient>
+    <radialGradient id="mistG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0eaf5" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#b8cede" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="720" height="480" fill="url(#skyG)"/>
+  <!-- Mountain body of Hallasan -->
+  <ellipse cx="360" cy="420" rx="380" ry="180" fill="#4a5a6a" opacity="0.7"/>
+  <ellipse cx="360" cy="430" rx="360" ry="160" fill="#2e3e4e" opacity="0.8"/>
+  <!-- Crater rim - circular form -->
+  <ellipse cx="360" cy="240" rx="160" ry="60" fill="#3a4a5a" opacity="0.9"/>
+  <ellipse cx="360" cy="240" rx="140" ry="52" fill="#1e2e3e"/>
+  <!-- Lake inside crater -->
+  <ellipse cx="360" cy="248" rx="120" ry="42" fill="url(#lakeG)"/>
+  <!-- Shimmer on lake -->
+  <ellipse cx="340" cy="244" rx="30" ry="8" fill="#c8e0f0" opacity="0.4"/>
+  <ellipse cx="380" cy="252" rx="20" ry="5" fill="#c8e0f0" opacity="0.3"/>
+  <!-- Mist around crater -->
+  <ellipse cx="360" cy="235" rx="200" ry="70" fill="url(#mistG)" filter="url(#soft)"/>
+  <ellipse cx="200" cy="260" rx="130" ry="40" fill="#c8d8e8" opacity="0.5" filter="url(#soft)"/>
+  <ellipse cx="520" cy="255" rx="120" ry="35" fill="#c8d8e8" opacity="0.5" filter="url(#soft)"/>
+  <!-- Cloud layers -->
+  <ellipse cx="360" cy="310" rx="380" ry="50" fill="#d4e2ee" opacity="0.6" filter="url(#soft)"/>
+  <ellipse cx="180" cy="330" rx="160" ry="30" fill="#ccdaec" opacity="0.5" filter="url(#soft)"/>
+  <ellipse cx="560" cy="325" rx="140" ry="28" fill="#ccdaec" opacity="0.5" filter="url(#soft)"/>
+  <!-- Vertical text -->
+  <text x="695" y="80" font-family="'Noto Serif KR', serif" font-size="18" fill="#2a3a4a" opacity="0.8" writing-mode="tb" letter-spacing="4">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#6a8aa0" opacity="0.9">한라산 백록담 운무</text>
+</svg>

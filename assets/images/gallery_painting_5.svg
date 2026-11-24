@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <filter id="canvasTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <!-- Canvas background texture -->
+  <rect width="720" height="480" fill="#f0ece0"/>
+  <!-- Canvas texture overlay -->
+  <rect width="720" height="480" fill="#e8e0cc" opacity="0.5" filter="url(#canvasTexture)"/>
+  <!-- 5 Obangsaek geometric shapes - bold -->
+  <!-- Blue section - left -->
+  <rect x="0" y="0" width="144" height="480" fill="#1B6CA8"/>
+  <!-- Red section - upper center -->
+  <rect x="144" y="0" width="288" height="240" fill="#C0392B"/>
+  <!-- Yellow section - lower center-right -->
+  <rect x="432" y="240" width="144" height="240" fill="#F4C430"/>
+  <!-- White section - right -->
+  <rect x="576" y="0" width="144" height="480" fill="#F5F5F0"/>
+  <!-- Black section - lower center-left -->
+  <rect x="144" y="240" width="288" height="240" fill="#1a1a1a"/>
+  <!-- Geometric line dividers -->
+  <line x1="144" y1="0" x2="144" y2="480" stroke="#f0ece0" stroke-width="4"/>
+  <line x1="432" y1="0" x2="432" y2="480" stroke="#f0ece0" stroke-width="4"/>
+  <line x1="144" y1="240" x2="576" y2="240" stroke="#f0ece0" stroke-width="4"/>
+  <line x1="576" y1="0" x2="576" y2="480" stroke="#f0ece0" stroke-width="4"/>
+  <!-- Diagonal accent lines on sections -->
+  <g opacity="0.15" stroke="#ffffff" stroke-width="2" fill="none">
+    <line x1="0" y1="0" x2="144" y2="480"/>
+    <line x1="0" y1="160" x2="144" y2="480"/>
+    <line x1="576" y1="0" x2="720" y2="480"/>
+    <line x1="576" y1="160" x2="720" y2="480"/>
+  </g>
+  <!-- Center decorative diamond -->
+  <polygon points="288,160 360,80 432,160 360,240" fill="none" stroke="#f0ece0" stroke-width="3" opacity="0.6"/>
+  <!-- Artist text on white section -->
+  <text x="648" y="460" font-family="'Noto Serif KR', serif" font-size="16" fill="#2a2a2a" opacity="0.8" text-anchor="middle">梁太白</text>
+  <text x="30" y="30" font-family="'Noto Serif KR', serif" font-size="13" fill="#ffffff" opacity="0.9">전통의 흔적 · 단청 추상</text>
+</svg>

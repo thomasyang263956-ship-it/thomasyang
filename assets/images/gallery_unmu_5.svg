@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="dawnSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4a830"/>
+      <stop offset="30%" stop-color="#e87030"/>
+      <stop offset="60%" stop-color="#b04020"/>
+      <stop offset="85%" stop-color="#6a3020"/>
+      <stop offset="100%" stop-color="#2a1a10"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="25%" r="30%">
+      <stop offset="0%" stop-color="#ffe080" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#f4a030" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e06020" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  <!-- Dawn sky -->
+  <rect width="720" height="480" fill="url(#dawnSky)"/>
+  <!-- Sun glow -->
+  <ellipse cx="360" cy="120" rx="220" ry="120" fill="url(#sunGlow)"/>
+  <!-- Cloud layers golden -->
+  <ellipse cx="360" cy="260" rx="420" ry="55" fill="#c86820" opacity="0.5" filter="url(#soft)"/>
+  <ellipse cx="200" cy="275" rx="180" ry="35" fill="#d4780a" opacity="0.4" filter="url(#soft)"/>
+  <ellipse cx="560" cy="268" rx="160" ry="30" fill="#c86020" opacity="0.4" filter="url(#soft)"/>
+  <!-- Cloud band lighter -->
+  <ellipse cx="360" cy="250" rx="380" ry="40" fill="#e8a040" opacity="0.3" filter="url(#soft)"/>
+  <!-- Far mountain silhouettes -->
+  <polygon points="0,340 100,260 180,300 260,240 340,280 400,250 460,270 540,230 620,270 720,250 720,480 0,480" fill="#1a0e08" opacity="0.6"/>
+  <!-- Foreground Jirisan peak -->
+  <polygon points="200,480 360,200 520,480" fill="#120a04" opacity="0.95"/>
+  <polygon points="0,480 180,310 300,480" fill="#100804" opacity="0.9"/>
+  <polygon points="420,480 580,290 720,480" fill="#100804" opacity="0.9"/>
+  <!-- Mist between peaks -->
+  <ellipse cx="360" cy="360" rx="300" ry="40" fill="#e8902010" opacity="0.6" filter="url(#soft)"/>
+  <ellipse cx="150" cy="390" rx="160" ry="25" fill="#d07820" opacity="0.3" filter="url(#soft)"/>
+  <ellipse cx="580" cy="385" rx="140" ry="22" fill="#d07820" opacity="0.3" filter="url(#soft)"/>
+  <!-- Vertical text -->
+  <text x="695" y="80" font-family="'Noto Serif KR', serif" font-size="18" fill="#ffe0a0" opacity="0.8" writing-mode="tb" letter-spacing="4">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#e8b060" opacity="0.9">지리산 천왕봉 일출운</text>
+</svg>

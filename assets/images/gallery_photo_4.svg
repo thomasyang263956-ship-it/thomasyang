@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="50%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="boatG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c0c0c0"/>
+      <stop offset="100%" stop-color="#707070"/>
+    </linearGradient>
+    <filter id="reflect">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- Dark water background -->
+  <rect width="720" height="480" fill="url(#waterG)"/>
+  <!-- Water ripple lines -->
+  <g stroke="#3a3a3a" stroke-width="1" fill="none" opacity="0.5">
+    <path d="M0,250 Q180,245 360,250 Q540,255 720,250"/>
+    <path d="M0,270 Q180,265 360,270 Q540,275 720,270"/>
+    <path d="M0,290 Q180,285 360,290 Q540,295 720,290"/>
+    <path d="M0,310 Q180,305 360,310 Q540,315 720,310"/>
+    <path d="M0,330 Q180,325 360,330 Q540,335 720,330"/>
+    <path d="M0,350 Q180,345 360,350 Q540,355 720,350"/>
+    <path d="M0,370 Q180,365 360,370 Q540,375 720,370"/>
+    <path d="M0,390 Q180,385 360,390 Q540,395 720,390"/>
+    <path d="M0,410 Q180,405 360,410 Q540,415 720,410"/>
+  </g>
+  <!-- Boat 1 (left) -->
+  <g transform="translate(80,180)">
+    <path d="M-50,60 L-45,20 L-40,10 L-30,8 L40,8 L45,20 L50,60 Z" fill="url(#boatG)"/>
+    <rect x="-5" y="-80" width="4" height="88" fill="#888"/>
+    <polygon points="-5,-80 -5,-10 -50,0" fill="#b0b0b0" opacity="0.7"/>
+    <!-- Reflection -->
+    <path d="M-50,60 L-45,100 L-40,110 L-30,112 L40,112 L45,100 L50,60 Z" fill="#555" opacity="0.4" filter="url(#reflect)"/>
+  </g>
+  <!-- Boat 2 (center) -->
+  <g transform="translate(360,160)">
+    <path d="M-70,70 L-65,25 L-55,10 L-40,8 L55,8 L65,25 L70,70 Z" fill="url(#boatG)"/>
+    <rect x="-8" y="-100" width="5" height="108" fill="#909090"/>
+    <polygon points="-8,-100 -8,-5 -65,10" fill="#c0c0c0" opacity="0.7"/>
+    <!-- Reflection -->
+    <path d="M-70,70 L-65,115 L-55,130 L-40,132 L55,132 L65,115 L70,70 Z" fill="#444" opacity="0.4" filter="url(#reflect)"/>
+  </g>
+  <!-- Boat 3 (right) -->
+  <g transform="translate(610,190)">
+    <path d="M-45,55 L-40,18 L-35,8 L-25,6 L35,6 L40,18 L45,55 Z" fill="url(#boatG)"/>
+    <rect x="-4" y="-70" width="4" height="76" fill="#808080"/>
+    <!-- Reflection -->
+    <path d="M-45,55 L-40,92 L-35,102 L-25,104 L35,104 L40,92 L45,55 Z" fill="#444" opacity="0.4" filter="url(#reflect)"/>
+  </g>
+  <!-- Pier/dock line -->
+  <rect x="0" y="210" width="720" height="6" fill="#4a4a4a" opacity="0.6"/>
+  <!-- Mooring ropes -->
+  <line x1="80" y1="216" x2="80" y2="240" stroke="#666" stroke-width="2" opacity="0.6"/>
+  <line x1="360" y1="216" x2="360" y2="230" stroke="#666" stroke-width="2" opacity="0.6"/>
+  <line x1="610" y1="216" x2="610" y2="245" stroke="#666" stroke-width="2" opacity="0.6"/>
+  <!-- Horizon light -->
+  <rect x="0" y="200" width="720" height="15" fill="#808080" opacity="0.1"/>
+  <!-- Text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#aaaaaa" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#888888" opacity="0.8">군산 내항 빈 배</text>
+</svg>
