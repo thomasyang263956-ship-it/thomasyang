@@ -1089,6 +1089,8 @@ window.openAdminEditItemModal = function(type, id) {
   const categorySelect = document.getElementById('editCategorySelect');
   const previewImg = document.getElementById('editImagePreview');
   const urlInput = document.getElementById('editImageUrlInput');
+  const featuresGroup = document.getElementById('editItemFeaturesGroup');
+  const featuresInput = document.getElementById('editItemFeatures');
 
   typeInput.value = type;
   idInput.value = id;
@@ -1124,6 +1126,8 @@ window.openAdminEditItemModal = function(type, id) {
   document.getElementById('editItemMedium').value = item.medium || item.material || '';
   document.getElementById('editItemSize').value = item.size || item.dimensions || '';
   document.getElementById('editItemDesc').value = item.description || (item.features ? item.features.join('\n') : '');
+  featuresGroup.style.display = type === 'product' ? '' : 'none';
+  featuresInput.value = type === 'product' && item.features ? item.features.join('\n') : '';
 
   urlInput.oninput = function() {
     if (urlInput.value) previewImg.src = urlInput.value;
@@ -1143,6 +1147,10 @@ window.handleAdminSaveItem = function(e) {
   const medium = document.getElementById('editItemMedium').value.trim();
   const size = document.getElementById('editItemSize').value.trim();
   const desc = document.getElementById('editItemDesc').value.trim();
+  const features = document.getElementById('editItemFeatures').value
+    .split(/\r?\n/)
+    .map(feature => feature.trim())
+    .filter(Boolean);
   const image = document.getElementById('editImageUrlInput').value.trim() || document.getElementById('editImagePreview').src;
 
   if (type === 'gallery') {
@@ -1177,6 +1185,7 @@ window.handleAdminSaveItem = function(e) {
     item.material = medium;
     item.dimensions = size;
     item.description = desc;
+    item.features = features;
     if (image) item.image = image;
     saveSiteData(SITE_DATA);
     filterProducts(category);
