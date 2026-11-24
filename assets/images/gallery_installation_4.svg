@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="earthBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B6040"/>
+      <stop offset="50%" stop-color="#6B4820"/>
+      <stop offset="100%" stop-color="#4a3015"/>
+    </linearGradient>
+    <radialGradient id="amberGlow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#d4890a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8B4820" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wallTex">
+      <feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="5" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0.4"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <filter id="shardBlur">
+      <feGaussianBlur stdDeviation="1"/>
+    </filter>
+  </defs>
+  <!-- Warm earth background -->
+  <rect width="720" height="480" fill="url(#earthBg)"/>
+  <!-- Wall texture -->
+  <rect width="720" height="480" fill="#7a5035" opacity="0.5" filter="url(#wallTex)"/>
+  <!-- Amber glow -->
+  <rect width="720" height="480" fill="url(#amberGlow)"/>
+  <!-- Ceramic shard shapes embedded in wall -->
+  <!-- Shard 1 -->
+  <polygon points="80,120 130,110 145,160 95,170" fill="#c8a060" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 2 -->
+  <polygon points="200,80 260,70 275,130 215,140" fill="#d4b878" stroke="#2a1a08" stroke-width="1.5" opacity="0.85"/>
+  <!-- Shard 3 -->
+  <polygon points="380,60 440,55 455,110 395,118" fill="#b89048" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 4 -->
+  <polygon points="560,80 620,72 638,135 578,145" fill="#c8a060" stroke="#2a1a08" stroke-width="1.5" opacity="0.85"/>
+  <!-- Shard 5 -->
+  <polygon points="50,250 110,238 128,300 68,312" fill="#d4b060" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 6 -->
+  <polygon points="170,210 240,200 258,268 188,278" fill="#b87838" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 7 (large) -->
+  <polygon points="320,180 420,168 440,250 340,262" fill="#c89848" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 8 -->
+  <polygon points="490,195 560,185 578,250 508,260" fill="#d4a858" stroke="#2a1a08" stroke-width="1.5" opacity="0.85"/>
+  <!-- Shard 9 -->
+  <polygon points="620,170 690,160 705,220 635,232" fill="#c89050" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 10 -->
+  <polygon points="130,350 195,338 212,398 147,410" fill="#b87840" stroke="#2a1a08" stroke-width="1.5" opacity="0.85"/>
+  <!-- Shard 11 -->
+  <polygon points="280,330 360,318 378,385 298,398" fill="#c8a060" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Shard 12 -->
+  <polygon points="450,320 525,308 542,375 467,388" fill="#d4a848" stroke="#2a1a08" stroke-width="1.5" opacity="0.85"/>
+  <!-- Shard 13 -->
+  <polygon points="590,340 660,328 678,395 608,408" fill="#b89048" stroke="#2a1a08" stroke-width="1.5" opacity="0.9"/>
+  <!-- Archive photo frames - small rectangles scattered -->
+  <g fill="none" stroke="#f0e0b0" stroke-width="1.5" opacity="0.7">
+    <rect x="90" y="140" width="30" height="22" rx="1"/>
+    <rect x="215" y="145" width="38" height="28" rx="1"/>
+    <rect x="135" y="310" width="32" height="24" rx="1"/>
+    <rect x="490" y="260" width="35" height="26" rx="1"/>
+    <rect x="635" y="232" width="30" height="22" rx="1"/>
+    <rect x="300" y="260" width="38" height="28" rx="1"/>
+  </g>
+  <!-- Photo frame interiors (image stand-ins) -->
+  <g opacity="0.5">
+    <rect x="92" y="142" width="26" height="18" fill="#d4b888"/>
+    <rect x="217" y="147" width="34" height="24" fill="#c4a870"/>
+    <rect x="137" y="312" width="28" height="20" fill="#d0a060"/>
+    <rect x="492" y="262" width="31" height="22" fill="#c8a870"/>
+    <rect x="637" y="234" width="26" height="18" fill="#d4b888"/>
+    <rect x="302" y="262" width="34" height="24" fill="#c4a070"/>
+  </g>
+  <!-- Warm amber glow spots -->
+  <g opacity="0.3">
+    <circle cx="200" cy="140" r="40" fill="#f4a020" filter="url(#shardBlur)"/>
+    <circle cx="460" cy="200" r="35" fill="#e89018" filter="url(#shardBlur)"/>
+    <circle cx="360" cy="350" r="45" fill="#f0a828" filter="url(#shardBlur)"/>
+  </g>
+  <!-- Artist text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#f0d090" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#d4a860" opacity="0.8">흙과 불의 기억</text>
+</svg>

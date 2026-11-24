@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8898a8"/>
+      <stop offset="50%" stop-color="#aab8c8"/>
+      <stop offset="100%" stop-color="#c8d4de"/>
+    </linearGradient>
+    <radialGradient id="jarGrad" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#f4f8fc"/>
+      <stop offset="40%" stop-color="#e8f0f8"/>
+      <stop offset="80%" stop-color="#d0dce8"/>
+      <stop offset="100%" stop-color="#b8c8d8"/>
+    </radialGradient>
+    <radialGradient id="shadowGrad" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#8898a8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8898a8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <!-- Background - blue-grey gradient -->
+  <rect width="720" height="480" fill="url(#bgGrad)"/>
+  <!-- Subtle surface -->
+  <rect x="0" y="380" width="720" height="100" fill="#9aa8b8" opacity="0.3"/>
+  <!-- Shadow under jar -->
+  <ellipse cx="360" cy="390" rx="140" ry="25" fill="#8090a0" opacity="0.3" filter="url(#soft)"/>
+  <!-- White porcelain moon jar - main body -->
+  <ellipse cx="360" cy="230" rx="175" ry="195" fill="url(#jarGrad)"/>
+  <!-- Jar rim (top) - slight darker ring -->
+  <ellipse cx="360" cy="80" rx="60" ry="12" fill="#d8e4f0" stroke="#c0cdd8" stroke-width="1.5"/>
+  <!-- Jar foot (bottom) - slight ring -->
+  <ellipse cx="360" cy="420" rx="70" ry="12" fill="#c8d4e0" stroke="#b8c4d0" stroke-width="1.5"/>
+  <!-- Single subtle incised line around equator -->
+  <ellipse cx="360" cy="230" rx="175" ry="4" fill="none" stroke="#c8d4e2" stroke-width="1.5" opacity="0.6"/>
+  <!-- Highlight/sheen on jar surface -->
+  <ellipse cx="310" cy="160" rx="55" ry="70" fill="#f8fcff" opacity="0.4" filter="url(#soft)"/>
+  <ellipse cx="295" cy="150" rx="30" ry="45" fill="#ffffff" opacity="0.3" filter="url(#soft)"/>
+  <!-- Right side shadow -->
+  <ellipse cx="470" cy="260" rx="40" ry="80" fill="#a0b0c0" opacity="0.25" filter="url(#soft)"/>
+  <!-- Neck of jar -->
+  <rect x="306" y="68" width="108" height="30" fill="#dce8f4" opacity="0.8"/>
+  <ellipse cx="360" cy="68" rx="54" ry="12" fill="#e4eef8"/>
+  <!-- Base ring of jar -->
+  <rect x="296" y="412" width="128" height="20" fill="#ccdae8" opacity="0.8"/>
+  <!-- Artist text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#4a5a6a" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#5a6878" opacity="0.8">백자 달항아리</text>
+</svg>

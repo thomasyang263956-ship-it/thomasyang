@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="spaceBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="spotLight" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#f0e8d8" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#c8b898" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#111111" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="floorGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#2a2010" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <!-- Dark space background -->
+  <rect width="720" height="480" fill="url(#spaceBg)"/>
+  <!-- Spotlight from above -->
+  <ellipse cx="360" cy="0" rx="300" ry="250" fill="url(#spotLight)"/>
+  <!-- Floor -->
+  <rect x="0" y="400" width="720" height="80" fill="#0d0d0a"/>
+  <!-- Floor glow/reflection -->
+  <ellipse cx="360" cy="430" rx="250" ry="40" fill="url(#floorGlow)"/>
+  <!-- Many vertical brush handles hanging from top -->
+  <!-- Row of brushes with varying opacity/shade for 3D depth -->
+  <g stroke="#1a1a18" stroke-width="6" fill="none">
+    <!-- Back row (thinner, lighter) -->
+    <g stroke="#2a2a28" stroke-width="3" opacity="0.5">
+      <line x1="80" y1="0" x2="80" y2="380"/>
+      <line x1="130" y1="0" x2="130" y2="390"/>
+      <line x1="180" y1="0" x2="180" y2="375"/>
+      <line x1="230" y1="0" x2="230" y2="385"/>
+      <line x1="280" y1="0" x2="280" y2="380"/>
+      <line x1="330" y1="0" x2="330" y2="395"/>
+      <line x1="380" y1="0" x2="380" y2="378"/>
+      <line x1="430" y1="0" x2="430" y2="388"/>
+      <line x1="480" y1="0" x2="480" y2="382"/>
+      <line x1="530" y1="0" x2="530" y2="390"/>
+      <line x1="580" y1="0" x2="580" y2="375"/>
+      <line x1="630" y1="0" x2="630" y2="385"/>
+      <line x1="680" y1="0" x2="680" y2="380"/>
+    </g>
+    <!-- Main row (foreground) -->
+    <line x1="55" y1="0" x2="55" y2="400"/>
+    <line x1="105" y1="0" x2="105" y2="410"/>
+    <line x1="155" y1="0" x2="155" y2="405"/>
+    <line x1="205" y1="0" x2="205" y2="398"/>
+    <line x1="255" y1="0" x2="255" y2="408"/>
+    <line x1="305" y1="0" x2="305" y2="402"/>
+    <line x1="355" y1="0" x2="355" y2="412"/>
+    <line x1="405" y1="0" x2="405" y2="400"/>
+    <line x1="455" y1="0" x2="455" y2="406"/>
+    <line x1="505" y1="0" x2="505" y2="402"/>
+    <line x1="555" y1="0" x2="555" y2="408"/>
+    <line x1="605" y1="0" x2="605" y2="400"/>
+    <line x1="655" y1="0" x2="655" y2="405"/>
+    <line x1="705" y1="0" x2="705" y2="395"/>
+  </g>
+  <!-- Brush tips (bristle ends) at the bottom -->
+  <g fill="#1a1a14" opacity="0.8">
+    <ellipse cx="55" cy="400" rx="4" ry="10"/>
+    <ellipse cx="105" cy="410" rx="4" ry="10"/>
+    <ellipse cx="155" cy="405" rx="4" ry="10"/>
+    <ellipse cx="205" cy="398" rx="4" ry="10"/>
+    <ellipse cx="255" cy="408" rx="4" ry="10"/>
+    <ellipse cx="305" cy="402" rx="4" ry="10"/>
+    <ellipse cx="355" cy="412" rx="4" ry="10"/>
+    <ellipse cx="405" cy="400" rx="4" ry="10"/>
+    <ellipse cx="455" cy="406" rx="4" ry="10"/>
+    <ellipse cx="505" cy="402" rx="4" ry="10"/>
+    <ellipse cx="555" cy="408" rx="4" ry="10"/>
+    <ellipse cx="605" cy="400" rx="4" ry="10"/>
+    <ellipse cx="655" cy="405" rx="4" ry="10"/>
+  </g>
+  <!-- Floor shadow projections from brush handles -->
+  <g stroke="#0a0a08" stroke-width="2" fill="none" opacity="0.5">
+    <line x1="55" y1="410" x2="30" y2="460"/>
+    <line x1="155" y1="405" x2="130" y2="460"/>
+    <line x1="255" y1="408" x2="230" y2="460"/>
+    <line x1="355" y1="412" x2="330" y2="460"/>
+    <line x1="455" y1="406" x2="430" y2="460"/>
+    <line x1="555" y1="408" x2="530" y2="460"/>
+    <line x1="655" y1="405" x2="630" y2="460"/>
+  </g>
+  <!-- Hanging strings from ceiling -->
+  <g stroke="#2a2820" stroke-width="0.8" opacity="0.4">
+    <line x1="55" y1="0" x2="55" y2="10"/>
+    <line x1="155" y1="0" x2="155" y2="10"/>
+    <line x1="255" y1="0" x2="255" y2="10"/>
+    <line x1="355" y1="0" x2="355" y2="10"/>
+    <line x1="455" y1="0" x2="455" y2="10"/>
+    <line x1="555" y1="0" x2="555" y2="10"/>
+    <line x1="655" y1="0" x2="655" y2="10"/>
+  </g>
+  <!-- Artist text -->
+  <text x="680" y="455" font-family="'Noto Serif KR', serif" font-size="16" fill="#c0a870" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#908060" opacity="0.8">천 개의 붓 · 필묵의 숲</text>
+</svg>

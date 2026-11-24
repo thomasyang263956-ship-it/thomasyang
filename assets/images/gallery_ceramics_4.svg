@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="celadonBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a3a30"/>
+      <stop offset="100%" stop-color="#0d2018"/>
+    </linearGradient>
+    <linearGradient id="vaseGrad" cx="40%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#7ab89a"/>
+      <stop offset="40%" stop-color="#5a9880"/>
+      <stop offset="80%" stop-color="#3a7860"/>
+      <stop offset="100%" stop-color="#2a6050"/>
+    </linearGradient>
+    <linearGradient id="vaseSideGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a5840"/>
+      <stop offset="30%" stop-color="#6aaa88"/>
+      <stop offset="50%" stop-color="#8ac8a0"/>
+      <stop offset="70%" stop-color="#6aaa88"/>
+      <stop offset="100%" stop-color="#2a5840"/>
+    </linearGradient>
+    <filter id="celaBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+  <!-- Dark teal-green background -->
+  <rect width="720" height="480" fill="url(#celadonBg)"/>
+  <!-- Subtle surface reflection -->
+  <ellipse cx="360" cy="430" rx="130" ry="20" fill="#2a5840" opacity="0.4" filter="url(#celaBlur)"/>
+  <!-- 매병 (Maebyeong) vase shape - celadon green -->
+  <!-- The vase: wide shoulders, narrow waist, flared foot -->
+  <path d="M280,80 Q270,90 265,120 Q255,160 240,200 Q220,240 230,300 Q240,360 260,400 Q275,430 290,440 L430,440 Q445,430 460,400 Q480,360 490,300 Q500,240 480,200 Q465,160 455,120 Q450,90 440,80 Q400,60 360,58 Q320,60 280,80 Z" fill="url(#vaseSideGrad)"/>
+  <!-- Vase highlight -->
+  <path d="M300,100 Q295,140 290,200 Q282,260 295,320 Q302,355 315,390" stroke="#a0d8b8" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
+  <!-- Vase rim at top -->
+  <ellipse cx="360" cy="78" rx="62" ry="14" fill="#6aaa88" stroke="#4a8870" stroke-width="1.5"/>
+  <!-- Narrow neck -->
+  <rect x="318" y="65" width="84" height="30" fill="#6aaa88" rx="5"/>
+  <!-- Vase foot ring at bottom -->
+  <ellipse cx="360" cy="438" rx="78" ry="14" fill="#4a8870" stroke="#3a6860" stroke-width="1"/>
+  <!-- White inlaid peony flower patterns -->
+  <!-- Large central peony -->
+  <g transform="translate(360,260)" fill="none" stroke="#e8f4ee" stroke-width="1.5">
+    <circle cx="0" cy="0" r="6" fill="#e8f4ee"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(45)"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(90)"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(135)"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(225)"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(270)"/>
+    <ellipse cx="0" cy="-22" rx="10" ry="16" transform="rotate(315)"/>
+  </g>
+  <!-- Smaller peony left -->
+  <g transform="translate(300,180)" fill="none" stroke="#d8ede0" stroke-width="1.2">
+    <circle cx="0" cy="0" r="4" fill="#d8ede0"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(60)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(120)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(240)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(300)"/>
+  </g>
+  <!-- Smaller peony right -->
+  <g transform="translate(420,190)" fill="none" stroke="#d8ede0" stroke-width="1.2">
+    <circle cx="0" cy="0" r="4" fill="#d8ede0"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(60)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(120)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(240)"/>
+    <ellipse cx="0" cy="-15" rx="7" ry="11" transform="rotate(300)"/>
+  </g>
+  <!-- Vine/leaf inlay lines -->
+  <g stroke="#c0ddc8" stroke-width="1" fill="none" opacity="0.7">
+    <path d="M295,210 Q310,220 325,215 Q340,210 350,220"/>
+    <path d="M425,215 Q410,225 395,220 Q380,215 370,225"/>
+    <path d="M295,310 Q310,300 325,305 Q340,310 355,300"/>
+    <path d="M425,315 Q410,305 395,310 Q380,315 365,305"/>
+  </g>
+  <!-- Artist text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#8ac8a0" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#6aaa80" opacity="0.8">청자 상감 모란문 화병</text>
+</svg>

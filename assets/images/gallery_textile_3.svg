@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="silkBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8f4e8"/>
+      <stop offset="100%" stop-color="#e8e0cc"/>
+    </linearGradient>
+    <!-- Shimmer effect -->
+    <linearGradient id="shimmer1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <!-- White border -->
+  <rect width="720" height="480" fill="url(#silkBg)"/>
+  <!-- Obangsaek diamond/square pattern divided into 5 color sections -->
+  <!-- Blue - left diamond -->
+  <polygon points="0,0 240,0 120,240 0,240" fill="#1B6CA8"/>
+  <polygon points="0,240 120,240 0,480" fill="#1B6CA8" opacity="0.9"/>
+  <!-- White - top right -->
+  <polygon points="240,0 720,0 720,160 480,240 240,240" fill="#F5F5F0"/>
+  <!-- Red - top center -->
+  <polygon points="240,0 480,240 240,240" fill="#C0392B"/>
+  <!-- Yellow - bottom right -->
+  <polygon points="480,240 720,160 720,480 480,480" fill="#F4C430"/>
+  <!-- Black - bottom center-left -->
+  <polygon points="120,240 480,240 480,480 0,480" fill="#2c2c2c"/>
+  <!-- Silk shimmer diagonal highlight lines -->
+  <g stroke="url(#shimmer1)" stroke-width="2" fill="none" opacity="0.5">
+    <line x1="0" y1="40" x2="720" y2="40"/>
+    <line x1="0" y1="120" x2="720" y2="120"/>
+    <line x1="0" y1="200" x2="720" y2="200"/>
+    <line x1="0" y1="280" x2="720" y2="280"/>
+    <line x1="0" y1="360" x2="720" y2="360"/>
+    <line x1="0" y1="440" x2="720" y2="440"/>
+  </g>
+  <!-- Diagonal shimmer lines -->
+  <g stroke="#ffffff" stroke-width="1" fill="none" opacity="0.2">
+    <line x1="0" y1="0" x2="240" y2="480"/>
+    <line x1="80" y1="0" x2="320" y2="480"/>
+    <line x1="160" y1="0" x2="400" y2="480"/>
+    <line x1="240" y1="0" x2="480" y2="480"/>
+    <line x1="320" y1="0" x2="560" y2="480"/>
+    <line x1="400" y1="0" x2="640" y2="480"/>
+    <line x1="480" y1="0" x2="720" y2="480"/>
+    <line x1="560" y1="0" x2="720" y2="400"/>
+  </g>
+  <!-- Center decorative element at junction -->
+  <polygon points="480,240 420,180 360,240 420,300" fill="#ffffff" opacity="0.15"/>
+  <!-- Artist text -->
+  <text x="680" y="460" font-family="'Noto Serif KR', serif" font-size="16" fill="#f4f0e8" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#f4f0e8" opacity="0.8">오방색 비단 보자기</text>
+</svg>

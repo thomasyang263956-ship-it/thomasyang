@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <filter id="paperT">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0.3"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+  <!-- Rice paper background -->
+  <rect width="720" height="480" fill="#f2eee0"/>
+  <rect width="720" height="480" fill="#eae4d0" opacity="0.4" filter="url(#paperT)"/>
+  <!-- Large banana leaf 1 - main -->
+  <path d="M300,480 Q310,350 280,250 Q260,170 200,80" stroke="#3a4a2a" stroke-width="3" fill="#c8d4b0" opacity="0.7"/>
+  <path d="M300,480 Q330,350 350,240 Q360,160 330,70" stroke="#3a4a2a" stroke-width="3" fill="#b8c4a0" opacity="0.6"/>
+  <!-- Leaf midrib lines -->
+  <line x1="295" y1="460" x2="200" y2="80" stroke="#2a3a1a" stroke-width="2" opacity="0.8"/>
+  <line x1="305" y1="460" x2="340" y2="70" stroke="#2a3a1a" stroke-width="2" opacity="0.8"/>
+  <!-- Leaf veins -->
+  <g stroke="#2a3a1a" stroke-width="0.8" fill="none" opacity="0.5">
+    <line x1="240" y1="150" x2="210" y2="130"/>
+    <line x1="255" y1="190" x2="220" y2="170"/>
+    <line x1="265" y1="230" x2="225" y2="215"/>
+    <line x1="270" y1="275" x2="228" y2="260"/>
+    <line x1="275" y1="315" x2="232" y2="300"/>
+    <line x1="315" y1="140" x2="345" y2="120"/>
+    <line x1="320" y1="185" x2="352" y2="165"/>
+    <line x1="325" y1="230" x2="358" y2="210"/>
+    <line x1="330" y1="275" x2="362" y2="258"/>
+    <line x1="330" y1="320" x2="363" y2="303"/>
+  </g>
+  <!-- Large banana leaf 2 - side -->
+  <path d="M500,480 Q510,380 490,290 Q470,210 430,130 Q410,80 380,40" stroke="#3a4a2a" stroke-width="2.5" fill="#b0c098" opacity="0.6"/>
+  <path d="M510,480 Q530,380 540,290 Q550,210 530,130 Q515,80 500,40" stroke="#3a4a2a" stroke-width="2.5" fill="#a8b890" opacity="0.5"/>
+  <!-- Leaf 2 midrib -->
+  <line x1="508" y1="460" x2="480" y2="40" stroke="#2a3a1a" stroke-width="1.5" opacity="0.7"/>
+  <!-- Blue rain streaks - diagonal -->
+  <g stroke="#6888aa" stroke-width="1.2" fill="none" opacity="0.6">
+    <line x1="80" y1="0" x2="20" y2="200"/>
+    <line x1="150" y1="0" x2="90" y2="200"/>
+    <line x1="220" y1="0" x2="160" y2="200"/>
+    <line x1="380" y1="0" x2="320" y2="200"/>
+    <line x1="450" y1="0" x2="390" y2="200"/>
+    <line x1="560" y1="0" x2="500" y2="200"/>
+    <line x1="630" y1="0" x2="570" y2="200"/>
+    <line x1="700" y1="0" x2="640" y2="200"/>
+    <line x1="80" y1="200" x2="20" y2="400"/>
+    <line x1="150" y1="200" x2="90" y2="400"/>
+    <line x1="450" y1="200" x2="390" y2="400"/>
+    <line x1="560" y1="200" x2="500" y2="400"/>
+    <line x1="700" y1="200" x2="640" y2="400"/>
+  </g>
+  <!-- Vertical text -->
+  <text x="690" y="80" font-family="'Noto Serif KR', serif" font-size="18" fill="#2a3a1a" opacity="0.8" writing-mode="tb" letter-spacing="4">梁太白</text>
+  <text x="30" y="465" font-family="'Noto Serif KR', serif" font-size="13" fill="#4a5a3a" opacity="0.8">파초우</text>
+</svg>

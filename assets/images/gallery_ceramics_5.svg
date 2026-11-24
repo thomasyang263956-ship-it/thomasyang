@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="blackBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d0d0d"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+    <linearGradient id="jarBlack" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#101010"/>
+      <stop offset="20%" stop-color="#2a2a2a"/>
+      <stop offset="45%" stop-color="#383838"/>
+      <stop offset="60%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="jarSheen" cx="30%" cy="25%" r="40%">
+      <stop offset="0%" stop-color="#505050" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#101010" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="rustBlur">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+  <!-- Very dark background -->
+  <rect width="720" height="480" fill="url(#blackBg)"/>
+  <!-- Large black glazed jar (대호 form) -->
+  <ellipse cx="360" cy="430" rx="145" ry="22" fill="#0d0d0d" opacity="0.5"/>
+  <!-- Jar body - large oval -->
+  <path d="M210,100 Q200,120 190,160 Q175,220 180,290 Q185,360 210,410 Q235,445 280,455 L440,455 Q485,445 510,410 Q535,360 540,290 Q545,220 530,160 Q520,120 510,100 Q460,70 360,68 Q260,70 210,100 Z" fill="url(#jarBlack)"/>
+  <!-- Jar sheen -->
+  <path d="M210,100 Q200,120 190,160 Q175,220 180,290 Q185,360 210,410 Q235,445 280,455 L440,455 Q485,445 510,410 Q535,360 540,290 Q545,220 530,160 Q520,120 510,100 Q460,70 360,68 Q260,70 210,100 Z" fill="url(#jarSheen)"/>
+  <!-- Jar rim -->
+  <ellipse cx="360" cy="85" rx="82" ry="18" fill="#252525" stroke="#303030" stroke-width="1.5"/>
+  <!-- Narrow neck area -->
+  <rect x="285" y="68" width="150" height="35" fill="#202020" rx="8"/>
+  <!-- Jar foot ring -->
+  <ellipse cx="360" cy="453" rx="90" ry="16" fill="#181818" stroke="#222222" stroke-width="1"/>
+  <!-- Iron brush stroke marks - rust-red abstract -->
+  <!-- Large sweeping stroke 1 -->
+  <path d="M260,180 Q290,160 330,175 Q370,190 390,170 Q420,150 445,165" stroke="#8B2500" stroke-width="12" fill="none" stroke-linecap="round" filter="url(#rustBlur)" opacity="0.9"/>
+  <!-- Large stroke 2 -->
+  <path d="M230,250 Q270,235 310,250 Q350,265 395,245 Q430,230 460,248" stroke="#6B1500" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#rustBlur)" opacity="0.85"/>
+  <!-- Abstract iron stroke 3 -->
+  <path d="M270,320 Q300,305 340,315 Q380,325 410,310 Q440,298 460,312" stroke="#9B3000" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#rustBlur)" opacity="0.8"/>
+  <!-- Short accent strokes -->
+  <line x1="285" y1="200" x2="310" y2="195" stroke="#8B2500" stroke-width="5" stroke-linecap="round" opacity="0.7" filter="url(#rustBlur)"/>
+  <line x1="390" y1="295" x2="425" y2="285" stroke="#7B2000" stroke-width="4" stroke-linecap="round" opacity="0.7" filter="url(#rustBlur)"/>
+  <line x1="300" y1="370" x2="330" y2="365" stroke="#8B2500" stroke-width="6" stroke-linecap="round" opacity="0.65" filter="url(#rustBlur)"/>
+  <!-- Rust spot clusters -->
+  <g fill="#8B2500" opacity="0.6" filter="url(#rustBlur)">
+    <circle cx="345" cy="230" r="4"/>
+    <circle cx="355" cy="238" r="3"/>
+    <circle cx="338" cy="242" r="2"/>
+    <circle cx="420" cy="300" r="3"/>
+    <circle cx="428" cy="308" r="2"/>
+  </g>
+  <!-- Artist text -->
+  <text x="680" y="450" font-family="'Noto Serif KR', serif" font-size="16" fill="#8B3010" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#6a2008" opacity="0.8">흑유 철화 추상문 대호</text>
+</svg>

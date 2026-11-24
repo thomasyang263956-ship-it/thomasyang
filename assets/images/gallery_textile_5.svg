@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="ocherGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D2691E"/>
+      <stop offset="45%" stop-color="#8B4513"/>
+      <stop offset="100%" stop-color="#F4A460"/>
+    </linearGradient>
+    <filter id="feltTex">
+      <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="5" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0.3"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+  <!-- Ocher gradient background -->
+  <rect width="720" height="480" fill="url(#ocherGrad)"/>
+  <!-- Felt texture overlay -->
+  <rect width="720" height="480" fill="#c07040" opacity="0.4" filter="url(#feltTex)"/>
+  <!-- Wavy horizontal fiber texture lines - felt feel -->
+  <g stroke="#a05020" stroke-width="1" fill="none" opacity="0.5">
+    <path d="M0,20 Q90,15 180,20 Q270,25 360,20 Q450,15 540,20 Q630,25 720,20"/>
+    <path d="M0,40 Q90,35 180,40 Q270,45 360,40 Q450,35 540,40 Q630,45 720,40"/>
+    <path d="M0,60 Q90,55 180,60 Q270,65 360,60 Q450,55 540,60 Q630,65 720,60"/>
+    <path d="M0,80 Q90,75 180,80 Q270,85 360,80 Q450,75 540,80 Q630,85 720,80"/>
+    <path d="M0,100 Q90,95 180,100 Q270,105 360,100 Q450,95 540,100 Q630,105 720,100"/>
+    <path d="M0,120 Q90,115 180,120 Q270,125 360,120 Q450,115 540,120 Q630,125 720,120"/>
+    <path d="M0,140 Q90,135 180,140 Q270,145 360,140 Q450,135 540,140 Q630,145 720,140"/>
+    <path d="M0,160 Q90,155 180,160 Q270,165 360,160 Q450,155 540,160 Q630,165 720,160"/>
+    <path d="M0,180 Q90,175 180,180 Q270,185 360,180 Q450,175 540,180 Q630,185 720,180"/>
+    <path d="M0,200 Q90,195 180,200 Q270,205 360,200 Q450,195 540,200 Q630,205 720,200"/>
+    <path d="M0,220 Q90,215 180,220 Q270,225 360,220 Q450,215 540,220 Q630,225 720,220"/>
+    <path d="M0,240 Q90,235 180,240 Q270,245 360,240 Q450,235 540,240 Q630,245 720,240"/>
+    <path d="M0,260 Q90,255 180,260 Q270,265 360,260 Q450,255 540,260 Q630,265 720,260"/>
+    <path d="M0,280 Q90,275 180,280 Q270,285 360,280 Q450,275 540,280 Q630,285 720,280"/>
+    <path d="M0,300 Q90,295 180,300 Q270,305 360,300 Q450,295 540,300 Q630,305 720,300"/>
+    <path d="M0,320 Q90,315 180,320 Q270,325 360,320 Q450,315 540,320 Q630,325 720,320"/>
+    <path d="M0,340 Q90,335 180,340 Q270,345 360,340 Q450,335 540,340 Q630,345 720,340"/>
+    <path d="M0,360 Q90,355 180,360 Q270,365 360,360 Q450,355 540,360 Q630,365 720,360"/>
+    <path d="M0,380 Q90,375 180,380 Q270,385 360,380 Q450,375 540,380 Q630,385 720,380"/>
+    <path d="M0,400 Q90,395 180,400 Q270,405 360,400 Q450,395 540,400 Q630,405 720,400"/>
+    <path d="M0,420 Q90,415 180,420 Q270,425 360,420 Q450,415 540,420 Q630,425 720,420"/>
+    <path d="M0,440 Q90,435 180,440 Q270,445 360,440 Q450,435 540,440 Q630,445 720,440"/>
+    <path d="M0,460 Q90,455 180,460 Q270,465 360,460 Q450,455 540,460 Q630,465 720,460"/>
+  </g>
+  <!-- Lighter fiber texture lines -->
+  <g stroke="#e08840" stroke-width="0.6" fill="none" opacity="0.3">
+    <path d="M0,30 Q180,22 360,30 Q540,38 720,30"/>
+    <path d="M0,70 Q180,62 360,70 Q540,78 720,70"/>
+    <path d="M0,110 Q180,102 360,110 Q540,118 720,110"/>
+    <path d="M0,150 Q180,142 360,150 Q540,158 720,150"/>
+    <path d="M0,190 Q180,182 360,190 Q540,198 720,190"/>
+    <path d="M0,230 Q180,222 360,230 Q540,238 720,230"/>
+    <path d="M0,270 Q180,262 360,270 Q540,278 720,270"/>
+    <path d="M0,310 Q180,302 360,310 Q540,318 720,310"/>
+    <path d="M0,350 Q180,342 360,350 Q540,358 720,350"/>
+    <path d="M0,390 Q180,382 360,390 Q540,398 720,390"/>
+    <path d="M0,430 Q180,422 360,430 Q540,438 720,430"/>
+    <path d="M0,470 Q180,462 360,470 Q540,478 720,470"/>
+  </g>
+  <!-- Felt surface edge shadows -->
+  <rect x="0" y="0" width="720" height="480" fill="none" stroke="#6b2a08" stroke-width="12"/>
+  <!-- Artist text -->
+  <text x="680" y="460" font-family="'Noto Serif KR', serif" font-size="16" fill="#f8d8a0" opacity="0.9" text-anchor="end">梁太白</text>
+  <text x="30" y="460" font-family="'Noto Serif KR', serif" font-size="13" fill="#f0c880" opacity="0.8">황토 그라데이션 누노 펠트</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <linearGradient id="goldBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4a017"/>
+      <stop offset="50%" stop-color="#b88820"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f0c840" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#8B6914" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="goldTex">
+      <feTurbulence type="fractalNoise" baseFrequency="0.4" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0.5"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <!-- Gold gradient background -->
+  <rect width="720" height="480" fill="url(#goldBg)"/>
+  <rect width="720" height="480" fill="url(#centerGlow)"/>
+  <!-- Gold texture overlay -->
+  <rect width="720" height="480" fill="#c89020" opacity="0.2" filter="url(#goldTex)"/>
+  <!-- Diagonal gold shimmer lines -->
+  <g stroke="#f0d060" stroke-width="1" opacity="0.15">
+    <line x1="0" y1="0" x2="720" y2="480"/>
+    <line x1="80" y1="0" x2="720" y2="400"/>
+    <line x1="160" y1="0" x2="720" y2="320"/>
+    <line x1="0" y1="80" x2="640" y2="480"/>
+    <line x1="0" y1="160" x2="560" y2="480"/>
+  </g>
+  <!-- Inner border -->
+  <rect x="30" y="30" width="660" height="420" fill="none" stroke="#f0c840" stroke-width="1.5" opacity="0.4"/>
+  <!-- Large calligraphy characters - 日出東方 -->
+  <text x="130" y="300" font-family="'Noto Serif KR', serif" font-size="140" font-weight="bold" fill="#1a1000" text-anchor="middle" opacity="0.9">日</text>
+  <text x="300" y="300" font-family="'Noto Serif KR', serif" font-size="140" font-weight="bold" fill="#1a1000" text-anchor="middle" opacity="0.9">出</text>
+  <text x="470" y="300" font-family="'Noto Serif KR', serif" font-size="140" font-weight="bold" fill="#1a1000" text-anchor="middle" opacity="0.9">東</text>
+  <text x="640" y="300" font-family="'Noto Serif KR', serif" font-size="140" font-weight="bold" fill="#1a1000" text-anchor="middle" opacity="0.9">方</text>
+  <!-- Red seal stamp -->
+  <rect x="638" y="400" width="62" height="62" rx="2" fill="#8b1a00"/>
+  <text x="669" y="425" font-family="'Noto Serif KR', serif" font-size="11" fill="#f4e0c0" text-anchor="middle">梁</text>
+  <text x="669" y="440" font-family="'Noto Serif KR', serif" font-size="11" fill="#f4e0c0" text-anchor="middle">太</text>
+  <text x="669" y="455" font-family="'Noto Serif KR', serif" font-size="11" fill="#f4e0c0" text-anchor="middle">白</text>
+  <!-- Author text -->
+  <text x="360" y="440" font-family="'Noto Serif KR', serif" font-size="14" fill="#f0e0a0" text-anchor="middle" opacity="0.8">梁太白 書</text>
+</svg>

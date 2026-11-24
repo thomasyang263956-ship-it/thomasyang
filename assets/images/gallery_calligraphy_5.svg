@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" width="720" height="480">
+  <defs>
+    <filter id="ricePaperTex">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0.1"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+  <!-- Light grey rice paper -->
+  <rect width="720" height="480" fill="#ede9e0"/>
+  <rect width="720" height="480" fill="#e0dcd0" opacity="0.4" filter="url(#ricePaperTex)"/>
+  <!-- Border -->
+  <rect x="30" y="30" width="660" height="420" fill="none" stroke="#b8b0a0" stroke-width="1" opacity="0.5"/>
+  <!-- Flowing cursive calligraphy 和而不同 - dynamic varying thickness -->
+  <!-- 和 - flowing -->
+  <text x="142" y="295" font-family="'Noto Serif KR', serif" font-size="130" fill="#1a1a1a" text-anchor="middle" opacity="0.9" transform="rotate(-3,142,295)" letter-spacing="-5">和</text>
+  <!-- 而 -->
+  <text x="300" y="310" font-family="'Noto Serif KR', serif" font-size="130" fill="#1a1a1a" text-anchor="middle" opacity="0.88" transform="rotate(2,300,310)" letter-spacing="-5">而</text>
+  <!-- 不 -->
+  <text x="456" y="288" font-family="'Noto Serif KR', serif" font-size="130" fill="#1a1a1a" text-anchor="middle" opacity="0.9" transform="rotate(-1,456,288)" letter-spacing="-5">不</text>
+  <!-- 同 -->
+  <text x="614" y="305" font-family="'Noto Serif KR', serif" font-size="130" fill="#1a1a1a" text-anchor="middle" opacity="0.87" transform="rotate(1,614,305)" letter-spacing="-5">同</text>
+  <!-- Ink flow trails between characters -->
+  <g stroke="#1a1a1a" stroke-width="1.5" fill="none" opacity="0.3">
+    <path d="M210,280 Q235,290 240,295"/>
+    <path d="M368,300 Q385,290 390,285"/>
+    <path d="M524,290 Q540,295 545,298"/>
+  </g>
+  <!-- Ink splatter effects -->
+  <g fill="#1a1a1a" opacity="0.2">
+    <circle cx="80" cy="200" r="2"/>
+    <circle cx="85" cy="208" r="1.5"/>
+    <circle cx="90" cy="197" r="1"/>
+    <circle cx="650" cy="380" r="2"/>
+    <circle cx="658" cy="390" r="1.5"/>
+  </g>
+  <!-- Author text -->
+  <text x="360" y="445" font-family="'Noto Serif KR', serif" font-size="14" fill="#6a6058" text-anchor="middle" opacity="0.7">梁太白 書</text>
+  <!-- Seal -->
+  <rect x="38" y="400" width="55" height="55" rx="2" fill="#cc2222" opacity="0.75"/>
+  <text x="65" y="423" font-family="'Noto Serif KR', serif" font-size="10" fill="#f4f0e8" text-anchor="middle">梁太白</text>
+  <text x="65" y="438" font-family="'Noto Serif KR', serif" font-size="10" fill="#f4f0e8" text-anchor="middle">之印</text>
+</svg>
