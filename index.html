@@ -907,6 +907,64 @@
     </div>
   </div>
 
+  <!-- Admin Edit Album Modal -->
+  <div class="modal-overlay" id="adminEditAlbumModalOverlay" role="dialog" aria-modal="true">
+    <div class="modal-container" style="max-width:780px; padding:36px; max-height:90vh;">
+      <button class="modal-btn-close" onclick="closeAdminModal('adminEditAlbumModalOverlay')" aria-label="닫기">✕</button>
+      <div style="margin-bottom:20px; border-bottom:1px solid var(--border-light); padding-bottom:12px;">
+        <span class="artwork-category-badge" style="position:static;">작가 활동 앨범 편집</span>
+        <h3 style="font-family:var(--font-serif); font-size:22px; margin-top:8px;">작가 활동 앨범 항목 수정</h3>
+      </div>
+
+      <form id="adminEditAlbumForm" onsubmit="handleAdminSaveAlbum(event)">
+        <input type="hidden" id="editAlbumId">
+        <div class="form-group">
+          <label class="form-label" for="editAlbumImageUrl">앨범 이미지</label>
+          <div class="admin-image-edit-wrap">
+            <div class="admin-image-preview-box">
+              <img id="editAlbumImagePreview" src="" alt="앨범 이미지 미리보기">
+            </div>
+            <div class="admin-image-controls">
+              <label class="btn-secondary" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; font-size:13px; padding:10px 16px;">
+                📁 내 컴퓨터에서 새 사진 선택
+                <input type="file" id="editAlbumImageFileInput" accept="image/*" style="display:none;" onchange="handleImageFileSelect(event, 'editAlbumImagePreview', 'editAlbumImageUrl')">
+              </label>
+              <div style="margin-top:10px;">
+                <label class="form-label" for="editAlbumImageUrl">또는 이미지 경로/URL 직접 입력</label>
+                <input type="text" id="editAlbumImageUrl" class="form-input" required placeholder="assets/images/파일명.jpg 또는 URL">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label class="form-label" for="editAlbumCategory">분류 *</label>
+            <input type="text" id="editAlbumCategory" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="editAlbumYear">날짜 *</label>
+            <input type="text" id="editAlbumYear" class="form-input" required placeholder="예: 2026.05">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="editAlbumTitle">제목 *</label>
+          <input type="text" id="editAlbumTitle" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="editAlbumCaption">설명 *</label>
+          <textarea id="editAlbumCaption" class="form-textarea" rows="4" required></textarea>
+        </div>
+        <div style="display:flex; justify-content:space-between; gap:10px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-light);">
+          <button type="button" id="deleteAlbumBtn" class="btn-danger" onclick="handleAdminDeleteAlbum()">항목 삭제</button>
+          <div style="display:flex; gap:10px;">
+            <button type="button" class="btn-secondary" onclick="closeAdminModal('adminEditAlbumModalOverlay')">취소</button>
+            <button type="submit" class="btn-primary">작가 활동 앨범 저장</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Admin Change Password Modal -->
   <div class="modal-overlay" id="adminChangePasswordModalOverlay" role="dialog" aria-modal="true">
     <div class="modal-container" style="max-width: 420px; padding: 36px;">

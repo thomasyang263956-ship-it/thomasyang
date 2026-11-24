@@ -570,9 +570,18 @@ function initAlbum() {
         </div>
         <h3 class="album-title">${item.title}</h3>
         <p class="album-caption">${item.caption}</p>
+        ${isAdminLoggedIn() ? `<button type="button" class="btn-secondary" style="padding:10px 14px; font-size:13px;" onclick="event.stopPropagation(); openAdminEditAlbumModal('${item.id}')">✏️ 수정</button>` : ''}
       </div>
     </article>
   `).join('');
+
+  if (isAdminLoggedIn()) {
+    container.insertAdjacentHTML('beforeend', `
+      <button type="button" class="btn-primary" style="justify-self:start; align-self:start; margin-top:8px;" onclick="openAdminEditAlbumModal()">
+        ➕ 작가 활동 앨범 항목 추가
+      </button>
+    `);
+  }
 }
 
 /* ==========================================================================
@@ -765,6 +774,11 @@ window.openAlbumModal = function(id) {
       <p style="font-size:15px; line-height:1.8; color:var(--color-text-secondary); margin-bottom:24px;">
         ${item.caption}
       </p>
+      ${isAdminLoggedIn() ? `
+        <button class="btn-secondary" style="width:100%; justify-content:center;" onclick="document.getElementById('detailModalOverlay').classList.remove('open'); openAdminEditAlbumModal('${item.id}')">
+          ✏️ 관리자: 이 앨범 항목 수정하기
+        </button>
+      ` : ''}
     </div>
   `;
 
@@ -927,6 +941,7 @@ function activateAdminUI() {
   // Re-render components with edit buttons
   initProfile();
   initPress();
+  initAlbum();
   renderGalleryGrid(currentGalleryCategory === 'all' ? SITE_DATA.galleryItems : SITE_DATA.galleryItems.filter(x => x.category === currentGalleryCategory));
   renderProductGrid(currentProductCategory === 'all' ? SITE_DATA.productItems : SITE_DATA.productItems.filter(x => x.category === currentProductCategory));
 }
@@ -944,6 +959,7 @@ window.logoutAdmin = function() {
 
   initProfile();
   initPress();
+  initAlbum();
   renderGalleryGrid(currentGalleryCategory === 'all' ? SITE_DATA.galleryItems : SITE_DATA.galleryItems.filter(x => x.category === currentGalleryCategory));
   renderProductGrid(currentProductCategory === 'all' ? SITE_DATA.productItems : SITE_DATA.productItems.filter(x => x.category === currentProductCategory));
   showAdminToast('관리자 모드에서 로그아웃되었습니다.');
@@ -1062,35 +1078,39 @@ window.handleAdminSaveItem = function(e) {
 
   if (type === 'gallery') {
     const item = SITE_DATA.galleryItems.find(x => x.id === id);
-    if (item) {
-      item.category = category;
-      const catObj = SITE_DATA.galleryCategories.find(c => c.id === category);
-      item.categoryName = catObj ? catObj.name : category;
-      item.title = title;
-      item.titleEn = titleEn;
-      item.year = year;
-      item.medium = medium;
-      item.size = size;
-      item.description = desc;
-      if (image) item.image = image;
+    if (!item) {
+      showAdminToast('수정할 작품을 찾을 수 없습니다.');
+      return;
     }
+    item.category = category;
+    const catObj = SITE_DATA.galleryCategories.find(c => c.id === category);
+    item.categoryName = catObj ? catObj.name : category;
+    item.title = title;
+    item.titleEn = titleEn;
+    item.year = year;
+    item.medium = medium;
+    item.size = size;
+    item.description = desc;
+    if (image) item.image = image;
     saveSiteData(SITE_DATA);
-    filterGallery(currentGalleryCategory);
+    filterGallery(category);
   } else {
     const item = SITE_DATA.productItems.find(x => x.id === id);
-    if (item) {
-      item.category = category;
-      const catObj = SITE_DATA.productCategories.find(c => c.id === category);
-      item.categoryName = catObj ? catObj.name : category;
-      item.name = title;
-      item.nameEn = titleEn;
-      item.material = medium;
-      item.dimensions = size;
-      item.description = desc;
-      if (image) item.image = image;
+    if (!item) {
+      showAdminToast('수정할 아트상품을 찾을 수 없습니다.');
+      return;
     }
+    item.category = category;
+    const catObj = SITE_DATA.productCategories.find(c => c.id === category);
+    item.categoryName = catObj ? catObj.name : category;
+    item.name = title;
+    item.nameEn = titleEn;
+    item.material = medium;
+    item.dimensions = size;
+    item.description = desc;
+    if (image) item.image = image;
     saveSiteData(SITE_DATA);
-    filterProducts(currentProductCategory);
+    filterProducts(category);
   }
 
   closeAdminModal('adminEditItemModalOverlay');
@@ -1375,6 +1395,68 @@ window.openAdminEditPressModal = function(id) {
   const deleteButton = document.getElementById('deletePressBtn');
   if (deleteButton) deleteButton.style.display = item ? 'inline-flex' : 'none';
   modal.classList.add('open');
+};
+
+window.openAdminEditAlbumModal = function(id) {
+  const modal = document.getElementById('adminEditAlbumModalOverlay');
+  if (!modal) return;
+
+  const item = id ? SITE_DATA.album.find(x => x.id === id) : null;
+  document.getElementById('editAlbumId').value = item ? item.id : '';
+  document.getElementById('editAlbumCategory').value = item ? (item.category || '') : '';
+  document.getElementById('editAlbumYear').value = item ? (item.year || '') : '';
+  document.getElementById('editAlbumTitle').value = item ? (item.title || '') : '';
+  document.getElementById('editAlbumCaption').value = item ? (item.caption || '') : '';
+  document.getElementById('editAlbumImageUrl').value = item ? (item.image || '') : '';
+  document.getElementById('editAlbumImagePreview').src = item ? item.image : '';
+  document.getElementById('editAlbumImageUrl').oninput = function() {
+    if (this.value) document.getElementById('editAlbumImagePreview').src = this.value;
+  };
+
+  const deleteButton = document.getElementById('deleteAlbumBtn');
+  if (deleteButton) deleteButton.style.display = item ? 'inline-flex' : 'none';
+  modal.classList.add('open');
+};
+
+window.handleAdminSaveAlbum = function(e) {
+  e.preventDefault();
+  const id = document.getElementById('editAlbumId').value.trim();
+  const imageInput = document.getElementById('editAlbumImageUrl');
+  const albumItem = {
+    category: document.getElementById('editAlbumCategory').value.trim(),
+    year: document.getElementById('editAlbumYear').value.trim(),
+    title: document.getElementById('editAlbumTitle').value.trim(),
+    caption: document.getElementById('editAlbumCaption').value.trim(),
+    image: imageInput.value.trim() || document.getElementById('editAlbumImagePreview').src
+  };
+
+  if (id) {
+    const index = SITE_DATA.album.findIndex(item => item.id === id);
+    if (index < 0) {
+      showAdminToast('수정할 앨범 항목을 찾을 수 없습니다.');
+      return;
+    }
+    SITE_DATA.album[index] = { ...SITE_DATA.album[index], ...albumItem };
+  } else {
+    SITE_DATA.album.unshift({ id: `alb-${Date.now()}`, ...albumItem });
+  }
+
+  saveSiteData(SITE_DATA);
+  initAlbum();
+  closeAdminModal('adminEditAlbumModalOverlay');
+  showAdminToast('작가 활동 앨범 항목이 성공적으로 저장되었습니다.');
+};
+
+window.handleAdminDeleteAlbum = function() {
+  const id = document.getElementById('editAlbumId').value.trim();
+  if (!id) return;
+  if (!confirm('이 작가 활동 앨범 항목을 삭제하시겠습니까?')) return;
+
+  SITE_DATA.album = SITE_DATA.album.filter(item => item.id !== id);
+  saveSiteData(SITE_DATA);
+  initAlbum();
+  closeAdminModal('adminEditAlbumModalOverlay');
+  showAdminToast('작가 활동 앨범 항목이 삭제되었습니다.');
 };
 
 window.handleAdminSavePress = function(e) {
